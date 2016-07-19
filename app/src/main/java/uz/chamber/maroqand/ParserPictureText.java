@@ -14,35 +14,42 @@ import java.net.URL;
 public class ParserPictureText {
     String html;
     Document document;
-    Elements titles;
-    String title;
+    Elements elements;
+    String title, content, imageUrl;
     CallBackNetwork network;
 
-    public ParserPictureText(String html, CallBackNetwork network)
-    {
+    public ParserPictureText(String html, CallBackNetwork network) {
         this.html=html;
         ConnectThread connectThread = new ConnectThread();
         connectThread.start();
         this.network = network;
     }
-    public String getTitle()
-    {
-        return title;
-    }
 
-    public class ConnectThread extends Thread
-    {
+    class ConnectThread extends Thread {
         @Override
         public void run() {
             super.run();
             try{
                 document= Jsoup.connect(html).get();
-                titles = document.select("div.page-content");
 
-                for(Element e:titles){
-                    title += (e.text()+"\n\n");
-                }
-                network.title(title);
+                elements = document.select("h1.spage-header");
+                title=elements.text();
+/*
+                elements = document.select("div.page-content");
+
+                for(Element e:elements){
+                    content += (e.text()+"\n\n");
+                }*/
+            //    Elements elements = document.getElementsByTag("img");
+
+                Element image = document.select("img").first();
+                imageUrl=image.absUrl("src");
+                /*
+                for (Element ele : elements) {
+						content+=ele.attr("src");
+						content+="\n";
+                }*/
+                network.setTitle(imageUrl);;
             }catch(IOException e){
                 e.printStackTrace();
             }

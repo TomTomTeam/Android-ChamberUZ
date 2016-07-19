@@ -2,6 +2,7 @@ package uz.chamber.maroqand;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -10,6 +11,7 @@ import android.widget.TextView;
 public class U_TestActivity extends AppCompatActivity {
 
     TextView tv;
+    ImageView imageView;
     ParserPictureText parserPictureText;
 
     @Override
@@ -19,11 +21,12 @@ public class U_TestActivity extends AppCompatActivity {
         setContentView(R.layout.u_test);
 
         tv=(TextView)findViewById(R.id.textView);
+        imageView=(ImageView)findViewById(R.id.imageView);
 
         CallBackNetwork title = new CallBackNetwork() {
 
             @Override
-            public void title(final String title) {
+            public void setTitle(final String title) {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
@@ -32,6 +35,7 @@ public class U_TestActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     tv.setText(title);
+                                    new DownloadImageTask(imageView).execute(title);
                                 }
                             });
                         }catch(Exception e){
