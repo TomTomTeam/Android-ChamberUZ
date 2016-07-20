@@ -22,9 +22,9 @@ import uz.chamber.maroqand.CallBack;
  * Created by lk on 2016. 7. 19..
  */
 public class MainImage {
-    String html = "http://chamber.uz/en/index";
+    String html = "http://chamber.uz/en/index"; //todo Language setting
     Document document;
-    Elements titles;
+    Elements images;
     CallBack callBack;
 
     public MainImage(CallBack callBack){
@@ -37,18 +37,18 @@ public class MainImage {
         @Override
         public void run() {
             document= Jsoup.parse(requestHttp(html));
-            titles = document.select("div.carousel-inner");
-            Elements media = titles.select("[src]");
-            ArrayList<String> list = new ArrayList<>();
+            images = document.select("div.carousel-inner");
+            Elements media = images.select("[src]");
+            ArrayList<String> imgList = new ArrayList<>();
             for(int i=0; i<media.size(); i++){
                 Element src = media.get(i);
-                String a = src.toString().replace("<img src=\"", "http://chamber.uz");
-                a = a.substring(0, a.length()-12);
-                Log.i("aa",a);
-                list.add(a);
+                String tmp = src.toString().replace("<img src=\"", "http://chamber.uz");
+                tmp = tmp.substring(0, tmp.length()-12);
+                Log.i("aa",tmp);
+                imgList.add(tmp);
 
             }
-            callBack.done(list);
+            callBack.done(imgList);
 
         }
 

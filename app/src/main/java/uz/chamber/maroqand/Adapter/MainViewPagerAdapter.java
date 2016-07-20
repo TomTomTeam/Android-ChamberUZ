@@ -5,12 +5,13 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
 import uz.chamber.maroqand.AppController;
-
+import uz.chamber.maroqand.R;
 
 
 /**
@@ -31,16 +32,13 @@ public class MainViewPagerAdapter extends PagerAdapter {
         this.list = list;
     }
 
-    public void addImageUrl(String url){
-        list.add(url);
-    }
-
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
-        NetworkImageView view = new NetworkImageView(mContext);
+        View itemView = mLayoutInflater.inflate(R.layout.fragment_main_viewpager, collection, false);
+        NetworkImageView view = (NetworkImageView) itemView.findViewById(R.id.nv_main_viewpager);
         view.setImageUrl(list.get(position), AppController.getInstance().getImageLoader());
-        collection.addView(view, 0);
-        return view;
+        collection.addView(itemView);
+        return itemView;
     }
 
 
@@ -52,5 +50,11 @@ public class MainViewPagerAdapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view == object;
+    }
+
+    @Override
+    public void destroyItem(ViewGroup container, int position, Object object) {
+        container.removeView((LinearLayout) object);
+
     }
 }

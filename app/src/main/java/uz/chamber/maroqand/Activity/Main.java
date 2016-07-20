@@ -22,7 +22,6 @@ import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
 import uz.chamber.maroqand.CallBack;
 import uz.chamber.maroqand.Parser.MainImage;
 import uz.chamber.maroqand.R;
-import uz.chamber.maroqand.VolleySingleton;
 
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -31,7 +30,6 @@ public class Main extends AppCompatActivity
     Handler handler;
     MainViewPagerAdapter adapter;
     int p;
-    int v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +43,6 @@ public class Main extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-        VolleySingleton.getInstance(getBaseContext());
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
