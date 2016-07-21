@@ -5,12 +5,15 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
 import uz.chamber.maroqand.AppController;
+import uz.chamber.maroqand.Model.MainViewPagerData;
 import uz.chamber.maroqand.R;
 
 
@@ -21,10 +24,10 @@ public class MainViewPagerAdapter extends PagerAdapter {
 
     Context mContext;
     LayoutInflater mLayoutInflater;
-    ArrayList<String> list;
+    ArrayList<MainViewPagerData> list;
     MainViewPagerAdapter context;
 
-    public MainViewPagerAdapter(Context mContext, ArrayList<String> list) {
+    public MainViewPagerAdapter(Context mContext, ArrayList<MainViewPagerData> list) {
 
         this.mContext = mContext;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -36,7 +39,9 @@ public class MainViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup collection, int position) {
         View itemView = mLayoutInflater.inflate(R.layout.fragment_main_viewpager, collection, false);
         NetworkImageView view = (NetworkImageView) itemView.findViewById(R.id.nv_main_viewpager);
-        view.setImageUrl(list.get(position), AppController.getInstance().getImageLoader());
+        TextView title = (TextView) itemView.findViewById(R.id.tv_mainViewPager_title);
+        view.setImageUrl(list.get(position).getImgUrl(), AppController.getInstance().getImageLoader());
+        title.setText(list.get(position).getTitle());
         collection.addView(itemView);
         return itemView;
     }
@@ -54,7 +59,7 @@ public class MainViewPagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((LinearLayout) object);
+        container.removeView((FrameLayout) object);
 
     }
 }

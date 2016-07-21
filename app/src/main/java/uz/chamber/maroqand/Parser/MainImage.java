@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import uz.chamber.maroqand.CallBack;
+import uz.chamber.maroqand.Model.MainViewPagerData;
 
 /**
  * Created by lk on 2016. 7. 19..
@@ -24,31 +25,44 @@ import uz.chamber.maroqand.CallBack;
 public class MainImage {
     String html = "http://chamber.uz/en/index"; //todo Language setting
     Document document;
-    Elements images;
+    Elements inner;
+    Elements items;
+    Element image;
+    Element aTag;
+    String title;
     CallBack callBack;
+    String linkUrl;
+    String imgUrl;
+
 
     public MainImage(CallBack callBack){
         this.callBack = callBack;
         new ConnectThread().start();
     }
 
-
     private class ConnectThread extends Thread {
         @Override
         public void run() {
+            ArrayList<MainViewPagerData> dataList = new ArrayList<>();
             document= Jsoup.parse(requestHttp(html));
-            images = document.select("div.carousel-inner");
-            Elements media = images.select("[src]");
-            ArrayList<String> imgList = new ArrayList<>();
-            for(int i=0; i<media.size(); i++){
-                Element src = media.get(i);
-                String tmp = src.toString().replace("<img src=\"", "http://chamber.uz");
-                tmp = tmp.substring(0, tmp.length()-12);
-                Log.i("aa",tmp);
-                imgList.add(tmp);
+            inner = document.select("div.carousel-inner");
+            items = inner.select("div.item");
+            for(int i=0; i<items.size(); i++){
+                Log.e("aa", items.get(i).toString());
+                image = items.get(i).select("[src]").first();
+                imgUrl = image.toString().replace("<img src=\"", "http://chamber.uz");
+                imgUrl = imgUrl.substring(0, imgUrl.length()-12);
+                aTag = items.get(i).select("a[href]").first();
+                title = items.get(i).text();
+                linkUrl = aTag.toString().replace("\"> "+title +" </a>","").replace("<a class=\"carousel-caption\" href=\"", "http://chamber.uz");
+
+                MainViewPagerData data = new MainViewPagerData(imgUrl, title, linkUrl);
+                dataList.add(data);
+
+                Log.i("aa",imgUrl + " ./  " + aTag + " / " + title);
 
             }
-            callBack.done(imgList);
+            callBack.done(dataList);
 
         }
 

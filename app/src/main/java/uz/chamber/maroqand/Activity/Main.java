@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
 import uz.chamber.maroqand.CallBack;
+import uz.chamber.maroqand.Model.MainViewPagerData;
 import uz.chamber.maroqand.Parser.MainImage;
 import uz.chamber.maroqand.R;
 
@@ -47,11 +48,11 @@ public class Main extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPager = (ViewPager) findViewById(R.id.vp_mainViewPager);
 
         CallBack callBack = new CallBack() {
             @Override
-            public void done(final ArrayList<String> list) {
+            public void done(final ArrayList<MainViewPagerData> list) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
