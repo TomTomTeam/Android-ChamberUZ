@@ -20,7 +20,7 @@ public class pasing_text_test extends AppCompatActivity {
 
     TextView textviewHtmlDocument;
 
-    String htmlContentInStringFormat;
+    String htmlContentInStringFormat= "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -68,14 +68,13 @@ public class pasing_text_test extends AppCompatActivity {
 
                 Document doc = Jsoup.connect(htmlPageUrl).get();
 
-                Elements links = doc.select("div.page-content");
+                Elements links = doc.select("div.page-content > p");
 
                 for (Element link : links) {
 
-                    htmlContentInStringFormat += (link.attr("abs:href")
-
-                            + "(" + link.text().trim() + ")\n");
-
+                    htmlContentInStringFormat  += link.text() +"\n\n";
+                  //  htmlContentInStringFormat += (link.attr("abs:href")
+                         //   + "(" + link.text().trim() + ")\n\n");
                 }
 
             } catch (IOException e) {
