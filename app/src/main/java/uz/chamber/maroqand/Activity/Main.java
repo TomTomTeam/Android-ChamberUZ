@@ -19,17 +19,20 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
+import uz.chamber.maroqand.Adapter.MainViewPagerNewsAdapter;
 import uz.chamber.maroqand.CallBack;
 import uz.chamber.maroqand.Model.MainViewPagerData;
-import uz.chamber.maroqand.Parser.MainImage;
+import uz.chamber.maroqand.Parser.MainPageParser;
 import uz.chamber.maroqand.R;
 
 public class Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ViewPager viewPager;
+    ViewPager viewPagerNews;
     Handler handler;
-    MainViewPagerAdapter adapter;
+    MainViewPagerAdapter adapterMainPager;
+    MainViewPagerNewsAdapter adapterNewsPager;
     int p;
 
     @Override
@@ -49,22 +52,40 @@ public class Main extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         viewPager = (ViewPager) findViewById(R.id.vp_mainViewPager);
+        viewPagerNews = (ViewPager) findViewById(R.id.vp_mainViewPager_news);
 
         CallBack callBack = new CallBack() {
             @Override
-            public void done(final ArrayList<MainViewPagerData> list) {
+            public void doneViewPager(final ArrayList<MainViewPagerData> list) {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        adapter = new MainViewPagerAdapter(getApplicationContext(), list);
-                        viewPager.setAdapter(adapter);
+                        adapterMainPager = new MainViewPagerAdapter(getApplicationContext(), list);
+                        viewPager.setAdapter(adapterMainPager);
                         viewPager.getAdapter().notifyDataSetChanged();
+                    }
+                });
+            }
+
+            @Override
+            public void doneNews(final ArrayList<MainViewPagerData> list) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapterNewsPager = new MainViewPagerNewsAdapter(getApplicationContext(), list);
+                        viewPagerNews.setAdapter(adapterNewsPager);
+                        //viewPagerNews.setPageMargin(getResources().getDisplayMetrics().widthPixels / -9);
+                        //viewPagerNews.setClipToPadding(false);
+                        //viewPagerNews.setPadding(40,0,40,0);
+                        //viewPagerNews.setPageMargin(-50);
+                        //viewPagerNews.setOffscreenPageLimit(2);
+                        viewPagerNews.getAdapter().notifyDataSetChanged();
                     }
                 });
             }
         };
 
-        MainImage image = new MainImage(callBack);
+        MainPageParser image = new MainPageParser(callBack);
 
 
 

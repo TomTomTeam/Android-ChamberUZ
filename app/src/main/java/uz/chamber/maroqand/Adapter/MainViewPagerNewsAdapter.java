@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
+
 import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.Model.MainViewPagerData;
 import uz.chamber.maroqand.R;
@@ -19,14 +21,14 @@ import uz.chamber.maroqand.R;
 /**
  * Created by lk on 16. 7. 19..
  */
-public class MainViewPagerAdapter extends PagerAdapter {
+public class MainViewPagerNewsAdapter extends PagerAdapter {
 
     Context mContext;
     LayoutInflater mLayoutInflater;
     ArrayList<MainViewPagerData> list;
-    MainViewPagerAdapter context;
+    MainViewPagerNewsAdapter context;
 
-    public MainViewPagerAdapter(Context mContext, ArrayList<MainViewPagerData> list) {
+    public MainViewPagerNewsAdapter(Context mContext, ArrayList<MainViewPagerData> list) {
 
         this.mContext = mContext;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -36,11 +38,11 @@ public class MainViewPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup collection, int position) {
-        View itemView = mLayoutInflater.inflate(R.layout.main_viewpager, collection, false);
-        NetworkImageView view = (NetworkImageView) itemView.findViewById(R.id.nv_main_viewpager);
-        TextView title = (TextView) itemView.findViewById(R.id.tv_mainViewPager_title);
-        view.setImageUrl(list.get(position).getImgUrl(), AppController.getInstance().getImageLoader());
-        title.setText(list.get(position).getTitle());
+        View itemView = mLayoutInflater.inflate(R.layout.main_viewpager_news, collection, false);
+        NetworkImageView view = (NetworkImageView) itemView.findViewById(R.id.nv_main_viewpager_news_img);
+        TextView title = (TextView) itemView.findViewById(R.id.tv_mainViewPager_news_title);
+        //view.setImageUrl(list.get(position).getImgUrl(), AppController.getInstance().getImageLoader());
+        //title.setText(list.get(position).getTitle());
         collection.addView(itemView);
         return itemView;
     }
@@ -58,7 +60,7 @@ public class MainViewPagerAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        container.removeView((FrameLayout) object);
+        container.removeView((LinearLayout) object);
 
     }
 }

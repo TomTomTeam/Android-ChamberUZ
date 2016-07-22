@@ -22,7 +22,7 @@ import uz.chamber.maroqand.Model.MainViewPagerData;
 /**
  * Created by lk on 2016. 7. 19..
  */
-public class MainImage {
+public class MainPageParser {
     String html = "http://chamber.uz/en/index"; //todo Language setting
     Document document;
     Elements inner;
@@ -35,7 +35,7 @@ public class MainImage {
     String imgUrl;
 
 
-    public MainImage(CallBack callBack){
+    public MainPageParser(CallBack callBack){
         this.callBack = callBack;
         new ConnectThread().start();
     }
@@ -62,7 +62,8 @@ public class MainImage {
                 Log.i("aa",imgUrl + " ./  " + aTag + " / " + title);
 
             }
-            callBack.done(dataList);
+            callBack.doneViewPager(dataList);
+            callBack.doneNews(dataList);
 
         }
 

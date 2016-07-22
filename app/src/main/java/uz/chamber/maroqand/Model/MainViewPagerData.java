@@ -21,7 +21,6 @@ public class MainViewPagerData {
     }
 
     public MainViewPagerData(String imgUrl, String title, String linkUrl) {
-
         this.imgUrl = imgUrl;
         this.title = title;
         this.linkUrl = linkUrl;
