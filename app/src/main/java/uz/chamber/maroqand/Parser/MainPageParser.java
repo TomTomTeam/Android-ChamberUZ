@@ -4,7 +4,6 @@ import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
@@ -25,17 +24,18 @@ import uz.chamber.maroqand.Model.MainViewPagerData;
 public class MainPageParser {
     String html = "http://chamber.uz/en/index"; //todo Language setting
     Document document;
-    Elements inner;
-    Elements items;
-    Element image;
-    Element aTag;
+    Elements carouselInner;
+    Elements scarouselInner;
     String title;
     CallBack callBack;
     String linkUrl;
     String imgUrl;
 
 
-    public MainPageParser(CallBack callBack){
+    final String TAG = "MainPageParser";
+
+
+    public MainPageParser(CallBack callBack) {
         this.callBack = callBack;
         new ConnectThread().start();
     }
@@ -43,40 +43,50 @@ public class MainPageParser {
     private class ConnectThread extends Thread {
         @Override
         public void run() {
-            ArrayList<MainViewPagerData> dataList = new ArrayList<>();
-            document= Jsoup.parse(requestHttp(html));
-            inner = document.select("div.carousel-inner");
-            items = inner.select("div.item");
-            for(int i=0; i<items.size(); i++){
-                Log.e("aa", items.get(i).toString());
-                image = items.get(i).select("[src]").first();
-                imgUrl = image.toString().replace("<img src=\"", "http://chamber.uz");
-                imgUrl = imgUrl.substring(0, imgUrl.length()-12);
-                aTag = items.get(i).select("a[href]").first();
-                title = items.get(i).text();
-                linkUrl = aTag.toString().replace("\"> "+title +" </a>","").replace("<a class=\"carousel-caption\" href=\"", "http://chamber.uz");
-
+            ArrayList<MainViewPagerData> dataListBanner = new ArrayList<>();
+            document = Jsoup.parse(requestHttp(html));
+            carouselInner = document.select("div.carousel-inner > div.item");
+            for (int i = 0; i < carouselInner.size(); i++) {
+                imgUrl = "http://chamber.uz" + carouselInner.get(i).select("img[src]").first().attr("src");
+                linkUrl = "http://chamber.uz" + carouselInner.get(i).select("a[href]").first().attr("href");
+                title = carouselInner.get(i).text();
                 MainViewPagerData data = new MainViewPagerData(imgUrl, title, linkUrl);
-                dataList.add(data);
+                dataListBanner.add(data);
 
-                Log.i("aa",imgUrl + " ./  " + aTag + " / " + title);
-
+                Log.d(TAG + "/Banner", "Image URL = " + imgUrl + "\nLinkURL = " + linkUrl + "\nTitle = " + title);
             }
-            callBack.doneViewPager(dataList);
-            callBack.doneNews(dataList);
 
+            callBack.doneViewPager(dataListBanner);
+
+            ArrayList<MainViewPagerData> dataListNews = new ArrayList<>();
+
+            scarouselInner = document.select("div.scarousel-inner > div.scarousel-item");
+            for (int i = 0; i < scarouselInner.size(); i++) {
+                imgUrl = "http://chamber.uz" + scarouselInner.get(i).select("img[src]").first().attr("src");
+                linkUrl = "http://chamber.uz" + scarouselInner.get(i).select("a[href]").first().attr("href");
+                title = scarouselInner.get(i).text();
+                try {
+                    title = title.substring(10, title.length() - 10);
+                }catch (StringIndexOutOfBoundsException e){
+                    title = "";
+                }
+                MainViewPagerData data = new MainViewPagerData(imgUrl, title, linkUrl);
+                dataListNews.add(data);
+                Log.d(TAG+"/News", "Image URL = " + imgUrl + "\nLinkURL = " + linkUrl + "\nTitle = " + title);
+            }
+            callBack.doneNews(dataListNews);
         }
 
-        public String requestHttp(String urlStr){
+        public String requestHttp(String urlStr) {
             try {
                 URL url = new URL(urlStr);
 
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 InputStream is = con.getInputStream();
                 BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-                String response="";
+                String response = "";
                 String tmp = "";
-                while( (tmp = reader.readLine())!= null){
+                while ((tmp = reader.readLine()) != null) {
                     response += tmp;
                     Log.e("parse", tmp);
                 }

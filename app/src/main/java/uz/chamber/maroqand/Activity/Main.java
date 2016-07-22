@@ -78,7 +78,7 @@ public class Main extends AppCompatActivity
                         //viewPagerNews.setClipToPadding(false);
                         //viewPagerNews.setPadding(40,0,40,0);
                         //viewPagerNews.setPageMargin(-50);
-                        //viewPagerNews.setOffscreenPageLimit(2);
+                        viewPagerNews.setOffscreenPageLimit(3);
                         viewPagerNews.getAdapter().notifyDataSetChanged();
                     }
                 });

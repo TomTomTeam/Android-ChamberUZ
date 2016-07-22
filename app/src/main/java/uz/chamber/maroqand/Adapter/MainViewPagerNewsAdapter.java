@@ -5,7 +5,6 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -41,8 +40,8 @@ public class MainViewPagerNewsAdapter extends PagerAdapter {
         View itemView = mLayoutInflater.inflate(R.layout.main_viewpager_news, collection, false);
         NetworkImageView view = (NetworkImageView) itemView.findViewById(R.id.nv_main_viewpager_news_img);
         TextView title = (TextView) itemView.findViewById(R.id.tv_mainViewPager_news_title);
-        //view.setImageUrl(list.get(position).getImgUrl(), AppController.getInstance().getImageLoader());
-        //title.setText(list.get(position).getTitle());
+        view.setImageUrl(list.get(position).getImgUrl(), AppController.getInstance().getImageLoader());
+        title.setText(list.get(position).getTitle());
         collection.addView(itemView);
         return itemView;
     }

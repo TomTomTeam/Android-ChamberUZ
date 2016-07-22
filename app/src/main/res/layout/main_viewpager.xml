@@ -18,6 +18,5 @@
         android:gravity="center_vertical|center_horizontal"
         android:background="#a7000000"
         android:textColor="#ffffff"
-        android:textStyle="bold"
         android:textSize="15sp" />
 </FrameLayout>
