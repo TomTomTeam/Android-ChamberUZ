@@ -25,6 +25,10 @@ public class ParserPictureText {
         this.network = network;
     }
 
+    public void done(String title){
+
+    }
+
     class ConnectThread extends Thread {
         @Override
         public void run() {
@@ -50,6 +54,7 @@ public class ParserPictureText {
 						content+="\n";
                 }*/
                 network.setTitle(imageUrl);;
+                done(title);
             }catch(IOException e){
                 e.printStackTrace();
             }

@@ -22,6 +22,9 @@ public class U_TestActivity extends AppCompatActivity {
 
         tv=(TextView)findViewById(R.id.textView);
         imageView=(ImageView)findViewById(R.id.imageView);
+        new Parser("http://chamber.uz/en/page/2417");
+
+
 
         CallBackNetwork title = new CallBackNetwork() {
 
@@ -45,7 +48,11 @@ public class U_TestActivity extends AppCompatActivity {
                 }).start();
             }
         };
-        parserPictureText= new ParserPictureText("http://chamber.uz/en/page/2417", title);
+        parserPictureText= new ParserPictureText("http://chamber.uz/en/page/2418", title){
+            @Override
+            public void done(String title) {
+            }
+        };
 
     }
 }
