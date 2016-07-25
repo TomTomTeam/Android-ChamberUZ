@@ -65,7 +65,7 @@ public class Parser {
                 }
                 callBackNetwork.setBreadcrumb(breadcrumb);
 
-                elements = document.select("div.page-content > div");
+                elements = document.select("div.page-content > p");
 
                 for(int i=0;i<elements.size();i++){
                    Log.i("test", elements.get(i).absUrl("src"));

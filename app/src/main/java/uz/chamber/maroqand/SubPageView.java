@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,7 +31,7 @@ public class SubPageView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subpage);
 
-        parser = new Parser("http://chamber.uz/en/page/2068", callBackNetwork );
+        parser = new Parser("http://chamber.uz/en/page/2417", callBackNetwork );
 
         title_tv = (TextView)findViewById(R.id.title_subpage);
 
@@ -92,12 +93,12 @@ public class SubPageView extends AppCompatActivity {
                                 linearLayout.addView(hyperTextView);
                                 break;
                             case 2: //picture
-                                //todo 미완
                                 ImageView imageView = new ImageView(SubPageView.this);
                                 imageView.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
                                 imageView.setPadding(10,10,10,10);
-                                new DownloadImageTask(imageView).execute(content.get(i).getSrcUrl());
+                                Log.e("src",content.get(i).getSrcUrl());
                                 linearLayout.addView(imageView);
+                                new DownloadImageTask(imageView).execute("http://chamber.uz"+content.get(i).getSrcUrl());
                                 break;
                         }
                     }
