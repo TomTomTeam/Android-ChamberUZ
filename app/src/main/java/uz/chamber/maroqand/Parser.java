@@ -15,21 +15,34 @@ import java.util.List;
  * Created by WTF on 2016-07-21.
  */
 public class Parser {
+    CallBackNetwork callBackNetwork;
     String html;
     Document document;
     String spage_header;
     ArrayList<String> breadcrumb;
     ArrayList<Selector> page_content;
 
-    public Parser(String html){
+    public Parser(String html, CallBackNetwork callBackNetwork){
         this.html= html;
+        this.callBackNetwork=callBackNetwork;
 
         breadcrumb= new ArrayList<>();
         page_content=new ArrayList<>();
 
         ParserThread parserThread = new ParserThread();
         parserThread.start();
+    }
 
+    public ArrayList<Selector> getPage_content() {
+        return page_content;
+    }
+
+    public ArrayList<String> getBreadcrumb() {
+        return breadcrumb;
+    }
+
+    public String getSpage_header() {
+        return spage_header;
     }
 
     class ParserThread extends Thread{
@@ -43,15 +56,17 @@ public class Parser {
 
                 Elements elements = document.select("h1.spage-header");
                 spage_header=elements.text();
+                callBackNetwork.setTitle(spage_header);
 
                 elements =document.select("ol.breadcrumb > li");
 
                 for(int i=0;i<elements.size();i++){
                     breadcrumb.add(elements.get(i).text());
                 }
+                callBackNetwork.setBreadcrumb(breadcrumb);
 
-                elements = document.select("div.page-content > p");
-             //   Log.e("test",elements.size()+"dd23");
+                elements = document.select("div.page-content > div");
+
                 for(int i=0;i<elements.size();i++){
                    Log.i("test", elements.get(i).absUrl("src"));
 
@@ -59,13 +74,8 @@ public class Parser {
                             ,elements.get(i).select("a[href]").attr("abs:href")
                             ,elements.get(i).select("img").attr("src"));
                     page_content.add(se);
-
                 }
-
-              //  for(Selector s:page_content){
-            //        Log.i("test", s.getSelect()+" number");
-             //   }
-
+                callBackNetwork.setContent(page_content);
 
             }catch (Exception e){
                 e.printStackTrace();

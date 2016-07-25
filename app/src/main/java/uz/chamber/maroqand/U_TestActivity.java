@@ -22,10 +22,10 @@ public class U_TestActivity extends AppCompatActivity {
 
         tv=(TextView)findViewById(R.id.textView);
         imageView=(ImageView)findViewById(R.id.imageView);
-        new Parser("http://chamber.uz/en/page/2417");
+    //    new Parser("http://chamber.uz/en/page/2417");
 
 
-
+/*
         CallBackNetwork title = new CallBackNetwork() {
 
             @Override
@@ -53,6 +53,6 @@ public class U_TestActivity extends AppCompatActivity {
             public void done(String title) {
             }
         };
-
+*/
     }
 }
