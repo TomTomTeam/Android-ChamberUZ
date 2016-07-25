@@ -26,6 +26,7 @@ public class MainPageParser {
     Document document;
     Elements carouselInner;
     Elements scarouselInner;
+    Elements bottomBanner;
     String title;
     CallBack callBack;
     String linkUrl;
@@ -75,6 +76,15 @@ public class MainPageParser {
                 Log.d(TAG+"/News", "Image URL = " + imgUrl + "\nLinkURL = " + linkUrl + "\nTitle = " + title);
             }
             callBack.doneNews(dataListNews);
+
+            bottomBanner = document.select("div.banner-bottom");
+            imgUrl = "http://chamber.uz" + bottomBanner.first().select("img[src]").first().attr("src");
+            linkUrl = "http://chamber.uz" + bottomBanner.first().select("a[href]").first().attr("href");
+
+            Log.i(TAG+"/Banner", imgUrl + " / " + linkUrl);
+
+            callBack.doneBannerBottom(imgUrl, linkUrl);
+
         }
 
         public String requestHttp(String urlStr) {

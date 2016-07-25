@@ -81,6 +81,11 @@
             android:layout_width="match_parent"
             android:layout_height="40dp" />
 
+        <com.android.volley.toolbox.NetworkImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/nv_main_banner_bottom"/>
+
 
     </LinearLayout>
 </ScrollView>

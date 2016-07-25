@@ -16,10 +16,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android.volley.toolbox.NetworkImageView;
+
 import java.util.ArrayList;
 
 import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerNewsAdapter;
+import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.CallBack;
 import uz.chamber.maroqand.Model.MainViewPagerData;
 import uz.chamber.maroqand.Parser.MainPageParser;
@@ -33,6 +36,7 @@ public class Main extends AppCompatActivity
     Handler handler;
     MainViewPagerAdapter adapterMainPager;
     MainViewPagerNewsAdapter adapterNewsPager;
+    NetworkImageView nvBannerBottom;
     int p;
 
     @Override
@@ -53,6 +57,7 @@ public class Main extends AppCompatActivity
 
         viewPager = (ViewPager) findViewById(R.id.vp_mainViewPager);
         viewPagerNews = (ViewPager) findViewById(R.id.vp_mainViewPager_news);
+        nvBannerBottom = (NetworkImageView) findViewById(R.id.nv_main_banner_bottom);
 
         CallBack callBack = new CallBack() {
             @Override
@@ -83,7 +88,20 @@ public class Main extends AppCompatActivity
                     }
                 });
             }
+
+            @Override
+            public void doneBannerBottom(final String imgUrl, String linkUrl) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        nvBannerBottom.setImageUrl(imgUrl, AppController.getInstance().getImageLoader());
+
+                    }
+                });
+            }
         };
+
+
 
         MainPageParser image = new MainPageParser(callBack);
 
