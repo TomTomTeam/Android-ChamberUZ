@@ -33,18 +33,6 @@ public class Parser {
         parserThread.start();
     }
 
-    public ArrayList<Selector> getPage_content() {
-        return page_content;
-    }
-
-    public ArrayList<String> getBreadcrumb() {
-        return breadcrumb;
-    }
-
-    public String getSpage_header() {
-        return spage_header;
-    }
-
     class ParserThread extends Thread{
 
         @Override
@@ -65,15 +53,24 @@ public class Parser {
                 }
                 callBackNetwork.setBreadcrumb(breadcrumb);
 
-                elements = document.select("div.page-content > p");
+                elements = document.select("div.page-content > div");
+                if(elements.size()==0) {
+                    elements = document.select("div.page-content > p");
+                }
 
                 for(int i=0;i<elements.size();i++){
-                   Log.i("test", elements.get(i).absUrl("src"));
 
-                    Selector se=new Selector(elements.get(i).text()
+                    //개행 처리
+                    String tmp = elements.get(i).html().replace("<br>", "$$$");
+                    Document tmpD;
+                    tmpD = Jsoup.parse(tmp);
+
+                    Selector se=new Selector(tmpD.body().text().replace("$$$", "\n")
                             ,elements.get(i).select("a[href]").attr("abs:href")
                             ,elements.get(i).select("img").attr("src"));
                     page_content.add(se);
+
+
                 }
                 callBackNetwork.setContent(page_content);
 

@@ -31,7 +31,7 @@ public class SubPageView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subpage);
 
-        parser = new Parser("http://chamber.uz/en/page/2417", callBackNetwork );
+        parser = new Parser("http://chamber.uz/en/page/2068", callBackNetwork );
 
         title_tv = (TextView)findViewById(R.id.title_subpage);
 
