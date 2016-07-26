@@ -4,6 +4,7 @@ import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.BufferedReader;
@@ -16,6 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import uz.chamber.maroqand.CallBack;
+import uz.chamber.maroqand.Model.MainViewListData;
 import uz.chamber.maroqand.Model.MainViewPagerData;
 
 /**
@@ -27,6 +29,7 @@ public class MainPageParser {
     Elements carouselInner;
     Elements scarouselInner;
     Elements bottomBanner;
+    Elements schedule;
     String title;
     CallBack callBack;
     String linkUrl;
@@ -85,6 +88,26 @@ public class MainPageParser {
 
             callBack.doneBannerBottom(imgUrl, linkUrl);
 
+            ArrayList<MainViewListData> dataListSchedule = new ArrayList<>();
+
+            schedule = document.select("div.row.sideevents > ul > li");
+            for(int i=0; i<schedule.size(); i++){
+                Element date = schedule.get(i).select("div.date").first();
+
+                Element content = schedule.get(i).select("div.event-content").first();
+                MainViewListData data = new MainViewListData(
+                        content.select("a").first().text(),             // Content Title
+                        content.select("li").get(0).text(),             // Time
+                        content.select("li").get(1).text(),             // Address
+                        date.select("span.month").first().text(),       // Month
+                        date.select("span.day").first().text()          // Day
+                );
+
+                dataListSchedule.add(data);
+            }
+
+            callBack.doneSchedule(dataListSchedule);
+
         }
 
         public String requestHttp(String urlStr) {
@@ -107,6 +130,7 @@ public class MainPageParser {
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
+                //todo Add Connection Error Dialog
                 e.printStackTrace();
             }
             return null;

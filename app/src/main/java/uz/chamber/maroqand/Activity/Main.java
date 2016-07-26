@@ -1,6 +1,8 @@
 package uz.chamber.maroqand.Activity;
 
+import android.app.Activity;
 import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
@@ -13,8 +15,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
 
@@ -24,6 +31,7 @@ import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerNewsAdapter;
 import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.CallBack;
+import uz.chamber.maroqand.Model.MainViewListData;
 import uz.chamber.maroqand.Model.MainViewPagerData;
 import uz.chamber.maroqand.Parser.MainPageParser;
 import uz.chamber.maroqand.R;
@@ -38,6 +46,7 @@ public class Main extends AppCompatActivity
     MainViewPagerNewsAdapter adapterNewsPager;
     NetworkImageView nvBannerBottom;
     int p;
+    Activity activity = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,10 +88,6 @@ public class Main extends AppCompatActivity
                     public void run() {
                         adapterNewsPager = new MainViewPagerNewsAdapter(getApplicationContext(), list);
                         viewPagerNews.setAdapter(adapterNewsPager);
-                        //viewPagerNews.setPageMargin(getResources().getDisplayMetrics().widthPixels / -9);
-                        //viewPagerNews.setClipToPadding(false);
-                        //viewPagerNews.setPadding(40,0,40,0);
-                        //viewPagerNews.setPageMargin(-50);
                         viewPagerNews.setOffscreenPageLimit(3);
                         viewPagerNews.getAdapter().notifyDataSetChanged();
                     }
@@ -99,12 +104,42 @@ public class Main extends AppCompatActivity
                     }
                 });
             }
+
+            @Override
+            public void doneSchedule(final ArrayList<MainViewListData> list) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        LinearLayout layout = (LinearLayout) findViewById(R.id.ll_main_schedule);
+
+                        for (int i = 0; i < list.size(); i++) {
+                            LayoutInflater inflater = (LayoutInflater) getApplication().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                            View v = inflater.inflate(R.layout.item_main_schedule, null, false);
+
+                            TextView tvDay = (TextView) v.findViewById(R.id.tv_item_schedule_day);
+                            TextView tvMonth = (TextView) v.findViewById(R.id.tv_item_schedule_month);
+                            TextView tvContent = (TextView) v.findViewById(R.id.tv_item_schedule_content);
+                            TextView tvTime = (TextView) v.findViewById(R.id.tv_item_schedule_time);
+                            TextView tvAddress = (TextView) v.findViewById(R.id.tv_item_schedule_address);
+
+                            tvDay.setText(list.get(i).getDay());
+                            tvMonth.setText(list.get(i).getMonth());
+                            tvContent.setText(list.get(i).getContent());
+                            tvTime.setText(list.get(i).getTime());
+                            tvAddress.setText(list.get(i).getAddress());
+
+
+                            layout.addView(v);
+                        }
+                    }
+                });
+
+            }
         };
 
 
-
         MainPageParser image = new MainPageParser(callBack);
-
 
 
         handler = new Handler() {
@@ -114,8 +149,8 @@ public class Main extends AppCompatActivity
                 try {
                     if (p > viewPager.getAdapter().getCount())
                         p = 0;
-                }catch (NullPointerException e){
-                    p=0;
+                } catch (NullPointerException e) {
+                    p = 0;
                 }
             }
         };

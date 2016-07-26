@@ -2,6 +2,7 @@ package uz.chamber.maroqand;
 
 import java.util.ArrayList;
 
+import uz.chamber.maroqand.Model.MainViewListData;
 import uz.chamber.maroqand.Model.MainViewPagerData;
 
 /**
@@ -11,4 +12,5 @@ public interface CallBack {
     void doneViewPager(ArrayList<MainViewPagerData> list);
     void doneNews(ArrayList<MainViewPagerData> list);
     void doneBannerBottom(String imgUrl, String linkUrl);
+    void doneSchedule(ArrayList<MainViewListData> list);
 }

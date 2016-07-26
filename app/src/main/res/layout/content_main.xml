@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fillViewport="false"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Activity.Main"
     tools:showIn="@layout/app_bar_main">
@@ -62,6 +63,7 @@
                 android:background="@color/white"
                 android:layout_height="match_parent"
                 android:layout_weight="1" />
+
         </LinearLayout>
 
 
@@ -85,6 +87,12 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:id="@+id/nv_main_banner_bottom"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_main_schedule" />
 
 
     </LinearLayout>
