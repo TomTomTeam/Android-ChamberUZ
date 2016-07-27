@@ -1,5 +1,7 @@
 package uz.chamber.maroqand;
 
+import android.util.Log;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -37,7 +39,8 @@ public class NewsTabContentParser {
 
             try{
                 document= Jsoup.connect(html).get();
-                Elements elements = document.select("div"+tabName+" > div.items > div");
+                Elements tab = document.select("div"+tabName);
+                Elements elements = tab.select("div.items > div");
 
                 for(Element e :elements) {
                     content.add(new NewsListComponent(e.select("img").attr("abs:src")
