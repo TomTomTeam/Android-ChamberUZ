@@ -1,8 +1,5 @@
 package uz.chamber.maroqand;
 
-/**
- * Created by WTF on 2016-07-22.
- */
 public class Selector {
     int select; // text=0, hyper=1, image=2
     String text;
@@ -13,14 +10,12 @@ public class Selector {
         this.text = text;
         this.html = html;
         this.srcUrl = srcUrl;
-        if(srcUrl!=""){
-            select=2;
-        }
-        else if(html!=""){
-            select=1;
-        }
-        else{
-            select=0;
+        if (srcUrl != "") {
+            select = 2;
+        } else if (html != "") {
+            select = 1;
+        } else {
+            select = 0;
         }
     }
 

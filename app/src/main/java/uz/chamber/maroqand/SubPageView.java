@@ -13,9 +13,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by WTF on 2016-07-25.
- */
 public class SubPageView extends AppCompatActivity {
     Parser parser;
     String spage_header;
@@ -28,11 +25,12 @@ public class SubPageView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subpage);
 
-    //    parser = new Parser("http://chamber.uz/en/page/2068", callBackNetwork );
+        parser = new Parser("http://chamber.uz/en/page/2068", callBackNetwork);
 
-        title_tv = (TextView)findViewById(R.id.title_subpage);
+        title_tv = (TextView) findViewById(R.id.title_subpage);
 
-        new NewsTabParser("http://chamber.uz/en/news#cci_news",callBackNetwork);
+        // todo remove this only test
+        // new NewsTabParser("http://chamber.uz/en/news#cci_news", callBackNetwork);
 
     }
 
@@ -52,11 +50,11 @@ public class SubPageView extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    TextView textView = (TextView)findViewById(R.id.breadcrumb_subpage);
-                    String string=breadcrumb.get(0);
-                    for(int i=1;i<breadcrumb.size();i++){
-                        string+=" / ";
-                        string+=breadcrumb.get(i);
+                    TextView textView = (TextView) findViewById(R.id.breadcrumb_subpage);
+                    String string = breadcrumb.get(0);
+                    for (int i = 1; i < breadcrumb.size(); i++) {
+                        string += " / ";
+                        string += breadcrumb.get(i);
                     }
                     textView.setText(string);
                 }
@@ -68,13 +66,13 @@ public class SubPageView extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    LinearLayout linearLayout = (LinearLayout)findViewById(R.id.contentDynamic_subpage);
-                    for(int i=0; i<content.size();i++){
-                        switch(content.get(i).getSelect()){
+                    LinearLayout linearLayout = (LinearLayout) findViewById(R.id.contentDynamic_subpage);
+                    for (int i = 0; i < content.size(); i++) {
+                        switch (content.get(i).getSelect()) {
                             case 0: //text
                                 TextView textView = new TextView(SubPageView.this);
                                 textView.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                                textView.setPadding(10,10,10,10);
+                                textView.setPadding(10, 10, 10, 10);
                                 textView.setTextSize(13);
                                 textView.setText(content.get(i).getText());
                                 linearLayout.addView(textView);
@@ -82,20 +80,20 @@ public class SubPageView extends AppCompatActivity {
                             case 1: //hyper
                                 TextView hyperTextView = new TextView(SubPageView.this);
                                 hyperTextView.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                                hyperTextView.setPadding(10,10,10,10);
+                                hyperTextView.setPadding(10, 10, 10, 10);
                                 hyperTextView.setTextSize(13);
                                 hyperTextView.setMovementMethod(LinkMovementMethod.getInstance());
                                 hyperTextView.setClickable(true);
-                                hyperTextView.setText(Html.fromHtml("<a href="+content.get(i).getHtml()+">"+content.get(i).getText()+"</a>"));
+                                hyperTextView.setText(Html.fromHtml("<a href=" + content.get(i).getHtml() + ">" + content.get(i).getText() + "</a>"));
                                 linearLayout.addView(hyperTextView);
                                 break;
                             case 2: //picture
                                 ImageView imageView = new ImageView(SubPageView.this);
                                 imageView.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                                imageView.setPadding(10,10,10,10);
-                                Log.e("src",content.get(i).getSrcUrl());
+                                imageView.setPadding(10, 10, 10, 10);
+                                Log.e("src", content.get(i).getSrcUrl());
                                 linearLayout.addView(imageView);
-                                new DownloadImageTask(imageView).execute("http://chamber.uz"+content.get(i).getSrcUrl());
+                                new DownloadImageTask(imageView).execute("http://chamber.uz" + content.get(i).getSrcUrl());
                                 break;
                         }
                     }

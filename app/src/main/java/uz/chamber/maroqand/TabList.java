@@ -2,9 +2,6 @@ package uz.chamber.maroqand;
 
 import java.util.ArrayList;
 
-/**
- * Created by WTF on 2016-07-26.
- */
 public class TabList {
     String title;
     String href;

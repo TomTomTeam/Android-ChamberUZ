@@ -10,9 +10,6 @@ import org.jsoup.select.Evaluator;
 
 import java.util.ArrayList;
 
-/**
- * Created by WTF on 2016-07-26.
- */
 public class NewsTabContentParser {
     String html;
     String tabName;
@@ -21,10 +18,9 @@ public class NewsTabContentParser {
     CallBackNetwork callBackNetwork;
 
 
-
-    public NewsTabContentParser(String html, String tabName,CallBackNetwork callBackNetwork) {
+    public NewsTabContentParser(String html, String tabName, CallBackNetwork callBackNetwork) {
         this.html = html;
-        this.tabName=tabName;
+        this.tabName = tabName;
         this.callBackNetwork = callBackNetwork;
 
         content = new ArrayList<>();
@@ -32,29 +28,26 @@ public class NewsTabContentParser {
         newsContentThread.start();
     }
 
-    class NewsContentThread extends Thread{
+    class NewsContentThread extends Thread {
         @Override
         public void run() {
             super.run();
 
-            try{
-                document= Jsoup.connect(html).get();
-                Elements tab = document.select("div"+tabName);
+            try {
+                document = Jsoup.connect(html).get();
+                Elements tab = document.select("div" + tabName);
                 Elements elements = tab.select("div.items > div");
 
-                for(Element e :elements) {
+                for (Element e : elements) {
                     content.add(new NewsListComponent(e.select("img").attr("abs:src")
-                            ,e.select("span.date").text(), e.select("p").text()));
+                            , e.select("span.date").text(), e.select("p").text()));
                 }
                 callBackNetwork.setNewsContent(content);
 
-            }catch (Exception e){
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
         }
     }
-
-
-
 }
