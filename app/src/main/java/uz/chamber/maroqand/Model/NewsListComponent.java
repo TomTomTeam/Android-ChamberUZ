@@ -1,4 +1,4 @@
-package uz.chamber.maroqand;
+package uz.chamber.maroqand.Model;
 
 public class NewsListComponent {
     String srcUrl;

@@ -1,4 +1,4 @@
-package uz.chamber.maroqand;
+package uz.chamber.maroqand.Activity;
 
 import android.app.ActionBar;
 import android.os.Bundle;
@@ -12,6 +12,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import uz.chamber.maroqand.CallBack.CallBackNetwork;
+import uz.chamber.maroqand.DownloadImageTask;
+import uz.chamber.maroqand.Model.NewsListComponent;
+import uz.chamber.maroqand.Parser.Parser;
+import uz.chamber.maroqand.R;
+import uz.chamber.maroqand.Model.Selector;
 
 public class SubPageView extends AppCompatActivity {
     Parser parser;

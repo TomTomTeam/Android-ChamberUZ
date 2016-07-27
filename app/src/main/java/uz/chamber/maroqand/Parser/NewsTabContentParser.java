@@ -1,14 +1,14 @@
-package uz.chamber.maroqand;
-
-import android.util.Log;
+package uz.chamber.maroqand.Parser;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.jsoup.select.Evaluator;
 
 import java.util.ArrayList;
+
+import uz.chamber.maroqand.CallBack.CallBackNetwork;
+import uz.chamber.maroqand.Model.NewsListComponent;
 
 public class NewsTabContentParser {
     String html;

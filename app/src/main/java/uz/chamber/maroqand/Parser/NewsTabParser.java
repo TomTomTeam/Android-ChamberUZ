@@ -1,6 +1,4 @@
-package uz.chamber.maroqand;
-
-import android.util.Log;
+package uz.chamber.maroqand.Parser;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,6 +6,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+
+import uz.chamber.maroqand.CallBack.CallBackNetwork;
+import uz.chamber.maroqand.Model.NewsListComponent;
+import uz.chamber.maroqand.Model.Selector;
+import uz.chamber.maroqand.Model.TabList;
 
 public class NewsTabParser {
     CallBackNetwork callBackNetwork;
@@ -43,14 +46,14 @@ public class NewsTabParser {
 
                 for (int i = 0; i < tabLists.size(); i++) {
                     final int j = i;
-                    elements = document.select("div" + tabLists.get(i).href);
+                    elements = document.select("div" + tabLists.get(i).getHref());
                     Elements page = elements.select("ul.yiiPager > li");
 
                     for (Element e : page) {
 
                         if (e.text().equals("1")) {
                             NewsTabContentParser newsTabContentParser = new NewsTabContentParser(
-                                    e.select("a[href]").attr("abs:href"), tabLists.get(i).href, new CallBackNetwork() {
+                                    e.select("a[href]").attr("abs:href"), tabLists.get(i).getHref(), new CallBackNetwork() {
                                 @Override
                                 public void setTitle(String title) {
                                 }
@@ -66,7 +69,7 @@ public class NewsTabParser {
                                 @Override
                                 public void setNewsContent(ArrayList<NewsListComponent> newsContent) {
 
-                                    tabLists.get(j).newsListComponents.addAll(newsContent);
+                                    tabLists.get(j).getNewsListComponents().addAll(newsContent);
 
                                 }
                             });
@@ -75,7 +78,7 @@ public class NewsTabParser {
                     }
                     if (page.size() == 0) {
                         NewsTabContentParser newsTabContentParser = new NewsTabContentParser(
-                                html, tabLists.get(i).href, new CallBackNetwork() {
+                                html, tabLists.get(i).getHref(), new CallBackNetwork() {
                             @Override
                             public void setTitle(String title) {
                             }
@@ -90,7 +93,7 @@ public class NewsTabParser {
 
                             @Override
                             public void setNewsContent(ArrayList<NewsListComponent> newsContent) {
-                                tabLists.get(j).newsListComponents.addAll(newsContent);
+                                tabLists.get(j).getNewsListComponents().addAll(newsContent);
 
                             }
                         });

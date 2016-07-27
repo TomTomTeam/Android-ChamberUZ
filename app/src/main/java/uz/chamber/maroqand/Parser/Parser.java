@@ -1,10 +1,13 @@
-package uz.chamber.maroqand;
+package uz.chamber.maroqand.Parser;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
+
+import uz.chamber.maroqand.CallBack.CallBackNetwork;
+import uz.chamber.maroqand.Model.Selector;
 
 public class Parser {
     CallBackNetwork callBackNetwork;

@@ -1,4 +1,4 @@
-package uz.chamber.maroqand;
+package uz.chamber.maroqand.Model;
 
 public class Selector {
     int select; // text=0, hyper=1, image=2
