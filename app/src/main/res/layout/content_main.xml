@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:id="@+id/ll_main_rootView"
         android:layout_height="match_parent">
 
 
@@ -93,6 +94,22 @@
             android:orientation="vertical"
             android:layout_height="wrap_content"
             android:id="@+id/ll_main_schedule" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/sv_main_partners">
+
+            <LinearLayout
+                android:id="@+id/ll_main_partners"
+                android:orientation="horizontal"
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
 
 
     </LinearLayout>

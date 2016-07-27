@@ -1,8 +1,10 @@
 package uz.chamber.maroqand.Activity;
 
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
@@ -19,8 +21,9 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
@@ -31,6 +34,7 @@ import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerNewsAdapter;
 import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.CallBack;
+import uz.chamber.maroqand.Model.FooterData;
 import uz.chamber.maroqand.Model.MainViewListData;
 import uz.chamber.maroqand.Model.MainViewPagerData;
 import uz.chamber.maroqand.Parser.MainPageParser;
@@ -45,7 +49,10 @@ public class Main extends AppCompatActivity
     MainViewPagerAdapter adapterMainPager;
     MainViewPagerNewsAdapter adapterNewsPager;
     NetworkImageView nvBannerBottom;
+    HorizontalScrollView svPartner;
+    LinearLayout llRootView;
     int p;
+    int s;
     Activity activity = this;
 
     @Override
@@ -54,11 +61,14 @@ public class Main extends AppCompatActivity
         setContentView(R.layout.main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.parseColor("#0000ff"));
+        toolbar.setSubtitleTextColor(Color.parseColor("#0000ff"));
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
+        drawer.setScrimColor(Color.parseColor("#0000ff"));
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -67,6 +77,8 @@ public class Main extends AppCompatActivity
         viewPager = (ViewPager) findViewById(R.id.vp_mainViewPager);
         viewPagerNews = (ViewPager) findViewById(R.id.vp_mainViewPager_news);
         nvBannerBottom = (NetworkImageView) findViewById(R.id.nv_main_banner_bottom);
+        svPartner = (HorizontalScrollView) findViewById(R.id.sv_main_partners);
+        llRootView = (LinearLayout) findViewById(R.id.ll_main_rootView);
 
         CallBack callBack = new CallBack() {
             @Override
@@ -136,6 +148,37 @@ public class Main extends AppCompatActivity
                 });
 
             }
+
+            @Override
+            public void donePartner(final ArrayList<MainViewPagerData> dataListPartners) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        LinearLayout rootView = (LinearLayout) findViewById(R.id.ll_main_partners);
+                        for (int i = 0; i < dataListPartners.size(); i++) {
+                            NetworkImageView v = new NetworkImageView(getApplicationContext());
+                            v.setImageUrl(dataListPartners.get(i).getImgUrl(), AppController.getInstance().getImageLoader());
+                            rootView.addView(v);
+                        }
+                        svPartner.post(new Runnable() {
+                            @Override
+                            public void run() {
+
+                            }
+                        });
+                    }
+                });
+            }
+
+            @Override
+            public void doneFooter() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        llRootView.addView(new FooterView(getApplicationContext()));
+                    }
+                });
+            }
         };
 
 
@@ -152,6 +195,15 @@ public class Main extends AppCompatActivity
                 } catch (NullPointerException e) {
                     p = 0;
                 }
+                svPartner.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ObjectAnimator.ofInt(svPartner, "scrollX", s).setDuration(1000).start();
+                    }
+                });
+                s+=500;
+                if(s > svPartner.getBottom() + 2000)
+                    s = 0;
             }
         };
         new AutoTransferThread().start();

@@ -17,6 +17,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import uz.chamber.maroqand.CallBack;
+import uz.chamber.maroqand.Model.ATag;
+import uz.chamber.maroqand.Model.FooterData;
 import uz.chamber.maroqand.Model.MainViewListData;
 import uz.chamber.maroqand.Model.MainViewPagerData;
 
@@ -71,12 +73,12 @@ public class MainPageParser {
                 title = scarouselInner.get(i).text();
                 try {
                     title = title.substring(10, title.length() - 10);
-                }catch (StringIndexOutOfBoundsException e){
+                } catch (StringIndexOutOfBoundsException e) {
                     title = "";
                 }
                 MainViewPagerData data = new MainViewPagerData(imgUrl, title, linkUrl);
                 dataListNews.add(data);
-                Log.d(TAG+"/News", "Image URL = " + imgUrl + "\nLinkURL = " + linkUrl + "\nTitle = " + title);
+                Log.d(TAG + "/News", "Image URL = " + imgUrl + "\nLinkURL = " + linkUrl + "\nTitle = " + title);
             }
             callBack.doneNews(dataListNews);
 
@@ -84,14 +86,14 @@ public class MainPageParser {
             imgUrl = "http://chamber.uz" + bottomBanner.first().select("img[src]").first().attr("src");
             linkUrl = "http://chamber.uz" + bottomBanner.first().select("a[href]").first().attr("href");
 
-            Log.i(TAG+"/Banner", imgUrl + " / " + linkUrl);
+            Log.i(TAG + "/Banner", imgUrl + " / " + linkUrl);
 
             callBack.doneBannerBottom(imgUrl, linkUrl);
 
             ArrayList<MainViewListData> dataListSchedule = new ArrayList<>();
 
             schedule = document.select("div.row.sideevents > ul > li");
-            for(int i=0; i<schedule.size(); i++){
+            for (int i = 0; i < schedule.size(); i++) {
                 Element date = schedule.get(i).select("div.date").first();
 
                 Element content = schedule.get(i).select("div.event-content").first();
@@ -107,6 +109,58 @@ public class MainPageParser {
             }
 
             callBack.doneSchedule(dataListSchedule);
+
+            Elements partners = document.select("span.partners-inner > a");
+            ArrayList<MainViewPagerData> dataListPartners = new ArrayList<>();
+            Log.e("aa", partners.toString());
+            for (int i = 0; i < partners.size(); i++) {
+                imgUrl = "http://chamber.uz" + partners.get(i).select("img[src]").first().attr("src");
+                linkUrl = partners.get(i).select("a[href]").first().attr("abs:href");
+                Log.e("aa", imgUrl + ". / " + linkUrl);
+                dataListPartners.add(new MainViewPagerData(imgUrl, "", linkUrl));
+            }
+
+            callBack.donePartner(dataListPartners);
+
+            Elements footer = document.select("div#main-footer > div.container > div");
+            Log.e("aaa", footer.toString());
+
+            String addressTitle = footer.get(0).select("h4").text();
+            String addressContent = footer.get(0).select("p").html().replace("<br>", "$$$");
+            document = Jsoup.parse(addressContent);
+            addressContent = document.text().replace("$$$", "\n");
+
+            String linkTitle = footer.get(1).select("h4").text();
+            ArrayList<ATag> linkList = new ArrayList<>();
+            for (int j = 1; j <= 2; j++) {
+                Elements usefulLinkes = footer.get(j).select("li > a");
+                for (int i = 0; i < usefulLinkes.size(); i++) {
+                    String title = usefulLinkes.get(i).text();
+                    String url = usefulLinkes.get(i).attr("href");
+                    if (url.charAt(0) == '/')
+                        url = "http://chamber.uz" + url;
+                    Log.e("aa", i + " / " + title + " / " + url);
+                    ATag tag = new ATag(title, url);
+                    linkList.add(tag);
+                }
+            }
+
+            String connectCCITitle = footer.get(3).select("h4").text();
+            Elements sendAMessageToCCI = footer.get(3).select("a");
+            ArrayList<ATag> connectList = new ArrayList<>();
+            for(int i=0; i< sendAMessageToCCI.size(); i++){
+                String title = sendAMessageToCCI.get(i).text();
+                String url = sendAMessageToCCI.get(i).attr("href");
+                if (url.charAt(0) == '/')
+                    url = "http://chamber.uz" + url;
+                ATag tag = new ATag(title, url);
+                connectList.add(tag);
+            }
+            FooterData.getInstance(addressTitle, addressContent, linkTitle, linkList, connectCCITitle, connectList);
+            callBack.doneFooter();
+
+
+
 
         }
 
