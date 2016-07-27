@@ -1,15 +1,10 @@
 package uz.chamber.maroqand;
 
-import android.util.Log;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by WTF on 2016-07-21.
@@ -60,7 +55,7 @@ public class Parser {
 
                 for(int i=0;i<elements.size();i++){
 
-                    //개행 처리
+                    //line process
                     String tmp = elements.get(i).html().replace("<br>", "$$$");
                     Document tmpD;
                     tmpD = Jsoup.parse(tmp);
@@ -69,8 +64,6 @@ public class Parser {
                             ,elements.get(i).select("a[href]").attr("abs:href")
                             ,elements.get(i).select("img").attr("src"));
                     page_content.add(se);
-
-
                 }
                 callBackNetwork.setContent(page_content);
 

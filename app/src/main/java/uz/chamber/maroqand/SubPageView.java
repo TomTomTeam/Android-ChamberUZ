@@ -1,11 +1,8 @@
 package uz.chamber.maroqand;
 
 import android.app.ActionBar;
-import android.media.Image;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
@@ -31,11 +28,11 @@ public class SubPageView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subpage);
 
-        parser = new Parser("http://chamber.uz/en/page/2068", callBackNetwork );
+    //    parser = new Parser("http://chamber.uz/en/page/2068", callBackNetwork );
 
         title_tv = (TextView)findViewById(R.id.title_subpage);
 
-
+        new NewsTabParser("http://chamber.uz/en/news#cci_news",callBackNetwork);
 
     }
 
@@ -104,6 +101,11 @@ public class SubPageView extends AppCompatActivity {
                     }
                 }
             });
+        }
+
+        @Override
+        public void setNewsContent(ArrayList<NewsListComponent> newsContent) {
+
         }
     };
 

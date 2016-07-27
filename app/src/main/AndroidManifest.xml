@@ -14,10 +14,6 @@
 
         </activity>
 
-        <activity android:name=".U_TestActivity">
-
-        </activity>
-
         <activity android:name=".SubPageView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
