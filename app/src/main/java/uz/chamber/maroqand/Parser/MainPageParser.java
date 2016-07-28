@@ -26,7 +26,7 @@ import uz.chamber.maroqand.Model.MainViewPagerData;
  * Created by lk on 2016. 7. 19..
  */
 public class MainPageParser {
-    String html = "http://chamber.uz/en/index"; //todo Language setting
+    String html = "http://chamber.uz/ru/index"; //todo Language setting
     Document document;
     Elements carouselInner;
     Elements scarouselInner;

@@ -40,7 +40,9 @@
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
                 android:background="@color/white"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:src="@mipmap/ic_membershipccl_active"
+                android:scaleType="fitCenter" />
 
             <ImageButton
                 android:id="@+id/imageButton2"
