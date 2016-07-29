@@ -10,21 +10,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uz.chamber.maroqand.Activity.NewsFragment;
+import uz.chamber.maroqand.Model.NewsListComponent;
+import uz.chamber.maroqand.Model.TabList;
 
 /**
  * Created by WTF on 2016-07-28.
  */
 public class NewsPagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragments = new ArrayList<>();
-    private final List<String> mFragmentTitles = new ArrayList<>();
+    private ArrayList<TabList> tabList;
 
-    public NewsPagerAdapter(FragmentManager fm) {
+    public NewsPagerAdapter(FragmentManager fm, ArrayList<TabList> tabList)  {
         super(fm);
+        this.tabList = tabList;
     }
 
-    public void addFragment(Fragment fragment, String title) {
+    public void addFragment(Fragment fragment) {
         mFragments.add(fragment);
-        mFragmentTitles.add(title);
+
+       // ((NewsFragment)fragment).setNewsList(newsListComponents);
+
     }
 
     @Override
@@ -39,6 +44,6 @@ public class NewsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mFragmentTitles.get(position);
+        return tabList.get(position).getTitle();
     }
 }

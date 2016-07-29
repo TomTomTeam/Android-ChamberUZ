@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import java.util.ArrayList;
 
 import uz.chamber.maroqand.Adapter.NewsRecyclerViewAdapter;
 import uz.chamber.maroqand.Model.NewsListComponent;
+import uz.chamber.maroqand.Model.TabList;
 import uz.chamber.maroqand.R;
 
 /**
@@ -24,6 +26,11 @@ public class NewsFragment extends Fragment{
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ArrayList<NewsListComponent> MyDataset;
+
+    public NewsFragment(){
+         MyDataset = new ArrayList<>();
+        mAdapter = new NewsRecyclerViewAdapter(MyDataset, this.getContext());
+    }
 
     @Nullable
     @Override
@@ -42,15 +49,15 @@ public class NewsFragment extends Fragment{
         mLayoutManager = new LinearLayoutManager(this.getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        // specify an adapter (see also next example)
-        MyDataset = new ArrayList<>();
-        mAdapter = new NewsRecyclerViewAdapter(MyDataset, this.getContext());
+        // specify an adapter
+       // MyDataset = new ArrayList<>();
+
         mRecyclerView.setAdapter(mAdapter);
 
-        MyDataset.add(new NewsListComponent("http://www.chamber.uz/uploads/news/images/small/__c553c6650b3504722b48642cd0572da0.jpg","00","Hello",""));
-        MyDataset.add(new NewsListComponent("http://www.chamber.uz/uploads/news/images/small/__c553c6650b3504722b48642cd0572da0.jpg","01","Hello",""));
-        MyDataset.add(new NewsListComponent("http://www.chamber.uz/uploads/news/images/small/__c553c6650b3504722b48642cd0572da0.jpg","02","Hello",""));
-
+    //    MyDataset.add(new NewsListComponent("http://www.chamber.uz/uploads/news/images/small/__c553c6650b3504722b48642cd0572da0.jpg","00","Hello",""));
+    //    MyDataset.add(new NewsListComponent("http://www.chamber.uz/uploads/news/images/small/__c553c6650b3504722b48642cd0572da0.jpg","01","Hello",""));
+    //    MyDataset.add(new NewsListComponent("http://www.chamber.uz/uploads/news/images/small/__c553c6650b3504722b48642cd0572da0.jpg","02","Hello",""));
+        Log.i("Aa","1");
         return view;
     }
 
@@ -58,5 +65,11 @@ public class NewsFragment extends Fragment{
     public void onActivityCreated(@Nullable Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    public void setNewsList(ArrayList<NewsListComponent> newsListComponent) {
+            MyDataset.addAll(newsListComponent);
+        mAdapter.notifyDataSetChanged();
+        Log.i("Aa","2"+ newsListComponent.size());
     }
 }

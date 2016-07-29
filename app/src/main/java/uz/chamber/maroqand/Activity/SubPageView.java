@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.CallBack.CallBackNetwork;
 import uz.chamber.maroqand.Model.NewsListComponent;
+import uz.chamber.maroqand.Model.TabList;
 import uz.chamber.maroqand.Parser.Parser;
 import uz.chamber.maroqand.R;
 import uz.chamber.maroqand.Model.Selector;
@@ -112,6 +113,11 @@ public class SubPageView extends AppCompatActivity {
 
         @Override
         public void setNewsContent(ArrayList<NewsListComponent> newsContent) {
+
+        }
+
+        @Override
+        public void setNewsTab(ArrayList<TabList> newsTab) {
 
         }
     };
