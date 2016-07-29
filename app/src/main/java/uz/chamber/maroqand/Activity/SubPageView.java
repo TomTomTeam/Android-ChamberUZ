@@ -39,8 +39,6 @@ public class SubPageView extends AppCompatActivity {
 
         title_tv = (TextView) findViewById(R.id.title_subpage);
 
-        // todo remove this only test
-        // new NewsTabParser("http://chamber.uz/en/news#cci_news", callBackNetwork);
 
     }
 
@@ -110,16 +108,5 @@ public class SubPageView extends AppCompatActivity {
                 }
             });
         }
-
-        @Override
-        public void setNewsContent(ArrayList<NewsListComponent> newsContent) {
-
-        }
-
-        @Override
-        public void setNewsTab(ArrayList<TabList> newsTab) {
-
-        }
     };
-
 }

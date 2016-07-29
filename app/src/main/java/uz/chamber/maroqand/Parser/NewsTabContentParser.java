@@ -43,12 +43,9 @@ public class NewsTabContentParser {
                             , e.select("span.date").text(), e.select("p").text()
                             , e.select("a[href]").attr("abs:href")));
                 }
-            //    callBackNetwork.setNewsContent(content);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
     }
 }

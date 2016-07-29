@@ -10,17 +10,18 @@ import org.jsoup.select.Elements;
 import java.util.ArrayList;
 
 import uz.chamber.maroqand.CallBack.CallBackNetwork;
+import uz.chamber.maroqand.CallBack.CallBackNews;
 import uz.chamber.maroqand.Model.NewsListComponent;
 import uz.chamber.maroqand.Model.Selector;
 import uz.chamber.maroqand.Model.TabList;
 
 public class NewsTabParser {
-    CallBackNetwork callBackNetwork;
+    CallBackNews callBackNetwork;
     String html;
     Document document;
     ArrayList<TabList> tabLists;
 
-    public NewsTabParser(String html, CallBackNetwork callBackNetwork) {
+    public NewsTabParser(String html, CallBackNews callBackNetwork) {
         this.html = html;
         this.callBackNetwork = callBackNetwork;
 

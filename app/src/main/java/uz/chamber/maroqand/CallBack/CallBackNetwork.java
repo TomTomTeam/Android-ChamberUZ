@@ -13,10 +13,4 @@ public interface CallBackNetwork {
     void setBreadcrumb(ArrayList<String> breadcrumb);
 
     void setContent(ArrayList<Selector> content);
-
-    // set news page content
-    void setNewsContent(ArrayList<NewsListComponent> newsContent);
-
-    // set news tab
-    void setNewsTab(ArrayList<TabList> newsTab);
 }
