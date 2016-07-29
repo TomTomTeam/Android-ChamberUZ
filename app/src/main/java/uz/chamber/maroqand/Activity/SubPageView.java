@@ -11,10 +11,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.NetworkImageView;
+
 import java.util.ArrayList;
 
+import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.CallBack.CallBackNetwork;
-import uz.chamber.maroqand.DownloadImageTask;
 import uz.chamber.maroqand.Model.NewsListComponent;
 import uz.chamber.maroqand.Parser.Parser;
 import uz.chamber.maroqand.R;
@@ -95,12 +97,12 @@ public class SubPageView extends AppCompatActivity {
                                 linearLayout.addView(hyperTextView);
                                 break;
                             case 2: //picture
-                                ImageView imageView = new ImageView(SubPageView.this);
-                                imageView.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                                imageView.setPadding(10, 10, 10, 10);
+                                NetworkImageView v = new NetworkImageView(getApplicationContext());
+                                v.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                                v.setPadding(10, 10, 10, 10);
                                 Log.e("src", content.get(i).getSrcUrl());
-                                linearLayout.addView(imageView);
-                                new DownloadImageTask(imageView).execute("http://chamber.uz" + content.get(i).getSrcUrl());
+                                v.setImageUrl("http://chamber.uz" + content.get(i).getSrcUrl(), AppController.getInstance().getImageLoader());
+                                linearLayout.addView(v);
                                 break;
                         }
                     }
