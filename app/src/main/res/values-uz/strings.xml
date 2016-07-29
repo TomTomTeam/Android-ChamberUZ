@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_home">HOME</string>
+    <string name="nav_news">Yangiliklar</string>
+    <string name="nav_aboutCCI">SSP haqida</string>
+    <string name="nav_services">Xizmatlar</string>
+    <string name="nav_investors">Investorlar diqqatiga</string>
+    <string name="nav_issues">Huquqiy masalalar</string>
+    <string name="nav_purchases">Tender va haridlar</string>
+    <string name="nav_membership">SSP A\'zolik</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_home">HOME</string>
+    <string name="nav_news">Янгиликлар</string>
+    <string name="nav_aboutCCI">ССП ҳақида</string>
+    <string name="nav_services">Хизматлар</string>
+    <string name="nav_investors">Инвесторлар диққатига</string>
+    <string name="nav_issues">Хуқуқий масалалар</string>
+    <string name="nav_purchases">Тендер ва ҳаридлар</string>
+    <string name="nav_membership">ССП Аъзолик</string>
+</resources>
