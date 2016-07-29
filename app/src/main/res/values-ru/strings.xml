@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_home">HOME</string>
+    <string name="nav_news">Новости</string>
+    <string name="nav_aboutCCI">О ТПП</string>
+    <string name="nav_services">Услуги</string>
+    <string name="nav_investors">Вниманию инвесторов</string>
+    <string name="nav_issues">Правовые вопросы</string>
+    <string name="nav_purchases">Тендеры и закупки</string>
+    <string name="nav_membership">Членство в ТПП</string>
+</resources>

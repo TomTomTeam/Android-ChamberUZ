@@ -5,8 +5,8 @@ package uz.chamber.maroqand;
  */
 public class AppConfig {
 
-    final static String[] language = new String[]{"en", "uz", "ru", "uzk"};
-    static int languageNum = 0; //defult is English
+    public final static String[] language = new String[]{"en", "uz", "ru", "uzk"};
+    public static int languageNum = 2; //defult is English
 
     public static String getRealPath(String absHref) {
         try {
@@ -35,5 +35,9 @@ public class AppConfig {
         if (absHref.contains("http://"))
             return true;
         return false;
+    }
+
+    public static String getLanguage(){
+        return language[languageNum];
     }
 }

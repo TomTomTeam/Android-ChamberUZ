@@ -7,7 +7,7 @@
         <item
             android:id="@+id/nav_home"
             android:icon="@mipmap/home_noactive"
-            android:title="HOME" />
+            android:title="@string/nav_home" />
     </group>
     <group
         android:id="@+id/group2"
@@ -15,7 +15,7 @@
         <item
             android:id="@+id/nav_news"
             android:icon="@mipmap/news_noactive"
-            android:title="NEWS" />
+            android:title="@string/nav_news" />
     </group>
     <group
         android:id="@+id/group3"
@@ -23,7 +23,7 @@
         <item
             android:id="@+id/nav_about"
             android:icon="@mipmap/about_noactive"
-            android:title="ABOUT CCI" />
+            android:title="@string/nav_aboutCCI" />
     </group>
     <group
         android:id="@+id/group4"
@@ -31,7 +31,7 @@
         <item
             android:id="@+id/nav_services"
             android:icon="@mipmap/services_noactive"
-            android:title="SERVICES" />
+            android:title="@string/nav_services" />
     </group>
     <group
         android:id="@+id/group5"
@@ -39,7 +39,7 @@
         <item
             android:id="@+id/nav_investors"
             android:icon="@mipmap/prospective_noactive"
-            android:title="PROSPECTIVE INVESTORS" />
+            android:title="@string/nav_investors" />
 
     </group>
     <group
@@ -48,7 +48,7 @@
         <item
             android:id="@+id/nav_issues"
             android:icon="@mipmap/noactive_assistance"
-            android:title="ASSISTANCE WHIT LEGAL ISSUES" />
+            android:title="@string/nav_issues" />
     </group>
     <group
         android:id="@+id/group7"
@@ -56,7 +56,7 @@
         <item
             android:id="@+id/nav_purchases"
             android:icon="@mipmap/noactive_tenders"
-            android:title="TENDES AND PURCHASES" />
+            android:title="@string/nav_purchases" />
     </group>
     <group
         android:id="@+id/group8"
@@ -64,7 +64,7 @@
         <item
             android:id="@+id/nav_membership"
             android:icon="@mipmap/noactive_membership"
-            android:title="MEMBERSHIP CCI" />
+            android:title="@string/nav_membership" />
     </group>
     <group android:checkableBehavior="single">
 

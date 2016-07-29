@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,9 +29,11 @@ import android.widget.TextView;
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerNewsAdapter;
+import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.CallBack.CallBack;
 import uz.chamber.maroqand.Model.MainViewListData;
@@ -57,6 +60,7 @@ public class Main extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        changeLanguage(AppConfig.getLanguage());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -206,6 +210,16 @@ public class Main extends AppCompatActivity
 
     }
 
+    public void changeLanguage(String languageToLoad) {
+        //for language change
+        Locale locale = new Locale(languageToLoad);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+    }
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -252,22 +266,29 @@ public class Main extends AppCompatActivity
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        switch (item.getItemId()){
+            case R.id.nav_home:
+            break;
+            case R.id.nav_news:
+                break;
+            case R.id.nav_about:
+                break;
 
-//        if (id == R.id.nav_camera) {
-//            // Handle the camera action
-//        } else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_manage) {
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
+            case R.id.nav_services:
+                break;
+
+            case R.id.nav_investors:
+                break;
+
+            case R.id.nav_issues:
+                break;
+
+            case R.id.nav_purchases:
+                break;
+
+            case R.id.nav_membership:
+                break;
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
