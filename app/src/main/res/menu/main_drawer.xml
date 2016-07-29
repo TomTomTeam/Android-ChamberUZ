@@ -1,50 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:id="@+id/group1">
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
             android:icon="@mipmap/home_noactive"
             android:title="HOME" />
     </group>
-    <group android:id="@+id/group2">
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_news"
             android:icon="@mipmap/news_noactive"
             android:title="NEWS" />
     </group>
-    <group android:id="@+id/group3">
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_about"
             android:icon="@mipmap/about_noactive"
             android:title="ABOUT CCI" />
     </group>
-    <group android:id="@+id/group4">
+    <group
+        android:id="@+id/group4"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_services"
             android:icon="@mipmap/services_noactive"
             android:title="SERVICES" />
     </group>
-    <group android:id="@+id/group5">
+    <group
+        android:id="@+id/group5"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_investors"
             android:icon="@mipmap/prospective_noactive"
             android:title="PROSPECTIVE INVESTORS" />
 
     </group>
-    <group android:id="@+id/group6">
+    <group
+        android:id="@+id/group6"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_issues"
             android:icon="@mipmap/noactive_assistance"
             android:title="ASSISTANCE WHIT LEGAL ISSUES" />
     </group>
-    <group android:id="@+id/group7">
+    <group
+        android:id="@+id/group7"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_purchases"
             android:icon="@mipmap/noactive_tenders"
             android:title="TENDES AND PURCHASES" />
     </group>
-    <group android:id="@+id/group8">
+    <group
+        android:id="@+id/group8"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/nav_membership"
             android:icon="@mipmap/noactive_membership"

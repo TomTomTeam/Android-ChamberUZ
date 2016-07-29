@@ -16,6 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.CallBack.CallBack;
 import uz.chamber.maroqand.Model.ATag;
 import uz.chamber.maroqand.Model.FooterData;
@@ -26,7 +27,7 @@ import uz.chamber.maroqand.Model.MainViewPagerData;
  * Created by lk on 2016. 7. 19..
  */
 public class MainPageParser {
-    String html = "http://chamber.uz/ru/index"; //todo Language setting
+    String html = AppConfig.getRealPath("index"); //todo Language setting
     Document document;
     Elements carouselInner;
     Elements scarouselInner;
@@ -53,8 +54,8 @@ public class MainPageParser {
             document = Jsoup.parse(requestHttp(html));
             carouselInner = document.select("div.carousel-inner > div.item");
             for (int i = 0; i < carouselInner.size(); i++) {
-                imgUrl = "http://chamber.uz" + carouselInner.get(i).select("img[src]").first().attr("src");
-                linkUrl = "http://chamber.uz" + carouselInner.get(i).select("a[href]").first().attr("href");
+                imgUrl = AppConfig.getRealPath( carouselInner.get(i).select("img[src]").first().attr("src"));
+                linkUrl = AppConfig.getRealPath(carouselInner.get(i).select("a[href]").first().attr("href"));
                 title = carouselInner.get(i).text();
                 MainViewPagerData data = new MainViewPagerData(imgUrl, title, linkUrl);
                 dataListBanner.add(data);
@@ -68,8 +69,8 @@ public class MainPageParser {
 
             scarouselInner = document.select("div.scarousel-inner > div.scarousel-item");
             for (int i = 0; i < scarouselInner.size(); i++) {
-                imgUrl = "http://chamber.uz" + scarouselInner.get(i).select("img[src]").first().attr("src");
-                linkUrl = "http://chamber.uz" + scarouselInner.get(i).select("a[href]").first().attr("href");
+                imgUrl = AppConfig.getRealPath(scarouselInner.get(i).select("img[src]").first().attr("src"));
+                linkUrl = AppConfig.getRealPath(scarouselInner.get(i).select("a[href]").first().attr("href"));
                 title = scarouselInner.get(i).text();
                 try {
                     title = title.substring(10, title.length() - 10);
@@ -83,8 +84,8 @@ public class MainPageParser {
             callBack.doneNews(dataListNews);
 
             bottomBanner = document.select("div.banner-bottom");
-            imgUrl = "http://chamber.uz" + bottomBanner.first().select("img[src]").first().attr("src");
-            linkUrl = "http://chamber.uz" + bottomBanner.first().select("a[href]").first().attr("href");
+            imgUrl = AppConfig.getRealPath(bottomBanner.first().select("img[src]").first().attr("src"));
+            linkUrl = AppConfig.getRealPath(bottomBanner.first().select("a[href]").first().attr("href"));
 
             Log.i(TAG + "/Banner", imgUrl + " / " + linkUrl);
 
@@ -114,8 +115,8 @@ public class MainPageParser {
             ArrayList<MainViewPagerData> dataListPartners = new ArrayList<>();
             Log.e("aa", partners.toString());
             for (int i = 0; i < partners.size(); i++) {
-                imgUrl = "http://chamber.uz" + partners.get(i).select("img[src]").first().attr("src");
-                linkUrl = partners.get(i).select("a[href]").first().attr("abs:href");
+                imgUrl = AppConfig.getRealPath(partners.get(i).select("img[src]").first().attr("src"));
+                linkUrl = AppConfig.getRealPath(partners.get(i).select("a[href]").first().attr("abs:href"));
                 Log.e("aa", imgUrl + ". / " + linkUrl);
                 dataListPartners.add(new MainViewPagerData(imgUrl, "", linkUrl));
             }
