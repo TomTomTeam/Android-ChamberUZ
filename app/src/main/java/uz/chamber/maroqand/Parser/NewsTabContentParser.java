@@ -40,14 +40,12 @@ public class NewsTabContentParser {
 
                 for (Element e : elements) {
                     content.add(new NewsListComponent(e.select("img").attr("abs:src")
-                            , e.select("span.date").text(), e.select("p").text()));
+                            , e.select("span.date").text(), e.select("p").text()
+                            , e.select("a[href]").attr("abs:href")));
                 }
-                callBackNetwork.setNewsContent(content);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
     }
 }
