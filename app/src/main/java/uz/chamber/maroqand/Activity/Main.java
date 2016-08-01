@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -268,8 +269,10 @@ public class Main extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.nav_home:
-            break;
+                break;
             case R.id.nav_news:
+                Intent intent = new Intent(this.activity, NewsTabActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_about:
                 break;

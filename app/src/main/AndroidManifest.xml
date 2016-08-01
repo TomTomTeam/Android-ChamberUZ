@@ -42,8 +42,9 @@
                 android:resource="@xml/searchable" />
         </activity>
 
-        <activity android:name=".Activity.NewsTabActivity">
+        <activity android:name=".Activity.NewsTabActivity"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-    </application>
+</application>
 </manifest>
