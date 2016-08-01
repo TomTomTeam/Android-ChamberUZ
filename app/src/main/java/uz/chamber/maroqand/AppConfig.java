@@ -6,7 +6,7 @@ package uz.chamber.maroqand;
 public class AppConfig {
 
     public final static String[] language = new String[]{"en", "uz", "ru", "uzk"};
-    public static int languageNum = 2; //defult is English
+    public static int languageNum = 0; //defult is English
 
     public static String getRealPath(String absHref) {
         try {
