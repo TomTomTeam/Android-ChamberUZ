@@ -12,14 +12,11 @@ import java.util.Locale;
 import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.R;
 
-/**
- * Created by lk on 2016. 7. 29..
- */
 public class SplashActivity extends AppCompatActivity {
     String language;
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
 
@@ -33,15 +30,14 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                SharedPreferences sharedPreferences = getSharedPreferences("pref",MODE_PRIVATE);
-                language=sharedPreferences.getString("language","");
-                //if(true){
-                if(language.equals("")) { // Not setting yet
-                    startActivity(new Intent(getApplicationContext(), LanguageSelectActivity.class)); // todo setting language
+                SharedPreferences sharedPreferences = getSharedPreferences("pref", MODE_PRIVATE);
+                language = sharedPreferences.getString("language", "");
+                if (language.equals("")) {                       // if there is no language selected
+                    startActivity(new Intent(getApplicationContext(), LanguageSelectActivity.class));
                     finish();
-                } else{
-                    for(int i=0; i<AppConfig.language.length; i++){
-                        if(AppConfig.language[i].equals(language))
+                } else {
+                    for (int i = 0; i < AppConfig.language.length; i++) {
+                        if (AppConfig.language[i].equals(language))
                             AppConfig.languageNum = i;
                     }
                     changeLanguage(AppConfig.getLanguage());
@@ -49,7 +45,7 @@ public class SplashActivity extends AppCompatActivity {
                     finish();
                 }
             }
-        }, 2000);
+        }, 2000);                                                   // need time to modify locale language settings
     }
 
     public void changeLanguage(String languageToLoad) {
@@ -63,6 +59,5 @@ public class SplashActivity extends AppCompatActivity {
 
     private void initView() {
     }
-
 
 }
