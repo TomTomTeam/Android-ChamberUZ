@@ -16,6 +16,7 @@ import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
 
+import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.CallBack.CallBackNetwork;
 import uz.chamber.maroqand.Model.NewsListComponent;
@@ -82,6 +83,7 @@ public class SubPageView extends AppCompatActivity {
                     for (int i = 0; i < content.size(); i++) {
                         switch (content.get(i).getSelect()) {
                             case 0: //text
+                                Log.e("test", content.get(i).getText());
                                 TextView textView = new TextView(SubPageView.this);
                                 textView.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
                                 textView.setPadding(10, 10, 10, 10);
@@ -101,10 +103,12 @@ public class SubPageView extends AppCompatActivity {
                                 break;
                             case 2: //picture
                                 NetworkImageView v = new NetworkImageView(getApplicationContext());
-                                v.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                                v.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                                v.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+
                                 v.setPadding(10, 10, 10, 10);
                                 Log.e("src", content.get(i).getSrcUrl());
-                                v.setImageUrl("http://chamber.uz" + content.get(i).getSrcUrl(), AppController.getInstance().getImageLoader());
+                                v.setImageUrl(AppConfig.getRealPath(content.get(i).getSrcUrl()), AppController.getInstance().getImageLoader());
                                 linearLayout.addView(v);
                                 break;
                         }
