@@ -42,7 +42,6 @@ public class NewsTabActivity extends AppCompatActivity {
                 fragment.setNewsList(newsTab.get(i).getNewsListComponents());
                 Log.i("aa", newsTab.get(i).getNewsListComponents().size() + "");
                 adapter.addFragment(fragment);
-
             }
             runOnUiThread(new Runnable() {
                 @Override

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/tools">
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/home_noactive"
+            android:title="@string/nav_home" >@string/nav_home</item>
+        <item
+            android:id="@+id/nav_news"
+            android:icon="@mipmap/news_noactive"
+            android:title="@string/nav_news" >@string/nav_news</item>
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@mipmap/about_noactive"
+            android:title="@string/nav_aboutCCI">@string/nav_aboutCCI</item>
+        <item
+            android:id="@+id/nav_services"
+            android:icon="@mipmap/services_noactive"
+            android:title="@string/nav_services" >@string/nav_services</item>
+        <item
+            android:id="@+id/nav_investors"
+            android:icon="@mipmap/prospective_noactive"
+            android:title="@string/nav_investors" >@string/nav_investors</item>
+        <item
+            android:id="@+id/nav_issues"
+            android:icon="@mipmap/noactive_assistance"
+            android:title="@string/nav_issues" >@string/nav_issues</item>
+        <item
+            android:id="@+id/nav_purchases"
+            android:icon="@mipmap/noactive_tenders"
+            android:title="@string/nav_purchases" >@string/nav_purchases</item>
+        <item
+            android:id="@+id/nav_membership"
+            android:icon="@mipmap/noactive_membership"
+            android:title="@string/nav_membership" >@string/nav_membership</item>
+        <item
+            android:id="@+id/nav_login"
+            android:icon="@mipmap/login"
+            android:title="LOGIN" >LOGIN</item>
+        <item
+            android:id="@+id/nav_sign"
+            android:icon="@mipmap/sign"
+            android:title="SIGN UP" >SIGN UP</item>
+
+    </string-array>
+
+    <string-array name="nav_home">
+
+    </string-array>
+
+    <string-array name="nav_news">
+
+    </string-array>
+
+    <string-array name="nav_about">
+        <item>Jwellery</item>
+        <item>Shirt</item>
+        <item>Paint</item>
+        <item>T-Shirt</item>
+        <item>Watch</item>
+        <item>Shoose</item>
+    </string-array>
+
+    <string-array name="nav_services">
+        <item>Jwellery</item>
+        <item>Shirt</item>
+        <item>Paint</item>
+        <item>T-Shirt</item>
+        <item>Watch</item>
+        <item>Shoose</item>
+    </string-array>
+
+    <string-array name="nav_investors">
+        <item>Televisions</item>
+        <item>Mobile</item>
+        <item>Tab</item>
+        <item>Refrigerator</item>
+        <item>Audio &amp; Video</item>
+        <item>Cameras</item>
+    </string-array>
+
+    <string-array name="nav_issues">
+        <item>Furniture</item>
+        <item>kitchen &amp; Dining</item>
+        <item>Home Furnishing</item>
+        <item>Tools &amp; Hardware</item>
+        <item>Lighting</item>
+        <item>Home Cleaning</item>
+    </string-array>
+
+    <string-array name="nav_purchases">
+        <item>RAM &amp; ROM </item>
+        <item>CPU</item>
+        <item>Sound</item>
+        <item>Cabinate</item>
+        <item>Hardisk</item>
+        <item>Motherbord</item>
+    </string-array>
+
+
+
+    <string-array name="nav_membership">
+
+    </string-array>
+    <string-array name="nav_login">
+
+    </string-array>
+    <string-array name="nav_sign">
+
+    </string-array>
+
+
+</resources>
