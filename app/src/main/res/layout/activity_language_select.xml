@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ENGLISH"
+        android:id="@+id/btn_en"
+        android:layout_marginTop="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#00FFFFFF"
+        android:textColor="@color/black"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="РУССКИЙ"
+        android:id="@+id/btn_ru"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/btn_en"
+        android:layout_centerHorizontal="true"
+        android:background="#00FFFFFF"
+        android:textColor="@color/black"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="O'ZBEK"
+        android:id="@+id/btn_uz"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/btn_ru"
+        android:layout_centerHorizontal="true"
+        android:background="#00ffffff"
+        android:textColor="@color/black"
+        android:onClick="onClick"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ЎЗБЕК"
+        android:id="@+id/btn_uzk"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/btn_uz"
+        android:layout_centerHorizontal="true"
+        android:background="#00FFFFFF"
+        android:textColor="@color/black"
+        android:onClick="onClick"/>
+</RelativeLayout>

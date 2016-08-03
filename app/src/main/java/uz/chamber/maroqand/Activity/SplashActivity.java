@@ -1,6 +1,7 @@
 package uz.chamber.maroqand.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,7 +16,7 @@ import uz.chamber.maroqand.R;
  * Created by lk on 2016. 7. 29..
  */
 public class SplashActivity extends AppCompatActivity {
-
+    String language;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -32,8 +33,21 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(getApplicationContext(), Main.class));
-
+                SharedPreferences sharedPreferences = getSharedPreferences("pref",MODE_PRIVATE);
+                language=sharedPreferences.getString("language","");
+                //if(true){
+                if(language.equals("")) { // Not setting yet
+                    startActivity(new Intent(getApplicationContext(), LanguageSelectActivity.class)); // todo setting language
+                    finish();
+                } else{
+                    for(int i=0; i<AppConfig.language.length; i++){
+                        if(AppConfig.language[i].equals(language))
+                            AppConfig.languageNum = i;
+                    }
+                    changeLanguage(AppConfig.getLanguage());
+                    startActivity(new Intent(getApplicationContext(), Main.class));
+                    finish();
+                }
             }
         }, 2000);
     }
