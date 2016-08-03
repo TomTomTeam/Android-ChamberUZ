@@ -1,6 +1,7 @@
 package uz.chamber.maroqand.Activity;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
@@ -35,7 +36,10 @@ public class SubPageView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subpage);
 
-        parser = new Parser("http://chamber.uz/en/page/2068", callBackNetwork);
+        Intent intent = getIntent();
+        String url = intent.getStringExtra("url");
+
+        parser = new Parser(url, callBackNetwork);
 
         title_tv = (TextView) findViewById(R.id.title_subpage);
 
