@@ -2,11 +2,13 @@ package uz.chamber.maroqand.Activity;
 
 import android.app.ActionBar;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,7 +32,10 @@ public class SubPageView extends AppCompatActivity {
     String spage_header;
     ArrayList<String> breadcrumb;
     ArrayList<Selector> page_content;
+    String type;
+    String date;
     TextView title_tv;
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +44,13 @@ public class SubPageView extends AppCompatActivity {
 
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
+        type = intent.getStringExtra("type");
+        date = intent.getStringExtra("date");
 
         parser = new Parser(url, callBackNetwork);
 
         title_tv = (TextView) findViewById(R.id.title_subpage);
-
+        textView = (TextView) findViewById(R.id.breadcrumb_subpage);
 
     }
 
@@ -54,6 +61,7 @@ public class SubPageView extends AppCompatActivity {
                 @Override
                 public void run() {
                     title_tv.setText(title);
+                    findViewById(R.id.iv_subpage_news_icon).setVisibility(View.VISIBLE);
                 }
             });
         }
@@ -63,13 +71,16 @@ public class SubPageView extends AppCompatActivity {
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    TextView textView = (TextView) findViewById(R.id.breadcrumb_subpage);
-                    String string = breadcrumb.get(0);
-                    for (int i = 1; i < breadcrumb.size(); i++) {
-                        string += " / ";
-                        string += breadcrumb.get(i);
+                    if(type.equals("news")){
+                        textView.setText(date.substring(0,10));
+                    }else {
+                        String string = breadcrumb.get(0);
+                        for (int i = 1; i < breadcrumb.size(); i++) {
+                            string += " / ";
+                            string += breadcrumb.get(i);
+                        }
+                        textView.setText(string);
                     }
-                    textView.setText(string);
                 }
             });
         }
@@ -86,16 +97,18 @@ public class SubPageView extends AppCompatActivity {
                                 Log.e("test", content.get(i).getText());
                                 TextView textView = new TextView(SubPageView.this);
                                 textView.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                                textView.setPadding(10, 10, 10, 10);
-                                textView.setTextSize(13);
+                                textView.setPadding(50, 25, 50, 25);
+                                textView.setTextSize(15);
+                                textView.setTextColor(Color.BLACK);
                                 textView.setText(content.get(i).getText());
                                 linearLayout.addView(textView);
                                 break;
                             case 1: //hyper
                                 TextView hyperTextView = new TextView(SubPageView.this);
                                 hyperTextView.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                                hyperTextView.setPadding(10, 10, 10, 10);
-                                hyperTextView.setTextSize(13);
+                                hyperTextView.setPadding(50, 25, 50, 25);
+                                hyperTextView.setTextSize(15);
+
                                 hyperTextView.setMovementMethod(LinkMovementMethod.getInstance());
                                 hyperTextView.setClickable(true);
                                 hyperTextView.setText(Html.fromHtml("<a href=" + content.get(i).getHtml() + ">" + content.get(i).getText() + "</a>"));
@@ -103,16 +116,16 @@ public class SubPageView extends AppCompatActivity {
                                 break;
                             case 2: //picture
                                 NetworkImageView v = new NetworkImageView(getApplicationContext());
-                                v.setScaleType(ImageView.ScaleType.FIT_CENTER);
-                                v.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-
-                                v.setPadding(10, 10, 10, 10);
+                                v.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                                v.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 900));
+                                //v.setPadding(10, 10, 10, 10);
                                 Log.e("src", content.get(i).getSrcUrl());
                                 v.setImageUrl(AppConfig.getRealPath(content.get(i).getSrcUrl()), AppController.getInstance().getImageLoader());
                                 linearLayout.addView(v);
                                 break;
                         }
                     }
+                    linearLayout.addView(new FooterView(getApplicationContext()));
                 }
             });
         }

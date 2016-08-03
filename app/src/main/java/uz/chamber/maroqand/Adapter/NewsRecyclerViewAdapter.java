@@ -62,6 +62,8 @@ public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsRecyclerVi
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), SubPageView.class);
                 intent.putExtra("url", mDataset.get(position).getHtml());
+                intent.putExtra("type", "news");
+                intent.putExtra("date", mDataset.get(position).getDate());
                 view.getContext().startActivity(intent);
             }
         });
