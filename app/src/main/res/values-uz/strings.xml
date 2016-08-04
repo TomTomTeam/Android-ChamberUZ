@@ -2,10 +2,38 @@
 <resources>
     <string name="nav_home">HOME</string>
     <string name="nav_news">Yangiliklar</string>
-    <string name="nav_aboutCCI">SSP haqida</string>
+    <string name="nav_aboutCCI">"SSP haqida"</string>
     <string name="nav_services">Xizmatlar</string>
     <string name="nav_investors">Investorlar diqqatiga</string>
     <string name="nav_issues">Huquqiy masalalar</string>
     <string name="nav_purchases">Tender va haridlar</string>
     <string name="nav_membership">SSP A\'zolik</string>
+
+    <string name="aboutCCI_overview">"Umumiy ma`lumotlar"</string>
+    <string name="aboutCCI_ccicyctem">"O`zSSP tizimi"</string>
+    <string name="aboutCCI_management">Rahbariyat</string>
+    <string name="aboutCCI_structure">Tashkiliy tuzilma</string>
+    <string name="aboutCCI_documents">"O‘zSSPning me'yoriy hujjatlari"</string>
+    <string name="aboutCCI_cooperation">Xalqaro hamkorlik</string>
+    <string name="service_cciservices">SSP xizmatlari</string>
+    <string name="service_interactive">Interaktiv xizmatlar</string>
+    <string name="investors_zones">Xorijiy investorlar uchun taklif etilayotgan ob’ektlar</string>
+    <string name="investors_facilities">AJga investitsiyalar kiritish</string>
+    <string name="investors_JSC">Хorijiy kompaniyalarning investitsion takliflari</string>
+    <string name="investors_offers">"Istiqbolli investitsiya loyihalari"</string>
+    <string name="investors_projects">"Industrial zonalari"</string>
+    <string name="investors_legal">"Normativ-huquqiy hujjatlar"</string>
+    <string name="issues_consultation">Huquqiy maslahat</string>
+    <string name="issues_courts">Hakamlik sudlari</string>
+    <string name="issues_arbitrationcourt">Хalqaro tijorat arbitraj sudi</string>
+    <string name="issues_legislation">Qonunchilikdagi yangiliklar</string>
+    <string name="issues_entrepreneurs">Tadbirkorlarda tekshiruvlar o‘tkazilishi xususida</string>
+    <string name="issues_market">"Qimmatli qog'ozlar bozori to'g'risidagi qonunlar"</string>
+    <string name="purchases_abroad">"O'zbekistondagi Tenderlar"</string>
+    <string name="purchases_tenders">"Elektron savdo O'zRTXB"</string>
+    <string name="purchases_uzex">Chet elda tenderlar</string>
+    <string name="membership_cci">"SSPga a'zolikka kirish uchun onlayn ariza"</string>
+    <string name="membership_opportunities">"Afzalliklari va imkoniyatlar"</string>
+    <string name="membership_membership">"A'zo bo'lish"</string>
+
 </resources>
