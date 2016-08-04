@@ -282,7 +282,6 @@ public class Main extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
     // setting toolbar
     private void setToolbar() {
         if (toolbar != null) {
