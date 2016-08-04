@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/lan_back">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="120dp"
+        android:id="@+id/imageView"
+        android:background="@drawable/logoen"
+        android:scaleType="fitStart" />
 
     <Button
         android:layout_width="wrap_content"
@@ -9,12 +17,10 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="ENGLISH"
         android:id="@+id/btn_en"
-        android:layout_marginTop="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:background="#00FFFFFF"
-        android:textColor="@color/black"
-        android:onClick="onClick"/>
+        android:textColor="#EEE"
+        android:onClick="onClick"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
@@ -26,8 +32,9 @@
         android:layout_below="@+id/btn_en"
         android:layout_centerHorizontal="true"
         android:background="#00FFFFFF"
-        android:textColor="@color/black"
-        android:onClick="onClick"/>
+        android:textColor="#EEE"
+        android:onClick="onClick"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
@@ -36,11 +43,10 @@
         android:text="O'ZBEK"
         android:id="@+id/btn_uz"
         android:layout_marginTop="40dp"
-        android:layout_below="@+id/btn_ru"
-        android:layout_centerHorizontal="true"
         android:background="#00ffffff"
-        android:textColor="@color/black"
-        android:onClick="onClick"/>
+        android:textColor="#EEE"
+        android:onClick="onClick"
+        android:layout_gravity="center_horizontal" />
 
     <Button
         android:layout_width="wrap_content"
@@ -49,9 +55,18 @@
         android:text="ЎЗБЕК"
         android:id="@+id/btn_uzk"
         android:layout_marginTop="40dp"
-        android:layout_below="@+id/btn_uz"
-        android:layout_centerHorizontal="true"
         android:background="#00FFFFFF"
-        android:textColor="@color/black"
-        android:onClick="onClick"/>
-</RelativeLayout>
+        android:textColor="#EEE"
+        android:onClick="onClick"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="164dp"
+        android:layout_height="67dp"
+        android:id="@+id/social"
+        android:background="@drawable/social"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"/>
+
+
+</LinearLayout>
