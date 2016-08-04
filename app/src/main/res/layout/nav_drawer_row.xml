@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     >
     <RelativeLayout
         android:id="@+id/parent_lay"
-        android:paddingLeft="30dp"
+        android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:layout_width="match_parent"
@@ -16,9 +17,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:textColor="#000"
+            android:textColor="#777882"
             android:paddingBottom="5dp"
-            android:textStyle="italic"
             android:focusable="false"
             android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
         <!--android:listSelector="@drawable/list_selector"-->

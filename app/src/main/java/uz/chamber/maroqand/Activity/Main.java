@@ -91,7 +91,7 @@ public class Main extends AppCompatActivity{
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mExpandableListView = (ExpandableListView) findViewById(R.id.navList);
-        //
+
 
         LayoutInflater inflater = getLayoutInflater();
         listHeaderView = inflater.inflate(R.layout.nav_header_main, null, false);
@@ -102,11 +102,11 @@ public class Main extends AppCompatActivity{
         addDrawerItems();
         setupDrawer();
 
-    //    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-     //   ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-    //            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-    //    drawer.setDrawerListener(toggle);
-     //   toggle.syncState();
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
    //     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
    //     navigationView.invalidate();
@@ -245,10 +245,7 @@ public class Main extends AppCompatActivity{
             }
         };
         new AutoTransferThread().start();
-
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -354,23 +351,14 @@ public class Main extends AppCompatActivity{
         listDataHeader = Arrays.asList(getResources().getStringArray(R.array.nav_drawer_items));
 
         List<String> home = Arrays.asList(getResources().getStringArray(R.array.nav_home));
-
         List<String> newslist = Arrays.asList(getResources().getStringArray(R.array.nav_news));
-
         List<String> aboutlist =Arrays.asList(getResources().getStringArray(R.array.nav_about));
-
         List<String> serviceslist = Arrays.asList(getResources().getStringArray(R.array.nav_services));
-
         List<String> investorslist = Arrays.asList(getResources().getStringArray(R.array.nav_investors));
-
         List<String> issueslist = Arrays.asList(getResources().getStringArray(R.array.nav_issues));
-
         List<String> purchaseslist = Arrays.asList(getResources().getStringArray(R.array.nav_purchases));
-
         List<String> membershiplist = Arrays.asList(getResources().getStringArray(R.array.nav_membership));
-
         List<String> login = Arrays.asList(getResources().getStringArray(R.array.nav_login));
-
         List<String> sign = Arrays.asList(getResources().getStringArray(R.array.nav_sign));
 
 
@@ -389,8 +377,6 @@ public class Main extends AppCompatActivity{
 
         mExpandableListView.addHeaderView(listHeaderView);
         mExpandableListData = listDataChild;
-        // mExpandableListTitle = new ArrayList(listDataChild.keySet());
-      //  Log.v("Main", " Key set " + listDataChild.keySet());
     }
 
 
@@ -402,7 +388,6 @@ public class Main extends AppCompatActivity{
         mExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                Log.e("Main"," you click parent ");
                 return false;
             }
         });
@@ -410,11 +395,11 @@ public class Main extends AppCompatActivity{
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                Log.e("Main"," you click child ");
+            //    Log.e("Main"," you click child ");
                 selectedItem = ((List) (mExpandableListData.get(listDataHeader.get(groupPosition)))).get(childPosition).toString();
                 toolbar.setTitle(selectedItem);
 
-                Log.e("Main"," you click child ");
+            //    Log.e("Main"," you click child ");
                 if (selectedItem.equalsIgnoreCase("Shirt")) {
                     Intent intent = new Intent(getApplicationContext(), SubPageView.class);
                     intent.putExtra("url", "http://chamber.uz/en/page/3435");
@@ -438,8 +423,7 @@ public class Main extends AppCompatActivity{
         mExpandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
             public void onGroupExpand(int groupPosition) {
-
-                toolbar.setTitle("test");
+            //    toolbar.setTitle("test");
                 toolbar.setTitle(listDataHeader.get(groupPosition).toString());
             }
         });
@@ -447,8 +431,6 @@ public class Main extends AppCompatActivity{
         mExpandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
             @Override
             public void onGroupCollapse(int groupPosition) {
-
-
             }
         });
 

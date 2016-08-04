@@ -19,12 +19,14 @@
         android:layout_marginTop="?attr/actionBarSize"
         android:id="@+id/navList"
         android:layout_width="260dp"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/white"
+        android:background="#F3F4F9"
         android:choiceMode="singleChoice"
         android:dividerHeight="0dp"
-        android:groupIndicator="@null" >
+        android:divider="#FFFFFFFF"
+        android:groupIndicator="@null"
+        >
     </ExpandableListView>
 
     <!--android.support.design.widget.NavigationView

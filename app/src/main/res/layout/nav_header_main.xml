@@ -4,15 +4,14 @@
     android:layout_height="100dp"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:weightSum="1">
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="wrap_content"
         android:src="@drawable/nav_header"
-        android:scaleType="fitEnd"
+        android:scaleType="fitXY"
         android:layout_marginBottom="10dp" />
 
 </LinearLayout>
