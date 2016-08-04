@@ -18,11 +18,7 @@
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".Activity.SearchResultsActivity" />
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <!-- Sub Page activity -->
@@ -45,6 +41,17 @@
         <activity android:name=".Activity.NewsTabActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <activity android:name=".Activity.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-</application>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activity.LanguageSelectActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+    </application>
 </manifest>

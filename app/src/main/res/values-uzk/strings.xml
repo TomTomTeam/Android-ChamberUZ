@@ -8,4 +8,32 @@
     <string name="nav_issues">Хуқуқий масалалар</string>
     <string name="nav_purchases">Тендер ва ҳаридлар</string>
     <string name="nav_membership">ССП Аъзолик</string>
+
+    <string name="aboutCCI_overview">Умумий маълумотлар</string>
+    <string name="aboutCCI_ccicyctem">ЎзССП тизими</string>
+    <string name="aboutCCI_management">Раҳбарият</string>
+    <string name="aboutCCI_structure">Ташкилий тузилма</string>
+    <string name="aboutCCI_documents">ЎзССПнинг меъёрий ҳужжатлари</string>
+    <string name="aboutCCI_cooperation">Халқаро ҳамкорлик</string>
+    <string name="service_cciservices">ССП xизматлари</string>
+    <string name="service_interactive">Интерактив хизматлар</string>
+    <string name="investors_zones">Индустриал зоналари</string>
+    <string name="investors_facilities">Хорижий инвесторлар учун таклиф этилаётган объектлар</string>
+    <string name="investors_JSC">АЖга инвестициялар киритиш</string>
+    <string name="investors_offers">Хорижий компанияларнинг инвестицион таклифлари </string>
+    <string name="investors_projects">Истиқболли инвестиция лойҳалари</string>
+    <string name="investors_legal">Норматив-ҳуқуқий ҳужжатлар</string>
+    <string name="issues_consultation">Хуқуқий маслахат</string>
+    <string name="issues_courts">Ҳакамлик судлари</string>
+    <string name="issues_arbitrationcourt">Халқаро тижорат арбитраж суди</string>
+    <string name="issues_legislation">Қонунчиликдаги янгиликлар</string>
+    <string name="issues_entrepreneurs">Тадбиркорларда текширувлар ўтказилиши хусусида</string>
+    <string name="issues_market">Қимматли қоғозлар бозори тўғрисидаги қонунлар</string>
+    <string name="purchases_abroad">Чет элда тендерлар</string>
+    <string name="purchases_tenders">Ўзбекистондаги тендерлар</string>
+    <string name="purchases_uzex">Электрон савдо УзРТХБ</string>
+    <string name="membership_cci">ССПга аъзоликка кириш учун онлайн ариза</string>
+    <string name="membership_opportunities">Афзалликлари ва имкониятлар</string>
+    <string name="membership_membership">Аъзо бўлиш</string>
+
 </resources>

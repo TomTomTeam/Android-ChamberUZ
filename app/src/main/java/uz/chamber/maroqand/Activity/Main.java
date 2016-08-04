@@ -6,23 +6,23 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ExpandableListView;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -30,20 +30,23 @@ import android.widget.TextView;
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
-import java.util.Locale;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import uz.chamber.maroqand.Adapter.ExpandableListDrawerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerNewsAdapter;
-import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.CallBack.CallBack;
 import uz.chamber.maroqand.Model.MainViewListData;
 import uz.chamber.maroqand.Model.MainViewPagerData;
 import uz.chamber.maroqand.Parser.MainPageParser;
 import uz.chamber.maroqand.R;
+import uz.chamber.maroqand.Util.ExpandableListViewOnClickListener;
 
-public class Main extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Main extends AppCompatActivity {
 
     ViewPager viewPager;
     ViewPager viewPagerNews;
@@ -55,25 +58,44 @@ public class Main extends AppCompatActivity
     LinearLayout llRootView;
     int p;
     int s;
-    Activity activity = this;
+
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
+    public ExpandableListView mExpandableListView;
+    private ExpandableListDrawerAdapter mExpandableListAdapter;
+    private Map<String, List<String>> mExpandableListData;
+    private String selectedItem;
+    private Toolbar toolbar;
+
+    private HashMap<String, List<String>> listDataChild;
+    private List<String> listDataHeader;
+
+    View listHeaderView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        changeLanguage(AppConfig.getLanguage());
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mExpandableListView = (ExpandableListView) findViewById(R.id.navList);
+
+
+        LayoutInflater inflater = getLayoutInflater();
+        listHeaderView = inflater.inflate(R.layout.nav_header_main, null, false);
+        mExpandableListView.addHeaderView(listHeaderView);
+        setToolbar();
+
+        addDrawerItems();
+        setupDrawer();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         viewPager = (ViewPager) findViewById(R.id.vp_mainViewPager);
         viewPagerNews = (ViewPager) findViewById(R.id.vp_mainViewPager_news);
@@ -182,7 +204,6 @@ public class Main extends AppCompatActivity
             }
         };
 
-
         MainPageParser image = new MainPageParser(callBack);
 
 
@@ -202,33 +223,12 @@ public class Main extends AppCompatActivity
                         ObjectAnimator.ofInt(svPartner, "scrollX", s).setDuration(1000).start();
                     }
                 });
-                s+=500;
-                if(s > svPartner.getBottom() + 2000)
+                s += 500;
+                if (s > svPartner.getBottom() + 2000)
                     s = 0;
             }
         };
         new AutoTransferThread().start();
-
-    }
-
-    public void changeLanguage(String languageToLoad) {
-        //for language change
-        Locale locale = new Locale(languageToLoad);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override
@@ -253,51 +253,6 @@ public class Main extends AppCompatActivity
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.action_search) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.nav_home:
-                break;
-            case R.id.nav_news:
-                Intent intent = new Intent(this.activity, NewsTabActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.nav_about:
-                break;
-
-            case R.id.nav_services:
-                break;
-
-            case R.id.nav_investors:
-                break;
-
-            case R.id.nav_issues:
-                break;
-
-            case R.id.nav_purchases:
-                break;
-
-            case R.id.nav_membership:
-                break;
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
     class AutoTransferThread extends Thread {
         public void run() {
             while (true) {
@@ -311,4 +266,113 @@ public class Main extends AppCompatActivity
             }
         }
     }
+
+
+
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_search) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    // setting toolbar
+    private void setToolbar() {
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+
+            final ActionBar actionBar = getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.setDisplayShowHomeEnabled(true);
+                actionBar.setDisplayShowTitleEnabled(true);
+                actionBar.setDisplayUseLogoEnabled(false);
+                actionBar.setHomeButtonEnabled(true);
+            }
+        }
+    }
+
+
+    private void addDrawerItems() {
+        mExpandableListAdapter = new ExpandableListDrawerAdapter(this);
+        mExpandableListView.setAdapter(mExpandableListAdapter);
+
+        mExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+                return false;
+            }
+        });
+        mExpandableListView.setOnChildClickListener(new ExpandableListViewOnClickListener(this, mExpandableListAdapter.mExpandableListTitle, mExpandableListAdapter.mExpandableListDetail));
+        mExpandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                toolbar.setTitle(mExpandableListAdapter.mExpandableListTitle.get(groupPosition).toString());
+            }
+        });
+
+        mExpandableListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+            @Override
+            public void onGroupCollapse(int groupPosition) {
+            }
+        });
+
+
+    }
+
+    private void setupDrawer() {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+
+            /** Called when a drawer has settled in a completely open state. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                toolbar.setTitle(R.string.app_name);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+
+            /** Called when a drawer has settled in a completely closed state. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+                if (selectedItem != null) {
+                    toolbar.setTitle(selectedItem);
+                } else {
+                    toolbar.setTitle("MyShopingCart");
+                }
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
 }

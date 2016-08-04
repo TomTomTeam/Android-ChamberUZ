@@ -1,12 +1,14 @@
 package uz.chamber.maroqand;
 
+import android.util.Log;
+
 /**
  * Created by lk on 2016. 7. 29..
  */
 public class AppConfig {
 
-    public final static String[] language = new String[]{"en", "uz", "ru", "uzk"};
-    public static int languageNum = 2; //defult is English
+    public final static String[] language = new String[]{"en", "ru", "uz", "uzk"};
+    public static int languageNum = 0; //defult is English
 
     public static String getRealPath(String absHref) {
         try {
@@ -17,11 +19,13 @@ public class AppConfig {
             for (String t : language) {
                 url = absHref.replace("/" + t + "/", "");
             }
-            if (url.charAt(0) == '/')                                               // other url
+            if (url.charAt(0) == '/') {                                               // other url
+                Log.i("AppConfig", "http://chamber.uz/" + absHref);
                 return "http://chamber.uz/" + absHref;
-            else
+            } else {
+                Log.i("AppConfig", "http://chamber.uz/" + language[languageNum] + "/" + url);
                 return "http://chamber.uz/" + language[languageNum] + "/" + url;
-
+            }
         } catch (StringIndexOutOfBoundsException e) {
             e.printStackTrace();
             return absHref;
