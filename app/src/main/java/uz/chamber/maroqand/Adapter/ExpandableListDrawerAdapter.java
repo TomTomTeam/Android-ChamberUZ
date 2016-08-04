@@ -8,6 +8,9 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,15 +21,40 @@ import uz.chamber.maroqand.R;
  */
 public class ExpandableListDrawerAdapter extends BaseExpandableListAdapter{
     private Context mContext;
-    private List<String> mExpandableListTitle;
-    private Map<String, List<String>> mExpandableListDetail;
+    public List<String> mExpandableListTitle;
+    public Map<String, List<String>> mExpandableListDetail;
     private LayoutInflater mLayoutInflater;
 
-    public ExpandableListDrawerAdapter(Context context, List<String> expandableListTitle,
-                                       Map<String, List<String>> expandableListDetail) {
+    public ExpandableListDrawerAdapter(Context context) {
         mContext = context;
-        mExpandableListTitle = expandableListTitle;
-        mExpandableListDetail = expandableListDetail;
+        mExpandableListTitle = Arrays.asList(context.getResources().getStringArray(R.array.nav_drawer_items));
+
+
+        HashMap<String, List<String>> listDataChild = new HashMap<String, List<String>>();
+
+        List<String> home = Arrays.asList(context.getResources().getStringArray(R.array.nav_home));
+        List<String> newslist = Arrays.asList(context.getResources().getStringArray(R.array.nav_news));
+        List<String> aboutlist = Arrays.asList(context.getResources().getStringArray(R.array.nav_about));
+        List<String> serviceslist = Arrays.asList(context.getResources().getStringArray(R.array.nav_services));
+        List<String> investorslist = Arrays.asList(context.getResources().getStringArray(R.array.nav_investors));
+        List<String> issueslist = Arrays.asList(context.getResources().getStringArray(R.array.nav_issues));
+        List<String> purchaseslist = Arrays.asList(context.getResources().getStringArray(R.array.nav_purchases));
+        List<String> membershiplist = Arrays.asList(context.getResources().getStringArray(R.array.nav_membership));
+        List<String> login = Arrays.asList(context.getResources().getStringArray(R.array.nav_login));
+        List<String> sign = Arrays.asList(context.getResources().getStringArray(R.array.nav_sign));
+
+        listDataChild.put(mExpandableListTitle.get(0), home);
+        listDataChild.put(mExpandableListTitle.get(1), newslist);
+        listDataChild.put(mExpandableListTitle.get(2), aboutlist);
+        listDataChild.put(mExpandableListTitle.get(3), serviceslist);
+        listDataChild.put(mExpandableListTitle.get(4), investorslist);
+        listDataChild.put(mExpandableListTitle.get(5), issueslist);
+        listDataChild.put(mExpandableListTitle.get(6), purchaseslist);
+        listDataChild.put(mExpandableListTitle.get(7), membershiplist);
+        listDataChild.put(mExpandableListTitle.get(8), login);
+        listDataChild.put(mExpandableListTitle.get(9), sign);
+
+        mExpandableListDetail = listDataChild;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 

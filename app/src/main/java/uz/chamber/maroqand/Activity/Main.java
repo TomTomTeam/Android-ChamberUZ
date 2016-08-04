@@ -6,20 +6,14 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -39,22 +33,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import uz.chamber.maroqand.Adapter.ExpandableListDrawerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerNewsAdapter;
-import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.CallBack.CallBack;
 import uz.chamber.maroqand.Model.MainViewListData;
 import uz.chamber.maroqand.Model.MainViewPagerData;
-import uz.chamber.maroqand.NavigationSelectorListener;
 import uz.chamber.maroqand.Parser.MainPageParser;
 import uz.chamber.maroqand.R;
+import uz.chamber.maroqand.Util.ExpandableListViewOnClickListener;
 
-public class Main extends AppCompatActivity{
+public class Main extends AppCompatActivity {
 
     ViewPager viewPager;
     ViewPager viewPagerNews;
@@ -66,7 +58,6 @@ public class Main extends AppCompatActivity{
     LinearLayout llRootView;
     int p;
     int s;
-    Activity activity = this;
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -74,7 +65,6 @@ public class Main extends AppCompatActivity{
     private ExpandableListDrawerAdapter mExpandableListAdapter;
     private Map<String, List<String>> mExpandableListData;
     private String selectedItem;
-    private LinearLayout linearLayout;
     private Toolbar toolbar;
 
     private HashMap<String, List<String>> listDataChild;
@@ -95,10 +85,9 @@ public class Main extends AppCompatActivity{
 
         LayoutInflater inflater = getLayoutInflater();
         listHeaderView = inflater.inflate(R.layout.nav_header_main, null, false);
-
+        mExpandableListView.addHeaderView(listHeaderView);
         setToolbar();
 
-        prepareListData();
         addDrawerItems();
         setupDrawer();
 
@@ -107,10 +96,6 @@ public class Main extends AppCompatActivity{
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-   //     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-   //     navigationView.invalidate();
-    //    navigationView.setNavigationItemSelectedListener(new NavigationSelectorListener(this));
 
         viewPager = (ViewPager) findViewById(R.id.vp_mainViewPager);
         viewPagerNews = (ViewPager) findViewById(R.id.vp_mainViewPager_news);
@@ -219,7 +204,6 @@ public class Main extends AppCompatActivity{
             }
         };
 
-
         MainPageParser image = new MainPageParser(callBack);
 
 
@@ -239,8 +223,8 @@ public class Main extends AppCompatActivity{
                         ObjectAnimator.ofInt(svPartner, "scrollX", s).setDuration(1000).start();
                     }
                 });
-                s+=500;
-                if(s > svPartner.getBottom() + 2000)
+                s += 500;
+                if (s > svPartner.getBottom() + 2000)
                     s = 0;
             }
         };
@@ -288,36 +272,6 @@ public class Main extends AppCompatActivity{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -328,6 +282,7 @@ public class Main extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
+
     // setting toolbar
     private void setToolbar() {
         if (toolbar != null) {
@@ -343,46 +298,10 @@ public class Main extends AppCompatActivity{
             }
         }
     }
-    private void prepareListData() {
-
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
-
-        listDataHeader = Arrays.asList(getResources().getStringArray(R.array.nav_drawer_items));
-
-        List<String> home = Arrays.asList(getResources().getStringArray(R.array.nav_home));
-        List<String> newslist = Arrays.asList(getResources().getStringArray(R.array.nav_news));
-        List<String> aboutlist =Arrays.asList(getResources().getStringArray(R.array.nav_about));
-        List<String> serviceslist = Arrays.asList(getResources().getStringArray(R.array.nav_services));
-        List<String> investorslist = Arrays.asList(getResources().getStringArray(R.array.nav_investors));
-        List<String> issueslist = Arrays.asList(getResources().getStringArray(R.array.nav_issues));
-        List<String> purchaseslist = Arrays.asList(getResources().getStringArray(R.array.nav_purchases));
-        List<String> membershiplist = Arrays.asList(getResources().getStringArray(R.array.nav_membership));
-        List<String> login = Arrays.asList(getResources().getStringArray(R.array.nav_login));
-        List<String> sign = Arrays.asList(getResources().getStringArray(R.array.nav_sign));
-
-
-
-        listDataChild.put(listDataHeader.get(0), home);
-        listDataChild.put(listDataHeader.get(1), newslist);
-        listDataChild.put(listDataHeader.get(2), aboutlist);
-        listDataChild.put(listDataHeader.get(3), serviceslist);
-        listDataChild.put(listDataHeader.get(4), investorslist);
-        listDataChild.put(listDataHeader.get(5), issueslist);
-        listDataChild.put(listDataHeader.get(6), purchaseslist);
-        listDataChild.put(listDataHeader.get(7), membershiplist);
-        listDataChild.put(listDataHeader.get(8), login);
-        listDataChild.put(listDataHeader.get(9), sign);
-
-
-        mExpandableListView.addHeaderView(listHeaderView);
-        mExpandableListData = listDataChild;
-    }
-
 
 
     private void addDrawerItems() {
-        mExpandableListAdapter = new ExpandableListDrawerAdapter(this, listDataHeader, mExpandableListData);
+        mExpandableListAdapter = new ExpandableListDrawerAdapter(this);
         mExpandableListView.setAdapter(mExpandableListAdapter);
 
         mExpandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
@@ -391,40 +310,11 @@ public class Main extends AppCompatActivity{
                 return false;
             }
         });
-        mExpandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-            //    Log.e("Main"," you click child ");
-                selectedItem = ((List) (mExpandableListData.get(listDataHeader.get(groupPosition)))).get(childPosition).toString();
-                toolbar.setTitle(selectedItem);
-
-            //    Log.e("Main"," you click child ");
-                if (selectedItem.equalsIgnoreCase("Shirt")) {
-                    Intent intent = new Intent(getApplicationContext(), SubPageView.class);
-                    intent.putExtra("url", "http://chamber.uz/en/page/3435");
-                    startActivity(intent);
-                }
-                else if (selectedItem.equalsIgnoreCase("Paint")) {
-                    Intent intent = new Intent(getApplicationContext(), SubPageView.class);
-                    intent.putExtra("url", "http://chamber.uz/ru");
-                    startActivity(intent);
-                }
-                else if (selectedItem.equalsIgnoreCase("Watch")) {
-                    Intent intent = new Intent(getApplicationContext(), SubPageView.class);
-                    intent.putExtra("url", "http://chamber.uz/uz");
-                    startActivity(intent);
-                }
-
-                mDrawerLayout.closeDrawer(GravityCompat.START);
-                return false;
-            }
-        });
+        mExpandableListView.setOnChildClickListener(new ExpandableListViewOnClickListener(this, mExpandableListAdapter.mExpandableListTitle, mExpandableListAdapter.mExpandableListDetail));
         mExpandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
             @Override
             public void onGroupExpand(int groupPosition) {
-            //    toolbar.setTitle("test");
-                toolbar.setTitle(listDataHeader.get(groupPosition).toString());
+                toolbar.setTitle(mExpandableListAdapter.mExpandableListTitle.get(groupPosition).toString());
             }
         });
 
@@ -487,6 +377,3 @@ public class Main extends AppCompatActivity{
     }
 
 }
-
-
-
