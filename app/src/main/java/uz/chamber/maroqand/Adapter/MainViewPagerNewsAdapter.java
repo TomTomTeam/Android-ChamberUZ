@@ -1,7 +1,9 @@
 package uz.chamber.maroqand.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
 
+import uz.chamber.maroqand.Activity.SubPageView;
+import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.Model.MainViewPagerData;
 import uz.chamber.maroqand.R;
@@ -36,12 +40,24 @@ public class MainViewPagerNewsAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup collection, int position) {
+    public Object instantiateItem(ViewGroup collection, final int position) {
         View itemView = mLayoutInflater.inflate(R.layout.main_viewpager_news, collection, false);
         NetworkImageView view = (NetworkImageView) itemView.findViewById(R.id.nv_main_viewpager_news_img);
         TextView title = (TextView) itemView.findViewById(R.id.tv_mainViewPager_news_title);
         view.setImageUrl(list.get(position).getImgUrl(), AppController.getInstance().getImageLoader());
         title.setText(list.get(position).getTitle());
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), SubPageView.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("url", AppConfig.getRealPath(list.get(position).getLinkUrl()));
+                Log.i("aa",AppConfig.getRealPath(list.get(position).getLinkUrl()) );
+                intent.putExtra("type", "news");
+                intent.putExtra("date", "");
+                mContext.startActivity(intent);
+            }
+        });
         collection.addView(itemView);
         return itemView;
     }

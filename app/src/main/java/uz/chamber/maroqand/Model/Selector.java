@@ -1,16 +1,22 @@
 package uz.chamber.maroqand.Model;
 
+import android.util.Log;
+
 public class Selector {
     int select; // text=0, hyper=1, image=2
     String text;
     String html;
     String srcUrl;
 
-    public Selector(String text, String html, String srcUrl) {
+    public Selector(String text, String html, String srcUrl, String inputImageUrl) {
         this.text = text;
         this.html = html;
         this.srcUrl = srcUrl;
         if (srcUrl != "") {
+            select = 2;
+        } else if (inputImageUrl != "") {
+            this.srcUrl = inputImageUrl;
+            Log.i("aa", inputImageUrl);
             select = 2;
         } else if (html != "") {
             select = 1;

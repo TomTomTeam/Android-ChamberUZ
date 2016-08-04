@@ -12,20 +12,17 @@ public class AppConfig {
 
     public static String getRealPath(String absHref) {
         try {
-
-            String url = "";
+            Log.i("before url", absHref);
             if (isAlreadyRealPath(absHref))                                     // already real path
                 return absHref;
             for (String t : language) {
-                url = absHref.replace("/" + t + "/", "");
+                absHref = absHref.replace("/" + t + "/", "");
+                Log.e("for url", absHref);
             }
-            if (url.charAt(0) == '/') {                                               // other url
-                Log.i("AppConfig", "http://chamber.uz/" + absHref);
-                return "http://chamber.uz/" + absHref;
-            } else {
-                Log.i("AppConfig", "http://chamber.uz/" + language[languageNum] + "/" + url);
-                return "http://chamber.uz/" + language[languageNum] + "/" + url;
-            }
+            if (absHref.charAt(0) == '/')                                               // other url
+                return "http://chamber.uz" + absHref;
+            else
+                return "http://chamber.uz/" + language[languageNum] + "/" + absHref;
         } catch (StringIndexOutOfBoundsException e) {
             e.printStackTrace();
             return absHref;
