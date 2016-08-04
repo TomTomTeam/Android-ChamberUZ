@@ -476,8 +476,6 @@ public class Main extends AppCompatActivity{
                 invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
         };
-
-
         mDrawerToggle.setDrawerIndicatorEnabled(true);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }

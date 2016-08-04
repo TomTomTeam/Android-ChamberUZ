@@ -5,7 +5,35 @@
     <string name="nav_aboutCCI">ABOUT CCI</string>
     <string name="nav_services">SERVICES</string>
     <string name="nav_investors">PROSPECTIVE INVESTORS</string>
-    <string name="nav_issues">ASSISTANCE WHIT LEGAL ISSUES</string>
+    <string name="nav_issues">ASSISTANCE WITH LEGAL ISSUES</string>
     <string name="nav_purchases">TENDES AND PURCHASES</string>
     <string name="nav_membership">MEMBERSHIP CCI</string>
+
+    <string name="aboutCCI_overview">Overview</string>
+    <string name="aboutCCI_ccicyctem">CCI System</string>
+    <string name="aboutCCI_management">Management</string>
+    <string name="aboutCCI_structure">Organizational structure </string>
+    <string name="aboutCCI_documents">Normative documents CCI</string>
+    <string name="aboutCCI_cooperation">International сooperation</string>
+    <string name="service_cciservices">CCI services</string>
+    <string name="service_interactive">Interactive services</string>
+    <string name="investors_zones">Industrial zones</string>
+    <string name="investors_facilities">Proposed facilities for foreign investors</string>
+    <string name="investors_JSC">Capital investing in JSC</string>
+    <string name="investors_offers">Investment offers of foreign companies </string>
+    <string name="investors_projects">Perspective investment projects</string>
+    <string name="investors_legal">Legal Acts</string>
+    <string name="issues_consultation">Legal consultation</string>
+    <string name="issues_courts">Arbitration courts</string>
+    <string name="issues_arbitrationcourt">International commercial arbitration court </string>
+    <string name="issues_legislation">Legislation news</string>
+    <string name="issues_entrepreneurs">About inspections of entrepreneurs</string>
+    <string name="issues_market">Laws about securities market</string>
+    <string name="purchases_abroad">Tenders abroad</string>
+    <string name="purchases_tenders">Tenders in Uzbekistan</string>
+    <string name="purchases_uzex">Electronic trading UZEX</string>
+    <string name="membership_cci">Online application for membership in the CCI</string>
+    <string name="membership_opportunities">Advantages and opportunities</string>
+    <string name="membership_membership">Accession to membership</string>
+
 </resources>

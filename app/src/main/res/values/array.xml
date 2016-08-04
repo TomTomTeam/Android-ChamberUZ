@@ -54,54 +54,49 @@
     </string-array>
 
     <string-array name="nav_about">
-        <item>Jwellery</item>
-        <item>Shirt</item>
-        <item>Paint</item>
-        <item>T-Shirt</item>
-        <item>Watch</item>
-        <item>Shoose</item>
+        <item>@string/aboutCCI_overview</item>
+        <item>@string/aboutCCI_ccicyctem</item>
+        <item>@string/aboutCCI_management</item>
+        <item>@string/aboutCCI_structure</item>
+        <item>@string/aboutCCI_documents</item>
+        <item>@string/aboutCCI_cooperation</item>
     </string-array>
 
     <string-array name="nav_services">
-        <item>Jwellery</item>
-        <item>Shirt</item>
-        <item>Paint</item>
-        <item>T-Shirt</item>
-        <item>Watch</item>
-        <item>Shoose</item>
+        <item>@string/service_cciservices</item>
+        <item>@string/service_interactive</item>
     </string-array>
 
     <string-array name="nav_investors">
-        <item>Televisions</item>
-        <item>Mobile</item>
-        <item>Tab</item>
-        <item>Refrigerator</item>
-        <item>Audio &amp; Video</item>
-        <item>Cameras</item>
+        <item>@string/investors_zones</item>
+        <item>@string/investors_facilities</item>
+        <item>@string/investors_JSC</item>
+        <item>@string/investors_offers</item>
+        <item>@string/investors_projects</item>
+        <item>@string/investors_legal</item>
     </string-array>
 
     <string-array name="nav_issues">
-        <item>Furniture</item>
-        <item>kitchen &amp; Dining</item>
-        <item>Home Furnishing</item>
-        <item>Tools &amp; Hardware</item>
-        <item>Lighting</item>
-        <item>Home Cleaning</item>
+        <item>@string/issues_consultation</item>
+        <item>@string/issues_courts</item>
+        <item>@string/issues_arbitrationcourt</item>
+        <item>@string/issues_legislation</item>
+        <item>@string/issues_entrepreneurs</item>
+        <item>@string/issues_market</item>
     </string-array>
 
     <string-array name="nav_purchases">
-        <item>RAM &amp; ROM </item>
-        <item>CPU</item>
-        <item>Sound</item>
-        <item>Cabinate</item>
-        <item>Hardisk</item>
-        <item>Motherbord</item>
+        <item>@string/purchases_abroad</item>
+        <item>@string/purchases_tenders</item>
+        <item>@string/purchases_uzex</item>
     </string-array>
 
 
 
     <string-array name="nav_membership">
-
+        <item>@string/membership_cci</item>
+        <item>@string/membership_opportunities</item>
+        <item>@string/membership_membership</item>
     </string-array>
     <string-array name="nav_login">
 
