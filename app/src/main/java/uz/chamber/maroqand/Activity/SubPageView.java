@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
+import com.android.volley.toolbox.StringRequest;
 
 import java.util.ArrayList;
 
@@ -72,7 +73,12 @@ public class SubPageView extends AppCompatActivity {
                 @Override
                 public void run() {
                     if(type.equals("news")){
-                        textView.setText(date.substring(0,10));
+                        try {
+                            textView.setText(date.substring(0, 10));
+                        }catch (StringIndexOutOfBoundsException e){
+                            e.printStackTrace();
+                            textView.setText("");
+                        }
                     }else {
                         String string = breadcrumb.get(0);
                         for (int i = 1; i < breadcrumb.size(); i++) {
@@ -116,7 +122,7 @@ public class SubPageView extends AppCompatActivity {
                                 break;
                             case 2: //picture
                                 NetworkImageView v = new NetworkImageView(getApplicationContext());
-                                v.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                                v.setScaleType(ImageView.ScaleType.FIT_CENTER);
                                 v.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 900));
                                 //v.setPadding(10, 10, 10, 10);
                                 Log.e("src", content.get(i).getSrcUrl());

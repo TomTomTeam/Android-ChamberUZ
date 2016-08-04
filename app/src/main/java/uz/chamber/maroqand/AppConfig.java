@@ -1,26 +1,28 @@
 package uz.chamber.maroqand;
 
+import android.util.Log;
+
 /**
  * Created by lk on 2016. 7. 29..
  */
 public class AppConfig {
 
     public final static String[] language = new String[]{"en", "uz", "ru", "uzk"};
-    public static int languageNum = 2; //defult is English
+    public static int languageNum = 0; //defult is English
 
     public static String getRealPath(String absHref) {
         try {
-
-            String url = "";
+            Log.i("before url", absHref);
             if (isAlreadyRealPath(absHref))                                     // already real path
                 return absHref;
             for (String t : language) {
-                url = absHref.replace("/" + t + "/", "");
+                absHref = absHref.replace("/" + t + "/", "");
+                Log.e("for url", absHref);
             }
-            if (url.charAt(0) == '/')                                               // other url
-                return "http://chamber.uz/" + absHref;
+            if (absHref.charAt(0) == '/')                                               // other url
+                return "http://chamber.uz" + absHref;
             else
-                return "http://chamber.uz/" + language[languageNum] + "/" + url;
+                return "http://chamber.uz/" + language[languageNum] + "/" + absHref;
 
         } catch (StringIndexOutOfBoundsException e) {
             e.printStackTrace();
