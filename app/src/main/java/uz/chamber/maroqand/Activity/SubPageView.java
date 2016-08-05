@@ -53,6 +53,14 @@ public class SubPageView extends AppCompatActivity {
         title_tv = (TextView) findViewById(R.id.title_subpage);
         textView = (TextView) findViewById(R.id.breadcrumb_subpage);
 
+        int[][] headerResources = {{R.drawable.headereng, R.drawable.headerru, R.drawable.headeruz, R.drawable.headeruzb}, {R.drawable.headerenglan, R.drawable.headerrulan, R.drawable.headeruzlan, R.drawable.headeruzblan}};
+
+        ImageView headerLogo = (ImageView) findViewById(R.id.imageViewplaces);
+        ImageView headerLang = (ImageView) findViewById(R.id.imageViewplaceslang);
+        headerLogo.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
+        headerLang.setImageDrawable(getResources().getDrawable(headerResources[1][AppConfig.languageNum]));
+
+
     }
 
     CallBackNetwork callBackNetwork = new CallBackNetwork() {

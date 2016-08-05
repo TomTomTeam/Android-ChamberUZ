@@ -4,20 +4,22 @@
     android:layout_height="match_parent"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="20dp"
-    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="#FFFFFF">
 
 
             <TextView
@@ -25,21 +27,25 @@
                 android:layout_height="wrap_content"
                 android:text="Day"
                 android:id="@+id/tv_item_schedule_day"
-                android:textColor="#033388" />
+                android:textColor="#033388"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Month"
                 android:id="@+id/tv_item_schedule_month"
-                android:textColor="#033388" />
+                android:textColor="#033388"
+                android:textSize="18sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:layout_marginLeft="5dp">
 
 
             <TextView
@@ -49,7 +55,8 @@
                 android:id="@+id/tv_item_schedule_content"
                 android:textColor="@color/blue"
                 android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp" />
+                android:layout_marginBottom="3dp"
+                android:textSize="15sp" />
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -63,7 +70,7 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/time"/>
+                    android:src="@mipmap/clock2"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -85,7 +92,7 @@
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:src="@drawable/place"/>
+                    android:src="@mipmap/pin"/>
 
                 <TextView
                     android:layout_width="wrap_content"

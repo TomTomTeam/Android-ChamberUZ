@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 
 import java.util.Locale;
 
@@ -58,6 +59,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        int[] headerResources = {R.drawable.headereng, R.drawable.headerru, R.drawable.headeruz, R.drawable.headeruzb};
+        ImageView img = (ImageView) findViewById(R.id.iv_splash_img);
+        img.setImageDrawable(getResources().getDrawable(headerResources[AppConfig.languageNum]));
     }
 
 }

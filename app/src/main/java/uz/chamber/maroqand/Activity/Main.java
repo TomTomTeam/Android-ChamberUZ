@@ -26,6 +26,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -40,6 +41,7 @@ import java.util.Map;
 import uz.chamber.maroqand.Adapter.ExpandableListDrawerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerNewsAdapter;
+import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.AppController;
 import uz.chamber.maroqand.CallBack.CallBack;
 import uz.chamber.maroqand.Model.MainViewListData;
@@ -84,6 +86,12 @@ public class Main extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mExpandableListView = (ExpandableListView) findViewById(R.id.navList);
 
+        int[][] headerResources = {{R.drawable.headereng, R.drawable.headerru, R.drawable.headeruz, R.drawable.headeruzb}, {R.drawable.headerenglan, R.drawable.headerrulan, R.drawable.headeruzlan, R.drawable.headeruzblan}};
+
+        ImageView headerLogo = (ImageView) findViewById(R.id.imageViewplaces);
+        ImageView headerLang = (ImageView) findViewById(R.id.imageViewplaceslang);
+        headerLogo.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
+        headerLang.setImageDrawable(getResources().getDrawable(headerResources[1][AppConfig.languageNum]));
 
         LayoutInflater inflater = getLayoutInflater();
         listHeaderView = inflater.inflate(R.layout.nav_header_main, null, false);
@@ -166,10 +174,6 @@ public class Main extends AppCompatActivity {
                             tvTime.setText(list.get(i).getTime());
                             tvAddress.setText(list.get(i).getAddress());
 
-                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                            params.setMargins(0,30,0,30);
-                            v.setLayoutParams(params);
-
 
                             layout.addView(v);
                         }
@@ -240,23 +244,23 @@ public class Main extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_activity, menu);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
-        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                //todo It has some error in Chamber.uz, do we have to make a search Engine.
-                Log.i("text", query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-        searchView.setBackgroundColor(Color.WHITE);
+//        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
+//        SearchManager searchManager = (SearchManager) getSystemService(SEARCH_SERVICE);
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                //todo It has some error in Chamber.uz, do we have to make a search Engine.
+//                Log.i("text", query);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                return false;
+//            }
+//        });
+//        searchView.setBackgroundColor(Color.WHITE);
         return true;
     }
 
@@ -275,20 +279,17 @@ public class Main extends AppCompatActivity {
     }
 
 
-
-
-
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.action_search) {
-            return true;
-        }
+//        if (id == R.id.action_search) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
+
     // setting toolbar
     private void setToolbar() {
         if (toolbar != null) {

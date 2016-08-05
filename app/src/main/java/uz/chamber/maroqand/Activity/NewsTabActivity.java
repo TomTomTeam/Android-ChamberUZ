@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import uz.chamber.maroqand.Adapter.NewsPagerAdapter;
+import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.CallBack.CallBackNetwork;
 import uz.chamber.maroqand.CallBack.CallBackNews;
 import uz.chamber.maroqand.Model.NewsListComponent;
@@ -49,7 +50,7 @@ public class NewsTabActivity extends AppCompatActivity implements NavigationView
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        newsTabParser = new NewsTabParser("http://www.chamber.uz/en/news#cci_news", callBackNetwork);
+        newsTabParser = new NewsTabParser(AppConfig.getRealPath("/en/news"), callBackNetwork);
 
     }
 
