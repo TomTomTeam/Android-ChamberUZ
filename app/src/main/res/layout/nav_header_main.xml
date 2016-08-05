@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="70dp"
     android:gravity="bottom"
     android:orientation="vertical"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:weightSum="1">
 
     <ImageView
+        android:id="@+id/nav_header"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:src="@drawable/nav_header"
-        android:scaleType="fitEnd"
-        android:layout_marginBottom="10dp" />
+        android:layout_height="70dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/nav_header" />
 
 </LinearLayout>

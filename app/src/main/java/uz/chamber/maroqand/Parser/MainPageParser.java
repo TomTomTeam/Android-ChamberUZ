@@ -16,7 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import uz.chamber.maroqand.AppConfig;
+import uz.chamber.maroqand.Util.AppConfig;
 import uz.chamber.maroqand.CallBack.CallBack;
 import uz.chamber.maroqand.Model.ATag;
 import uz.chamber.maroqand.Model.FooterData;

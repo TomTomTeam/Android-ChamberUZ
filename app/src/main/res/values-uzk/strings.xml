@@ -8,4 +8,50 @@
     <string name="nav_issues">Хуқуқий масалалар</string>
     <string name="nav_purchases">Тендер ва ҳаридлар</string>
     <string name="nav_membership">ССП Аъзолик</string>
+
+    <string name="aboutCCI_overview1">Тарих</string>
+    <string name="aboutCCI_overview2">ССП ҳақида</string>
+    <string name="aboutCCI_overview3">Мақсад ва вазифалари</string>
+    <string name="aboutCCI_overview4">Палата фаолияти</string>
+    <string name="aboutCCI_ccicyctem1">Бошқарув органи</string>
+    <string name="aboutCCI_ccicyctem2">Ижроия қўмитаси</string>
+    <string name="aboutCCI_ccicyctem3">Унитар ташкилотлар</string>
+    <string name="aboutCCI_ccicyctem4">Ҳудудий бошқармалар</string>
+    <string name="aboutCCI_management">Раҳбарият</string>
+    <string name="aboutCCI_structure">Ташкилий тузилма</string>
+    <string name="aboutCCI_documents">ЎзССПнинг меъёрий ҳужжатлари</string>
+    <string name="aboutCCI_cooperation">Халқаро ҳамкорлик</string>
+    <string name="service_cciservices">ССП xизматлари</string>
+    <string name="service_interactive">Интерактив хизматлар</string>
+
+    <string name="investors_zones1">"Навоий" эркин иқтисодий-индустриал зонаси </string>
+    <string name="investors_zones2">"Ангрен" махсус индустриал зонаси  </string>
+    <string name="investors_zones3">"Жиззах" махсус индустриал зонаси</string>
+    <string name="investors_facilities1">Тижорат банклари балансида бўлган ва салоҳиятли инвесторларга сотиш учун таклиф этилаётган корхоналар</string>
+    <string name="investors_facilities2">Ўзбекистон Республикасида бўш ер майдонлари</string>
+    <string name="investors_facilities3">Инвесторлар томонидан ўзлаштиришга тегишли бўлган ҳукумат мулки объектлари</string>
+    <string name="investors_facilities4">Тадбиркорлик субъектларига ижара учун таклиф этилаётган давлат  мулк объектлари </string>
+    <string name="investors_JSC1">Ўзбекистонга сармоя</string>
+    <string name="investors_JSC2">Молия ва суғурта соҳасидаги инвестицион таклифлари</string>
+    <string name="investors_JSC3">Саноат тармоғидаги инвестицион таклифлари</string>
+    <string name="investors_JSC4">АЖга тегишли қонун хужжатлари</string>
+    <string name="investors_offers">Хорижий компанияларнинг инвестицион таклифлари </string>
+    <string name="investors_projects">Истиқболли инвестиция лойҳалари</string>
+    <string name="investors_legal">Норматив-ҳуқуқий ҳужжатлар</string>
+
+    <string name="issues_consultation1">Лицензиялаш масалалари</string>
+    <string name="issues_consultation2">Тадбиркорларнинг ҳуқуқий ҳимояси</string>
+    <string name="issues_consultation3">Eр ажратиш</string>
+    <string name="issues_courts">Ҳакамлик судлари</string>
+    <string name="issues_arbitrationcourt">Халқаро тижорат арбитраж суди</string>
+    <string name="issues_legislation">Қонунчиликдаги янгиликлар</string>
+    <string name="issues_entrepreneurs">Тадбиркорларда текширувлар ўтказилиши хусусида</string>
+    <string name="issues_market">Қимматли қоғозлар бозори тўғрисидаги қонунлар</string>
+    <string name="purchases_abroad">Чет элда тендерлар</string>
+    <string name="purchases_tenders">Ўзбекистондаги тендерлар</string>
+    <string name="purchases_uzex">Электрон савдо УзРТХБ</string>
+    <string name="membership_cci">ССПга аъзоликка кириш учун онлайн ариза</string>
+    <string name="membership_opportunities">Афзалликлари ва имкониятлар</string>
+    <string name="membership_membership">Аъзо бўлиш</string>
+
 </resources>

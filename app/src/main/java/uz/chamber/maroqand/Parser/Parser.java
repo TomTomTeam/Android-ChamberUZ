@@ -62,7 +62,7 @@ public class Parser {
 
                     Selector se = new Selector(tmpD.body().text().replace("$$$", "\n")
                             , elements.get(i).select("a[href]").attr("abs:href")
-                            , elements.get(i).select("img").attr("src"));
+                            , elements.get(i).select("img").attr("src"), elements.get(i).select("input").attr("src"));
                     page_content.add(se);
                 }
                 callBackNetwork.setContent(page_content);

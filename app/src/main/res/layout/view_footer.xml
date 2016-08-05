@@ -1,41 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/blue"
     android:orientation="vertical">
 
-
-    <LinearLayout
+    <HorizontalScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <Button
-            android:id="@+id/bt_footer_address"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00000000"
-            android:text="New Button" />
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/bt_footer_links"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00000000"
-            android:text="New Button" />
+            <Button
+                android:id="@+id/bt_footer_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:text="New Button" />
 
-        <Button
-            android:id="@+id/bt_footer_send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="#00000000"
-            android:text="New Button" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/bt_footer_links"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:text="New Button" />
+
+            <Button
+                android:id="@+id/bt_footer_send"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#00000000"
+                android:text="New Button" />
+        </LinearLayout>
+
+    </HorizontalScrollView>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -46,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:padding="16dp"
             android:visibility="visible">
 
             <TextView
@@ -60,7 +65,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:visibility="invisible">
+            android:padding="10dp"
+            android:visibility="gone">
 
         </LinearLayout>
 
@@ -69,7 +75,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:visibility="invisible"></LinearLayout>
+            android:padding="16dp"
+            android:visibility="gone"></LinearLayout>
     </FrameLayout>
 
 </LinearLayout>

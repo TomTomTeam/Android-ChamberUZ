@@ -5,7 +5,53 @@
     <string name="nav_aboutCCI">ABOUT CCI</string>
     <string name="nav_services">SERVICES</string>
     <string name="nav_investors">PROSPECTIVE INVESTORS</string>
-    <string name="nav_issues">ASSISTANCE WHIT LEGAL ISSUES</string>
+    <string name="nav_issues">ASSISTANCE WITH LEGAL ISSUES</string>
     <string name="nav_purchases">TENDES AND PURCHASES</string>
     <string name="nav_membership">MEMBERSHIP CCI</string>
+
+    <string name="aboutCCI_overview1">History</string>
+    <string name="aboutCCI_overview2">About CCI</string>
+    <string name="aboutCCI_overview3">Goals and objectives</string>
+    <string name="aboutCCI_overview4">Annual reports</string>
+    <string name="aboutCCI_ccicyctem1">Management Bodies </string>
+    <string name="aboutCCI_ccicyctem2">Executive Committee</string>
+    <string name="aboutCCI_ccicyctem3">Unitary organizations</string>
+    <string name="aboutCCI_ccicyctem4">Territorial management</string>
+    <string name="aboutCCI_management">Management</string>
+    <string name="aboutCCI_structure">Organizational structure </string>
+    <string name="aboutCCI_documents">Normative documents CCI</string>
+    <string name="aboutCCI_cooperation">International cooperation</string>
+    <string name="service_cciservices">CCI services</string>
+    <string name="service_interactive">Interactive services</string>
+
+    <string name="investors_zones1">Free industrial economic zone "Navoi"</string>
+    <string name="investors_zones2">ISpecial industrial zone "Angren"</string>
+    <string name="investors_zones3">Special industrial zone "Jizzakh"</string>
+    <string name="investors_facilities1">Information about manufacturing enterprises, which are on the balance of commercial banks of Uzbekistan for sale to potential investors</string>
+    <string name="investors_facilities2">Vacant government buildings available for utilization</string>
+    <string name="investors_facilities3">State property available for investor utilization  </string>
+    <string name="investors_facilities4">State property offered for rent to businesses</string>
+    <string name="investors_JSC1">Invest in Uzbekistan</string>
+    <string name="investors_JSC2">Investment offers in financial and insurance sectors</string>
+    <string name="investors_JSC3">Investment offers in Industrial sectors</string>
+    <string name="investors_JSC4">Legislations on JSC</string>
+    <string name="investors_offers">Investment offers of foreign companies </string>
+    <string name="investors_projects">Perspective investment projects</string>
+    <string name="investors_legal">Legal Acts</string>
+
+    <string name="issues_consultation1">Questions related to licensing</string>
+    <string name="issues_consultation2">Legal projection of entrepreneurs</string>
+    <string name="issues_consultation3">Questions related to land allocation</string>
+    <string name="issues_courts">Arbitration courts</string>
+    <string name="issues_arbitrationcourt">International commercial arbitration court </string>
+    <string name="issues_legislation">Legislation news</string>
+    <string name="issues_entrepreneurs">About inspections of entrepreneurs</string>
+    <string name="issues_market">Laws about securities market</string>
+    <string name="purchases_abroad">Tenders abroad</string>
+    <string name="purchases_tenders">Tenders in Uzbekistan</string>
+    <string name="purchases_uzex">Electronic trading UZEX</string>
+    <string name="membership_cci">Online application for membership in the CCI</string>
+    <string name="membership_opportunities">Advantages and opportunities</string>
+    <string name="membership_membership">Accession to membership</string>
+
 </resources>

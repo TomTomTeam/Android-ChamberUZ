@@ -8,4 +8,49 @@
     <string name="nav_issues">Правовые вопросы</string>
     <string name="nav_purchases">Тендеры и закупки</string>
     <string name="nav_membership">Членство в ТПП</string>
+
+    <string name="aboutCCI_overview1">История </string>
+    <string name="aboutCCI_overview2">О ТПП</string>
+    <string name="aboutCCI_overview3">Цели и задачи </string>
+    <string name="aboutCCI_overview4">Деятельность палаты</string>
+    <string name="aboutCCI_ccicyctem1">Органы управления </string>
+    <string name="aboutCCI_ccicyctem2">Исполнительный комитет</string>
+    <string name="aboutCCI_ccicyctem3">Подведомственные организации </string>
+    <string name="aboutCCI_ccicyctem4">Территориальные управления</string>
+    <string name="aboutCCI_management">Руководство </string>
+    <string name="aboutCCI_structure">Организационная структура</string>
+    <string name="aboutCCI_documents">Нормативные документы ТПП</string>
+    <string name="aboutCCI_cooperation">Международное сотрудничество</string>
+    <string name="service_cciservices">Услуги ТПП</string>
+    <string name="service_interactive">Интерактивные услуги</string>
+
+    <string name="investors_zones1">Свободная индустриальная экономическая зона "Навои" </string>
+    <string name="investors_zones2">Специальная индустриальная зона "Ангрен"</string>
+    <string name="investors_zones3">Специальная индустриальная зона "Джизак"</string>
+    <string name="investors_facilities1">Информация о предприятиях находящихся на балансе коммерческих банков и предлагаемых для продажи инвесторам</string>
+    <string name="investors_facilities2">Свободные земельные участки Республики Узбекистан</string>
+    <string name="investors_facilities3">Объекты государственной собственности, подлежащие реализации инвесторам</string>
+    <string name="investors_facilities4">Объекты государственной собственности, предлагаемые для аренды субъектам предпринимательства</string>
+    <string name="investors_JSC1">Инвестиции в Узбекистане</string>
+    <string name="investors_JSC2">Инвестиционные предложения в финансовом и страховом секторе </string>
+    <string name="investors_JSC3">Инвестиционные предложения в промышленных отраслях</string>
+    <string name="investors_JSC4">Законодательство об ОА</string>
+    <string name="investors_offers">Перспективные инвестиционные проекты</string>
+    <string name="investors_projects">Индустриальные зоны</string>
+    <string name="investors_legal">Нормативно-правовые документы</string>
+
+    <string name="issues_consultation1">По вопросам лицензирования</string>
+    <string name="issues_consultation2">Правовая защита предпринимателей</string>
+    <string name="issues_consultation3">По отводу земли</string>
+    <string name="issues_courts">Третейский суд</string>
+    <string name="issues_arbitrationcourt">Международный коммерческий арбитражный суд</string>
+    <string name="issues_legislation">Новое в законодательстве</string>
+    <string name="issues_entrepreneurs">Касательно проверок у предпринимателей</string>
+    <string name="issues_market">Законы о рынке ценных бумаг</string>
+    <string name="purchases_abroad">Тендеры в Узбекистане</string>
+    <string name="purchases_tenders">Электронные закупки "UzEx"</string>
+    <string name="purchases_uzex">Тендеры за рубежом</string>
+    <string name="membership_cci">Онлайн заявка на вступление в членство в ТПП</string>
+    <string name="membership_opportunities">Преимущества и возможности</string>
+    <string name="membership_membership">Вступление в членство</string>
 </resources>
