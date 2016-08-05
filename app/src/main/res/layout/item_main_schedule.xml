@@ -2,39 +2,38 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="20dp"
     android:layout_marginBottom="20dp"
+    android:layout_marginTop="20dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:layout_marginBottom="2dp"
         android:layout_marginTop="2dp"
-        android:layout_marginBottom="2dp">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:orientation="vertical"
+            android:background="#FFFFFF"
             android:gravity="center"
-            android:background="#FFFFFF">
-
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_item_schedule_day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Day"
-                android:id="@+id/tv_item_schedule_day"
                 android:textColor="#033388"
                 android:textSize="20sp" />
 
             <TextView
+                android:id="@+id/tv_item_schedule_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Month"
-                android:id="@+id/tv_item_schedule_month"
                 android:textColor="#033388"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -42,68 +41,68 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
-            android:orientation="vertical"
             android:background="#FFFFFF"
-            android:layout_marginLeft="5dp">
+            android:orientation="vertical">
 
 
             <TextView
+                android:id="@+id/tv_item_schedule_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Content"
-                android:id="@+id/tv_item_schedule_content"
-                android:textColor="@color/blue"
-                android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
-                android:textSize="18sp"
-                android:layout_marginLeft="5dp" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
+                android:text="Content"
+                android:textColor="@color/blue"
+                android:textSize="18sp" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="4dp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginBottom="4dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="5dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="17dp"
                     android:layout_height="17dp"
-                    android:src="@mipmap/clock2"/>
+                    android:src="@mipmap/clock2" />
 
                 <TextView
+                    android:id="@+id/tv_item_schedule_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:text="time"
-                    android:id="@+id/tv_item_schedule_time"
-                    android:textColor="@color/gray"
-                    android:layout_marginLeft="5dp" />
+                    android:textColor="@color/gray" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="4dp"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="5dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="17dp"
                     android:layout_height="17dp"
-                    android:src="@mipmap/pin"/>
+                    android:src="@mipmap/pin" />
 
                 <TextView
+                    android:id="@+id/tv_item_schedule_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
                     android:text="Address"
-                    android:id="@+id/tv_item_schedule_address"
-                    android:textColor="@color/gray"
-                    android:layout_marginLeft="5dp" />
+                    android:textColor="@color/gray" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

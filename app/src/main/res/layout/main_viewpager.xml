@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/nv_main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/nv_main_viewpager"
         android:scaleType="centerCrop" />
+
     <TextView
+        android:id="@+id/tv_mainViewPager_title"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:text="New Text"
-        android:id="@+id/tv_mainViewPager_title"
         android:layout_gravity="center_horizontal|bottom"
-        android:gravity="center_vertical|center_horizontal"
         android:background="#a7000000"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="New Text"
         android:textColor="#ffffff"
         android:textSize="15sp" />
 </FrameLayout>

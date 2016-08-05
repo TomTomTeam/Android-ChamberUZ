@@ -1,72 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/lan_back">
+    android:background="@drawable/lan_back"
+    android:orientation="vertical">
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="300dp"
         android:layout_height="120dp"
-        android:id="@+id/imageView"
         android:background="@drawable/logoen"
         android:scaleType="fitStart" />
 
     <Button
+        android:id="@+id/btn_en"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="ENGLISH"
-        android:id="@+id/btn_en"
+        android:layout_gravity="center_horizontal"
         android:background="#00FFFFFF"
-        android:textColor="#EEE"
         android:onClick="onClick"
-        android:layout_gravity="center_horizontal" />
+        android:text="ENGLISH"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#EEE" />
 
     <Button
+        android:id="@+id/btn_ru"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="РУССКИЙ"
-        android:id="@+id/btn_ru"
-        android:layout_marginTop="40dp"
         android:layout_below="@+id/btn_en"
         android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"
         android:background="#00FFFFFF"
-        android:textColor="#EEE"
         android:onClick="onClick"
-        android:layout_gravity="center_horizontal" />
+        android:text="РУССКИЙ"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#EEE" />
 
     <Button
+        android:id="@+id/btn_uz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="O'ZBEK"
-        android:id="@+id/btn_uz"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:background="#00ffffff"
-        android:textColor="#EEE"
         android:onClick="onClick"
-        android:layout_gravity="center_horizontal" />
+        android:text="O'ZBEK"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#EEE" />
 
     <Button
+        android:id="@+id/btn_uzk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="ЎЗБЕК"
-        android:id="@+id/btn_uzk"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:background="#00FFFFFF"
-        android:textColor="#EEE"
         android:onClick="onClick"
-        android:layout_gravity="center_horizontal" />
+        android:text="ЎЗБЕК"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#EEE" />
 
     <Button
+        android:id="@+id/social"
         android:layout_width="164dp"
         android:layout_height="67dp"
-        android:id="@+id/social"
-        android:background="@drawable/social"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:background="@drawable/social" />
 
 
 </LinearLayout>
