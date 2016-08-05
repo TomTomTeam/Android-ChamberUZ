@@ -22,7 +22,8 @@
 
         </activity>
         <!-- Sub Page activity -->
-        <activity android:name=".Activity.SubPageView">
+        <activity android:name=".Activity.SubPageView"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <!-- Search results activity -->

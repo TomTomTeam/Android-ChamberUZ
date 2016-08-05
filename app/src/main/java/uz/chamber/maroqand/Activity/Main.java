@@ -6,6 +6,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
@@ -22,6 +23,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
@@ -164,6 +166,10 @@ public class Main extends AppCompatActivity {
                             tvTime.setText(list.get(i).getTime());
                             tvAddress.setText(list.get(i).getAddress());
 
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            params.setMargins(0,30,0,30);
+                            v.setLayoutParams(params);
+
 
                             layout.addView(v);
                         }
@@ -250,6 +256,7 @@ public class Main extends AppCompatActivity {
                 return false;
             }
         });
+        searchView.setBackgroundColor(Color.WHITE);
         return true;
     }
 

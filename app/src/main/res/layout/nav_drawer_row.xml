@@ -17,7 +17,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:textColor="#777882"
+            android:textColor="@color/gray"
             android:paddingBottom="5dp"
             android:focusable="false"
             android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />

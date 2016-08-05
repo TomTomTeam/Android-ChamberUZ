@@ -1,7 +1,9 @@
 package uz.chamber.maroqand.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.Model.ATag;
 import uz.chamber.maroqand.Model.FooterData;
 import uz.chamber.maroqand.R;
@@ -34,6 +37,7 @@ public class FooterView extends LinearLayout implements View.OnClickListener{
 
     public FooterView(Context context) {
         super(context);
+
         initView();
     }
 
@@ -73,11 +77,21 @@ public class FooterView extends LinearLayout implements View.OnClickListener{
             llLinks.addView(textView);
         }
 
-        ArrayList<ATag> sendList = FooterData.getInstance().getConnectCCIContent();
+        final ArrayList<ATag> sendList = FooterData.getInstance().getConnectCCIContent();
 
         for(int i=0; i<sendList.size(); i++){
+            final int j = i;
             Button button = new Button(getContext());
             button.setText(sendList.get(i).getTitle());
+            button.setBackgroundColor(getContext().getResources().getColor(R.color.blue));
+            button.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(AppConfig.getRealPath(sendList.get(j).getUrl())));
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getContext().startActivity(intent);
+                }
+            });
             llSend.addView(button);
         }
 

@@ -87,5 +87,10 @@
             android:id="@+id/nav_sign"
             android:icon="@mipmap/sign"
             android:title="SIGN UP" />
+
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@mipmap/sign"
+            android:title="SIGN UP" />
     </group>
 </menu>
