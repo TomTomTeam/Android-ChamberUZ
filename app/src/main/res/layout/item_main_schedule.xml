@@ -54,22 +54,24 @@
                 android:text="Content"
                 android:id="@+id/tv_item_schedule_content"
                 android:textColor="@color/blue"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                android:textSize="15sp" />
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:textSize="18sp"
+                android:layout_marginLeft="5dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                android:layout_marginTop="3dp"
+                android:layout_marginBottom="4dp"
+                android:layout_marginTop="4dp"
                 android:layout_gravity="center_vertical"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
                     android:src="@mipmap/clock2"/>
 
                 <TextView
@@ -85,13 +87,14 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                android:gravity="center_vertical">
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="5dp">
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
                     android:src="@mipmap/pin"/>
 
                 <TextView

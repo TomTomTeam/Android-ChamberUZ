@@ -16,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 import uz.chamber.maroqand.Activity.LanguageSelectActivity;
+import uz.chamber.maroqand.Activity.Main;
+import uz.chamber.maroqand.Activity.MainActivity;
 import uz.chamber.maroqand.Activity.NewsTabActivity;
 import uz.chamber.maroqand.Activity.SubPageView;
 import uz.chamber.maroqand.AppConfig;
@@ -49,7 +51,11 @@ public class ExpandableListViewOnClickListener implements ExpandableListView.OnC
 
         Log.i("ExpandedListAdapter", "GroupPosition : " + groupPosition + " / childPosition : " + childPosition);
 
-        if(groupPosition == 1) {
+        if(groupPosition == 0){
+            Intent intent = new Intent(mContext, Main.class);
+            mContext.startActivity(intent);
+            mContext.finish();
+        } else if(groupPosition == 1) {
             Intent intent = new Intent(mContext, NewsTabActivity.class);
             mContext.startActivity(intent);
         }else if(groupPosition == 10){
@@ -64,21 +70,6 @@ public class ExpandableListViewOnClickListener implements ExpandableListView.OnC
             intent.putExtra("url", AppConfig.getRealPath(url));
             mContext.startActivity(intent);
         }
-
-//        if (selectedItem.equals(Arrays.asList(v.getResources().getStringArray(R.array.nav_home)).get(0))) {
-//            Intent intent = new Intent(mContext, SubPageView.class);
-//            intent.putExtra("type", "home");
-//            intent.putExtra("url", v.getResources().getStringArray(R.array.nav_home_url));
-//            mContext.startActivity(intent);
-//        } else if (selectedItem.equalsIgnoreCase("Paint")) {
-//            Intent intent = new Intent(mContext, SubPageView.class);
-//            intent.putExtra("url", "http://chamber.uz/ru");
-//            mContext.startActivity(intent);
-//        } else if (selectedItem.equalsIgnoreCase("Watch")) {
-//            Intent intent = new Intent(mContext, SubPageView.class);
-//            intent.putExtra("url", "http://chamber.uz/uz");
-//            mContext.startActivity(intent);
-//        }
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
         return false;

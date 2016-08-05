@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="3"
+            android:background="@drawable/shape"
             android:id="@+id/nv_main_viewpager_news_img"
             android:scaleType="centerCrop" />
 

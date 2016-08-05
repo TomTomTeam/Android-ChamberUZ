@@ -50,7 +50,7 @@
     </string-array>
 
     <string-array name="nav_setting">
-        <item>SETTING</item>
+        <item>Setting</item>
     </string-array>
 
     <string-array name="nav_home">

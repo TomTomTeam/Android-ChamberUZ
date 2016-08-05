@@ -30,13 +30,11 @@ import uz.chamber.maroqand.Model.Selector;
 
 public class SubPageView extends AppCompatActivity {
     Parser parser;
-    String spage_header;
-    ArrayList<String> breadcrumb;
-    ArrayList<Selector> page_content;
     String type;
     String date;
     TextView title_tv;
     TextView textView;
+    ImageView icon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +53,7 @@ public class SubPageView extends AppCompatActivity {
 
         int[][] headerResources = {{R.drawable.headereng, R.drawable.headerru, R.drawable.headeruz, R.drawable.headeruzb}, {R.drawable.headerenglan, R.drawable.headerrulan, R.drawable.headeruzlan, R.drawable.headeruzblan}};
 
+        icon = (ImageView) findViewById(R.id.iv_subpage_news_icon);
         ImageView headerLogo = (ImageView) findViewById(R.id.imageViewplaces);
         ImageView headerLang = (ImageView) findViewById(R.id.imageViewplaceslang);
         headerLogo.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
@@ -82,16 +81,24 @@ public class SubPageView extends AppCompatActivity {
                 public void run() {
                     if(type.equals("news")){
                         try {
+                            icon.setVisibility(View.VISIBLE);
                             textView.setText(date.substring(0, 10));
                         }catch (StringIndexOutOfBoundsException e){
                             e.printStackTrace();
+                            icon.setVisibility(View.GONE);
                             textView.setText("");
                         }
                     }else {
-                        String string = breadcrumb.get(0);
-                        for (int i = 1; i < breadcrumb.size(); i++) {
-                            string += " / ";
-                            string += breadcrumb.get(i);
+                        icon.setVisibility(View.GONE);
+                        String string = "";
+                        try {
+                            string = breadcrumb.get(0);
+                            for (int i = 1; i < breadcrumb.size(); i++) {
+                                string += " / ";
+                                string += breadcrumb.get(i);
+                            }
+                        } catch (IndexOutOfBoundsException e){
+                            e.printStackTrace();
                         }
                         textView.setText(string);
                     }
@@ -139,6 +146,32 @@ public class SubPageView extends AppCompatActivity {
                                 break;
                         }
                     }
+                    if(content.size() == 0){
+                        TextView textView = new TextView(SubPageView.this);
+                        textView.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                        textView.setPadding(50, 25, 50, 25);
+                        textView.setTextSize(15);
+                        textView.setTextColor(Color.BLACK);
+                        textView.setText("No Result");
+                        linearLayout.addView(textView);
+                        TextView textView2 = new TextView(SubPageView.this);
+                        textView2.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                        textView2.setPadding(50, 150, 50, 150);
+                        textView2.setTextSize(200);
+                        textView2.setTextColor(Color.BLACK);
+                        textView2.setText("");
+                        linearLayout.addView(textView2);
+                    }
+                    if(content.size() < 3){
+                        TextView textView = new TextView(SubPageView.this);
+                        textView.setLayoutParams(new LinearLayout.LayoutParams(ActionBar.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                        textView.setPadding(50, 25, 50, 25);
+                        textView.setTextSize(100);
+                        textView.setTextColor(Color.BLACK);
+                        textView.setText("");
+                        linearLayout.addView(textView);
+                    }
+
                     linearLayout.addView(new FooterView(getApplicationContext()));
                 }
             });

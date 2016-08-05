@@ -34,7 +34,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/imageButton"
+                android:id="@+id/ib_main_membership"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
@@ -62,7 +62,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/imageButton2"
+                android:id="@+id/ib_main_business"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
@@ -87,7 +87,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/imageButton3"
+                android:id="@+id/ib_main_event"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="2dp"
@@ -112,7 +112,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/imageButton4"
+                android:id="@+id/ib_main_exhabition"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -171,14 +171,20 @@
         <HorizontalScrollView
             android:id="@+id/sv_main_partners"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#E9EDF9">
 
             <LinearLayout
                 android:id="@+id/ll_main_partners"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:scrollbars="none">
+                android:scrollbars="none"
+                android:foregroundGravity="center"
+                android:gravity="center">
 
             </LinearLayout>
 

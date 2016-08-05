@@ -62,17 +62,22 @@ public class FooterView extends LinearLayout implements View.OnClickListener{
         btLinks.setText((FooterData.getInstance().getLinkTitle()));
         btSend.setText(FooterData.getInstance().getConnectCCITitle());
 
+        btAddress.setTextColor(getResources().getColor(R.color.whiteblue));
+        btLinks.setTextColor(getResources().getColor(R.color.whiteblue));
+        btSend.setTextColor(getResources().getColor(R.color.whiteblue));
+
 
 
         TextView tvAddress = (TextView) v.findViewById(R.id.tv_footer_address);
         tvAddress.setText(FooterData.getInstance().getAddressContent());
+        tvAddress.setTextColor(getResources().getColor(R.color.whiteblue));
 
         ArrayList<ATag> listLinks = FooterData.getInstance().getLinkContent();
 
         for(int i=0; i<listLinks.size(); i++){
             TextView textView = new TextView(getContext());
             textView.setText(listLinks.get(i).getTitle());
-            textView.setTextColor(Color.parseColor("#ffffff"));
+            textView.setTextColor(getResources().getColor(R.color.whiteblue));
             Log.i("aa", listLinks.get(i).getTitle());
             llLinks.addView(textView);
         }
@@ -83,6 +88,7 @@ public class FooterView extends LinearLayout implements View.OnClickListener{
             final int j = i;
             Button button = new Button(getContext());
             button.setText(sendList.get(i).getTitle());
+            button.setTextColor(getResources().getColor(R.color.whiteblue));
             button.setBackgroundColor(getContext().getResources().getColor(R.color.blue));
             button.setOnClickListener(new OnClickListener() {
                 @Override

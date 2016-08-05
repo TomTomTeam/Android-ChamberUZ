@@ -93,8 +93,56 @@ public class Main extends AppCompatActivity {
         headerLogo.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
         headerLang.setImageDrawable(getResources().getDrawable(headerResources[1][AppConfig.languageNum]));
 
+        LinearLayout bt_membership = (LinearLayout) findViewById(R.id.ib_main_membership);
+        LinearLayout bt_business = (LinearLayout) findViewById(R.id.ib_main_business);
+        LinearLayout bt_event = (LinearLayout) findViewById(R.id.ib_main_event);
+        LinearLayout bt_exhibition = (LinearLayout) findViewById(R.id.ib_main_exhabition);
+
+        bt_membership.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SubPageView.class);
+                intent.putExtra("url", "");
+                intent.putExtra("type", "none");
+                startActivity(intent);
+            }
+        });
+
+        bt_business.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SubPageView.class);
+                intent.putExtra("url", "");
+                intent.putExtra("type", "none");
+                startActivity(intent);
+            }
+        });
+
+        bt_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SubPageView.class);
+                intent.putExtra("url", AppConfig.getRealPath("/en/events"));
+                intent.putExtra("type", "none");
+                startActivity(intent);
+            }
+        });
+
+        bt_exhibition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SubPageView.class);
+                intent.putExtra("url", AppConfig.getRealPath("/en/exhibitions"));
+                intent.putExtra("type", "none");
+                startActivity(intent);
+
+            }
+        });
+
         LayoutInflater inflater = getLayoutInflater();
         listHeaderView = inflater.inflate(R.layout.nav_header_main, null, false);
+        ImageView header = (ImageView) listHeaderView.findViewById(R.id.nav_header);
+        header.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
         mExpandableListView.addHeaderView(listHeaderView);
         setToolbar();
 

@@ -7,19 +7,19 @@
     <string name="nav_investors">Investorlar diqqatiga</string>
     <string name="nav_issues">Huquqiy masalalar</string>
     <string name="nav_purchases">Tender va haridlar</string>
-    <string name="nav_membership">SSP A\'zolik</string>
+    <string name="nav_membership">"SSP A\'zolik"</string>
 
     <string name="aboutCCI_overview1">Tarix</string>
     <string name="aboutCCI_overview2">SSP haqida</string>
     <string name="aboutCCI_overview3">Maqsad va vazifalari</string>
     <string name="aboutCCI_overview4">Palata faoliyati</string>
     <string name="aboutCCI_ccicyctem1">Boshqaruv оrgani</string>
-    <string name="aboutCCI_ccicyctem2">Ijroiya qo'mitasi</string>
+    <string name="aboutCCI_ccicyctem2">Ijroiya qo\'mitasi</string>
     <string name="aboutCCI_ccicyctem3">Unitar tashkilotlar</string>
     <string name="aboutCCI_ccicyctem4">Hududiy boshqarmalar</string>
     <string name="aboutCCI_management">Rahbariyat</string>
     <string name="aboutCCI_structure">Tashkiliy tuzilma</string>
-    <string name="aboutCCI_documents">"O‘zSSPning me'yoriy hujjatlari"</string>
+    <string name="aboutCCI_documents">"O\‘zSSPning me\'yoriy hujjatlari"</string>
     <string name="aboutCCI_cooperation">Xalqaro hamkorlik</string>
     <string name="service_cciservices">SSP xizmatlari</string>
     <string name="service_interactive">Interaktiv xizmatlar</string>
@@ -27,13 +27,13 @@
     <string name="investors_zones1">"Navoiy" erkin iqtisodiy-industrial zonasi</string>
     <string name="investors_zones2">"Angren" maхsus industrial zonasi</string>
     <string name="investors_zones3">"Jizzax" maхsus industrial zonasi</string>
-    <string name="investors_facilities1">Tijorat banklari balansida bo‘lgan va salohiyatli investorlarga sotish uchun taklif etilayotgan korxonalar</string>
-    <string name="investors_facilities2">O'zbekiston Respublikasida bo'sh yer maydonlari</string>
-    <string name="investors_facilities3">Investorlar tomonidan o‘zlashtirishga tegishli bo‘lgan hukumat mulki obyektlari</string>
-    <string name="investors_facilities4">Tadbirkorlik sub’ektlariga ijara uchun taklif etilayotgan davlat  mulk ob’ektlari </string>
-    <string name="investors_JSC1">O'zbekistonga sarmoya</string>
-    <string name="investors_JSC2">Moliya va sug'urta sohasidagi investitsion takliflari</string>
-    <string name="investors_JSC3">Sanoat tarmog'idagi investitsion takliflar</string>
+    <string name="investors_facilities1">Tijorat banklari balansida bo\‘lgan va salohiyatli investorlarga sotish uchun taklif etilayotgan korxonalar</string>
+    <string name="investors_facilities2">O\'zbekiston Respublikasida bo\'sh yer maydonlari</string>
+    <string name="investors_facilities3">Investorlar tomonidan o‘zlashtirishga tegishli bo\‘lgan hukumat mulki obyektlari</string>
+    <string name="investors_facilities4">Tadbirkorlik sub’ektlariga ijara uchun taklif etilayotgan davlat  mulk ob\’ektlari </string>
+    <string name="investors_JSC1">O\'zbekistonga sarmoya</string>
+    <string name="investors_JSC2">Moliya va sug\'urta sohasidagi investitsion takliflari</string>
+    <string name="investors_JSC3">Sanoat tarmog\'idagi investitsion takliflar</string>
     <string name="investors_JSC4">AJga tegishli qonun hujjatlari</string>
     <string name="investors_offers">"Istiqbolli investitsiya loyihalari"</string>
     <string name="investors_projects">"Industrial zonalari"</string>
@@ -50,7 +50,7 @@
     <string name="purchases_abroad">"O'zbekistondagi Tenderlar"</string>
     <string name="purchases_tenders">"Elektron savdo O'zRTXB"</string>
     <string name="purchases_uzex">Chet elda tenderlar</string>
-    <string name="membership_cci">"SSPga a'zolikka kirish uchun onlayn ariza"</string>
+    <string name="membership_cci">"SSPga a\'zolikka kirish uchun onlayn ariza"</string>
     <string name="membership_opportunities">"Afzalliklari va imkoniyatlar"</string>
     <string name="membership_membership">"A'zo bo'lish"</string>
 
