@@ -15,8 +15,8 @@ import com.android.volley.toolbox.NetworkImageView;
 import java.util.ArrayList;
 
 import uz.chamber.maroqand.Activity.SubPageView;
-import uz.chamber.maroqand.AppConfig;
-import uz.chamber.maroqand.AppController;
+import uz.chamber.maroqand.Util.AppConfig;
+import uz.chamber.maroqand.Util.AppController;
 import uz.chamber.maroqand.Model.MainViewPagerData;
 import uz.chamber.maroqand.R;
 

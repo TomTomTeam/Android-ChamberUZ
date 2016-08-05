@@ -3,20 +3,18 @@ package uz.chamber.maroqand.Adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
 
 import uz.chamber.maroqand.Activity.SubPageView;
-import uz.chamber.maroqand.AppController;
+import uz.chamber.maroqand.Util.AppController;
 import uz.chamber.maroqand.Model.NewsListComponent;
 import uz.chamber.maroqand.R;
 

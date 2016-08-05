@@ -1,12 +1,9 @@
-package uz.chamber.maroqand;
+package uz.chamber.maroqand.Util;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-/**
- * Created by lk on 2015. 8. 15..
- */
 public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScrollListener {
     public static String TAG = EndlessRecyclerOnScrollListener.class.getSimpleName();
 

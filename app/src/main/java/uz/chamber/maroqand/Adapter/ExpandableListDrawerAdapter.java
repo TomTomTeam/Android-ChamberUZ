@@ -10,7 +10,6 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -97,7 +96,6 @@ public class ExpandableListDrawerAdapter extends BaseExpandableListAdapter{
         ImageView expandedListImageView = (ImageView) convertView.findViewById(R.id.iv_drawer_listview_icon);
         expandedListImageView.setImageDrawable(mContext.getResources().getDrawable(imgArray[listPosition]));
 
-        Log.v("Main"," Key title  "+listTitle);
         return convertView;
     }
 

@@ -1,4 +1,4 @@
-package uz.chamber.maroqand;
+package uz.chamber.maroqand.Util;
 
 import android.app.Application;
 import android.text.TextUtils;

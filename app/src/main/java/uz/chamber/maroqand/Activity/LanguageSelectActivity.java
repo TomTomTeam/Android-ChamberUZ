@@ -4,13 +4,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import uz.chamber.maroqand.AppConfig;
+import uz.chamber.maroqand.Util.AppConfig;
 import uz.chamber.maroqand.R;
 
 public class LanguageSelectActivity extends AppCompatActivity {
@@ -21,21 +19,23 @@ public class LanguageSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language_select);
 
+        initView();
+
+        social.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Popup facebook page
+                startActivity(new Intent(Intent.ACTION_VIEW,Uri.parse("https://www.facebook.com/uzchamber")));
+            }
+        });
+    }
+
+    private void initView() {
         btn_en = (Button) findViewById(R.id.btn_en);
         btn_ru = (Button) findViewById(R.id.btn_ru);
         btn_uz = (Button) findViewById(R.id.btn_uz);
         btn_uzk = (Button) findViewById(R.id.btn_uzk);
         social = (Button) findViewById(R.id.social);
-
-        social.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 웹페이지 띄우기
-                Uri uri = Uri.parse("https://www.facebook.com/uzchamber");
-                Intent it  = new Intent(Intent.ACTION_VIEW,uri);
-                startActivity(it);
-            }
-        });
     }
 
     public void onClick(View v) {
@@ -54,6 +54,7 @@ public class LanguageSelectActivity extends AppCompatActivity {
                 num = 3;
                 break;
         }
+
         AppConfig.languageNum = num;
         SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();

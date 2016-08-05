@@ -1,7 +1,6 @@
 package uz.chamber.maroqand.Util;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -10,17 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 import uz.chamber.maroqand.Activity.LanguageSelectActivity;
 import uz.chamber.maroqand.Activity.Main;
-import uz.chamber.maroqand.Activity.MainActivity;
 import uz.chamber.maroqand.Activity.NewsTabActivity;
 import uz.chamber.maroqand.Activity.SubPageView;
-import uz.chamber.maroqand.AppConfig;
 import uz.chamber.maroqand.R;
 
 /**

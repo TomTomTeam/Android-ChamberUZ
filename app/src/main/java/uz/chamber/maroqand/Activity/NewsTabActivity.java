@@ -1,7 +1,5 @@
 package uz.chamber.maroqand.Activity;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -21,38 +19,57 @@ import java.util.ArrayList;
 
 import uz.chamber.maroqand.Adapter.ExpandableListDrawerAdapter;
 import uz.chamber.maroqand.Adapter.NewsPagerAdapter;
-import uz.chamber.maroqand.AppConfig;
-import uz.chamber.maroqand.CallBack.CallBackNetwork;
+import uz.chamber.maroqand.Util.AppConfig;
 import uz.chamber.maroqand.CallBack.CallBackNews;
-import uz.chamber.maroqand.Model.NewsListComponent;
-import uz.chamber.maroqand.Model.Selector;
 import uz.chamber.maroqand.Model.TabList;
 import uz.chamber.maroqand.Parser.NewsTabParser;
 import uz.chamber.maroqand.R;
 import uz.chamber.maroqand.Util.ExpandableListViewOnClickListener;
 
 public class NewsTabActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    ViewPager viewPager;
-    NewsPagerAdapter adapter;
-    NewsTabParser newsTabParser;
+    private ViewPager viewPager;
+    private NewsPagerAdapter adapter;
+    private NewsTabParser newsTabParser;
     public ExpandableListView mExpandableListView;
     private DrawerLayout mDrawerLayout;
     private String selectedItem;
+    private ImageView nav_header;
     private View listHeaderView;
     private ActionBarDrawerToggle mDrawerToggle;
     private ExpandableListDrawerAdapter mExpandableListAdapter;
-    Toolbar toolbar;
+    private Toolbar toolbar;
+    private ImageView headerLogo;
+    private ImageView headerLang;
+    private int[][] headerResources = {{R.drawable.headereng, R.drawable.headerru, R.drawable.headeruz, R.drawable.headeruzb},
+            {R.drawable.headerenglan, R.drawable.headerrulan, R.drawable.headeruzlan, R.drawable.headeruzblan}};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_view);
 
+        initView();
+        setNavigationDrawer();
+
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        newsTabParser = new NewsTabParser(AppConfig.getRealPath("/en/news"), callBackNetwork);
+
+        addDrawerItems();
+        setupDrawer();
+    }
+
+    private void initView() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        ImageView nav_header = (ImageView) findViewById(R.id.nav_header);
+        nav_header = (ImageView) findViewById(R.id.nav_header);
         setSupportActionBar(toolbar);
+        ImageView headerLogo = (ImageView) findViewById(R.id.imageViewplaces);
+        ImageView headerLang = (ImageView) findViewById(R.id.imageViewplaceslang);
+        headerLogo.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
+        headerLang.setImageDrawable(getResources().getDrawable(headerResources[1][AppConfig.languageNum]));
+    }
 
-
+    private void setNavigationDrawer() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -66,22 +83,6 @@ public class NewsTabActivity extends AppCompatActivity implements NavigationView
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mExpandableListView.addHeaderView(listHeaderView);
-
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-
-        newsTabParser = new NewsTabParser(AppConfig.getRealPath("/en/news"), callBackNetwork);
-
-        int[][] headerResources = {{R.drawable.headereng, R.drawable.headerru, R.drawable.headeruz, R.drawable.headeruzb}, {R.drawable.headerenglan, R.drawable.headerrulan, R.drawable.headeruzlan, R.drawable.headeruzblan}};
-
-        ImageView headerLogo = (ImageView) findViewById(R.id.imageViewplaces);
-        ImageView headerLang = (ImageView) findViewById(R.id.imageViewplaceslang);
-        headerLogo.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
-        headerLang.setImageDrawable(getResources().getDrawable(headerResources[1][AppConfig.languageNum]));
-
-
-        addDrawerItems();
-        setupDrawer();
-
     }
 
     CallBackNews callBackNetwork = new CallBackNews() {

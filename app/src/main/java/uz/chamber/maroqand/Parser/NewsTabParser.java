@@ -1,7 +1,5 @@
 package uz.chamber.maroqand.Parser;
 
-import android.util.Log;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -9,10 +7,8 @@ import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
 
-import uz.chamber.maroqand.CallBack.CallBackNetwork;
 import uz.chamber.maroqand.CallBack.CallBackNews;
 import uz.chamber.maroqand.Model.NewsListComponent;
-import uz.chamber.maroqand.Model.Selector;
 import uz.chamber.maroqand.Model.TabList;
 
 public class NewsTabParser {

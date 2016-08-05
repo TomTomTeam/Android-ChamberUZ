@@ -1,13 +1,10 @@
-package uz.chamber.maroqand;
+package uz.chamber.maroqand.Util;
 
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 
 import com.android.volley.toolbox.ImageLoader;
 
-/**
- * Created by lk on 2015. 8. 2..
- */
 public class LruBitmapCache extends LruCache<String, Bitmap> implements ImageLoader.ImageCache{
 
     private LruCache<String, Bitmap> mMemory;

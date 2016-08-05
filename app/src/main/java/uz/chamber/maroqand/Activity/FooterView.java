@@ -2,11 +2,7 @@ package uz.chamber.maroqand.Activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,35 +12,36 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import uz.chamber.maroqand.AppConfig;
+import uz.chamber.maroqand.Util.AppConfig;
 import uz.chamber.maroqand.Model.ATag;
 import uz.chamber.maroqand.Model.FooterData;
 import uz.chamber.maroqand.R;
 
-/**
- * Created by lk on 2016. 7. 27..
- */
+
 public class FooterView extends LinearLayout implements View.OnClickListener{
 
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
     private Button btAddress;
     private Button btLinks;
     private Button btSend;
     private LinearLayout llAddress;
     private LinearLayout llLinks;
     private LinearLayout llSend;
+    private View v;
 
     public FooterView(Context context) {
         super(context);
 
         initView();
+        setAddressTab();
+        setLinkTab();
+        setConnectCCITab();
+        addView(v);
     }
 
     private void initView(){
         String infService = Context.LAYOUT_INFLATER_SERVICE;
         LayoutInflater li = (LayoutInflater) getContext().getSystemService(infService);
-        View v = li.inflate(R.layout.view_footer, this, false);
+        v = li.inflate(R.layout.view_footer, this, false);
 
         btAddress = (Button) v.findViewById(R.id.bt_footer_address);
         btLinks = (Button) v.findViewById(R.id.bt_footer_links);
@@ -65,23 +62,9 @@ public class FooterView extends LinearLayout implements View.OnClickListener{
         btAddress.setTextColor(getResources().getColor(R.color.whiteblue));
         btLinks.setTextColor(getResources().getColor(R.color.whiteblue));
         btSend.setTextColor(getResources().getColor(R.color.whiteblue));
+    }
 
-
-
-        TextView tvAddress = (TextView) v.findViewById(R.id.tv_footer_address);
-        tvAddress.setText(FooterData.getInstance().getAddressContent());
-        tvAddress.setTextColor(getResources().getColor(R.color.whiteblue));
-
-        ArrayList<ATag> listLinks = FooterData.getInstance().getLinkContent();
-
-        for(int i=0; i<listLinks.size(); i++){
-            TextView textView = new TextView(getContext());
-            textView.setText(listLinks.get(i).getTitle());
-            textView.setTextColor(getResources().getColor(R.color.whiteblue));
-            Log.i("aa", listLinks.get(i).getTitle());
-            llLinks.addView(textView);
-        }
-
+    private void setConnectCCITab() {
         final ArrayList<ATag> sendList = FooterData.getInstance().getConnectCCIContent();
 
         for(int i=0; i<sendList.size(); i++){
@@ -100,9 +83,24 @@ public class FooterView extends LinearLayout implements View.OnClickListener{
             });
             llSend.addView(button);
         }
+    }
 
-        Log.i("aaa","aaa");
-        addView(v);
+    private void setLinkTab() {
+        ArrayList<ATag> listLinks = FooterData.getInstance().getLinkContent();
+
+        for(int i=0; i<listLinks.size(); i++){
+            TextView textView = new TextView(getContext());
+            textView.setText(listLinks.get(i).getTitle());
+            textView.setTextColor(getResources().getColor(R.color.whiteblue));
+            Log.i("aa", listLinks.get(i).getTitle());
+            llLinks.addView(textView);
+        }
+    }
+
+    private void setAddressTab() {
+        TextView tvAddress = (TextView) v.findViewById(R.id.tv_footer_address);
+        tvAddress.setText(FooterData.getInstance().getAddressContent());
+        tvAddress.setTextColor(getResources().getColor(R.color.whiteblue));
     }
 
     @Override

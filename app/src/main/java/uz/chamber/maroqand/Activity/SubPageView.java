@@ -15,51 +15,60 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.NetworkImageView;
-import com.android.volley.toolbox.StringRequest;
 
 import java.util.ArrayList;
 
-import uz.chamber.maroqand.AppConfig;
-import uz.chamber.maroqand.AppController;
+import uz.chamber.maroqand.Util.AppConfig;
+import uz.chamber.maroqand.Util.AppController;
 import uz.chamber.maroqand.CallBack.CallBackNetwork;
-import uz.chamber.maroqand.Model.NewsListComponent;
-import uz.chamber.maroqand.Model.TabList;
 import uz.chamber.maroqand.Parser.Parser;
 import uz.chamber.maroqand.R;
 import uz.chamber.maroqand.Model.Selector;
 
 public class SubPageView extends AppCompatActivity {
-    Parser parser;
-    String type;
-    String date;
-    TextView title_tv;
-    TextView textView;
-    ImageView icon;
+    private Parser parser;
+    private String type;
+    private String date;
+    private TextView title_tv;
+    private TextView textView;
+    private ImageView icon;
+    private ImageView headerLogo;
+    private ImageView headerLang;
+
+    private String url;
+
+    int[][] headerResources = {{R.drawable.headereng, R.drawable.headerru, R.drawable.headeruz, R.drawable.headeruzb},
+            {R.drawable.headerenglan, R.drawable.headerrulan, R.drawable.headeruzlan, R.drawable.headeruzblan}};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.subpage);
 
+        getIntentData();
+        initView();
+        startParsing();
+    }
+
+    private void startParsing() {
+        parser = new Parser(url, callBackNetwork);
+    }
+
+    private void getIntentData() {
         Intent intent = getIntent();
-        String url = intent.getStringExtra("url");
+        url = intent.getStringExtra("url");
         type = intent.getStringExtra("type");
         date = intent.getStringExtra("date");
+    }
 
-        parser = new Parser(url, callBackNetwork);
-
+    private void initView() {
         title_tv = (TextView) findViewById(R.id.title_subpage);
         textView = (TextView) findViewById(R.id.breadcrumb_subpage);
-
-        int[][] headerResources = {{R.drawable.headereng, R.drawable.headerru, R.drawable.headeruz, R.drawable.headeruzb}, {R.drawable.headerenglan, R.drawable.headerrulan, R.drawable.headeruzlan, R.drawable.headeruzblan}};
-
         icon = (ImageView) findViewById(R.id.iv_subpage_news_icon);
-        ImageView headerLogo = (ImageView) findViewById(R.id.imageViewplaces);
-        ImageView headerLang = (ImageView) findViewById(R.id.imageViewplaceslang);
+        headerLogo = (ImageView) findViewById(R.id.imageViewplaces);
+        headerLang = (ImageView) findViewById(R.id.imageViewplaceslang);
         headerLogo.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
         headerLang.setImageDrawable(getResources().getDrawable(headerResources[1][AppConfig.languageNum]));
-
-
     }
 
     CallBackNetwork callBackNetwork = new CallBackNetwork() {

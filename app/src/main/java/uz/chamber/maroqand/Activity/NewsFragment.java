@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import uz.chamber.maroqand.Adapter.NewsRecyclerViewAdapter;
-import uz.chamber.maroqand.EndlessRecyclerOnScrollListener;
+import uz.chamber.maroqand.Util.EndlessRecyclerOnScrollListener;
 import uz.chamber.maroqand.Model.NewsListComponent;
 import uz.chamber.maroqand.R;
 
@@ -35,7 +35,6 @@ public class NewsFragment extends Fragment {
         View view = inflater.inflate(R.layout.news_fragment, null);
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.my_recycler_view);
-
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this.getContext());

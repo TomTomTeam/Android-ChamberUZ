@@ -1,20 +1,14 @@
 package uz.chamber.maroqand.Activity;
 
 import android.animation.ObjectAnimator;
-import android.app.Activity;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -23,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
@@ -33,16 +26,12 @@ import android.widget.TextView;
 import com.android.volley.toolbox.NetworkImageView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import uz.chamber.maroqand.Adapter.ExpandableListDrawerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerAdapter;
 import uz.chamber.maroqand.Adapter.MainViewPagerNewsAdapter;
-import uz.chamber.maroqand.AppConfig;
-import uz.chamber.maroqand.AppController;
+import uz.chamber.maroqand.Util.AppConfig;
+import uz.chamber.maroqand.Util.AppController;
 import uz.chamber.maroqand.CallBack.CallBack;
 import uz.chamber.maroqand.Model.MainViewListData;
 import uz.chamber.maroqand.Model.MainViewPagerData;
@@ -52,52 +41,81 @@ import uz.chamber.maroqand.Util.ExpandableListViewOnClickListener;
 
 public class Main extends AppCompatActivity {
 
-    ViewPager viewPager;
-    ViewPager viewPagerNews;
-    Handler handler;
-    MainViewPagerAdapter adapterMainPager;
-    MainViewPagerNewsAdapter adapterNewsPager;
-    NetworkImageView nvBannerBottom;
-    HorizontalScrollView svPartner;
-    LinearLayout llRootView;
-    int p;
-    int s;
+    private ViewPager viewPager;
+    private ViewPager viewPagerNews;
+    private Handler handler;
+    private MainViewPagerAdapter adapterMainPager;
+    private MainViewPagerNewsAdapter adapterNewsPager;
+    private NetworkImageView nvBannerBottom;
+    private HorizontalScrollView svPartner;
+    private LinearLayout llRootView;
+
+    // to use auto scrolling
+    private int p;
+    private int s;
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     public ExpandableListView mExpandableListView;
     private ExpandableListDrawerAdapter mExpandableListAdapter;
-    private Map<String, List<String>> mExpandableListData;
-    private String selectedItem;
     private Toolbar toolbar;
+    private ImageView headerLogo;
+    private ImageView headerLang;
 
-    private HashMap<String, List<String>> listDataChild;
-    private List<String> listDataHeader;
+    private View listHeaderView;
+    private String selectedItem;
 
-    View listHeaderView;
+    private LinearLayout bt_membership;
+    private LinearLayout bt_business;
+    private LinearLayout bt_event;
+    private LinearLayout bt_exhibition;
+
+    private  ImageView header;
+    private LayoutInflater inflater;
+
+    private int[][] headerResources = {{R.drawable.headereng, R.drawable.headerru, R.drawable.headeruz, R.drawable.headeruzb},
+            {R.drawable.headerenglan, R.drawable.headerrulan, R.drawable.headeruzlan, R.drawable.headeruzblan}};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mExpandableListView = (ExpandableListView) findViewById(R.id.navList);
+        initView();
+        setOnClickListenerMainButton();
 
-        int[][] headerResources = {{R.drawable.headereng, R.drawable.headerru, R.drawable.headeruz, R.drawable.headeruzb}, {R.drawable.headerenglan, R.drawable.headerrulan, R.drawable.headeruzlan, R.drawable.headeruzblan}};
+        setNavigationBar();
 
-        ImageView headerLogo = (ImageView) findViewById(R.id.imageViewplaces);
-        ImageView headerLang = (ImageView) findViewById(R.id.imageViewplaceslang);
-        headerLogo.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
-        headerLang.setImageDrawable(getResources().getDrawable(headerResources[1][AppConfig.languageNum]));
+        new MainPageParser(callBack);
 
-        LinearLayout bt_membership = (LinearLayout) findViewById(R.id.ib_main_membership);
-        LinearLayout bt_business = (LinearLayout) findViewById(R.id.ib_main_business);
-        LinearLayout bt_event = (LinearLayout) findViewById(R.id.ib_main_event);
-        LinearLayout bt_exhibition = (LinearLayout) findViewById(R.id.ib_main_exhabition);
 
+        handler = new Handler() {
+            public void handleMessage(android.os.Message msg) {
+                viewPager.setCurrentItem(p);
+                p++;
+                try {
+                    if (p > viewPager.getAdapter().getCount())
+                        p = 0;
+                } catch (NullPointerException e) {
+                    p = 0;
+                }
+                svPartner.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ObjectAnimator.ofInt(svPartner, "scrollX", s).setDuration(1000).start();
+                    }
+                });
+                s += 500;
+                if (s > svPartner.getBottom() + 2000)
+                    s = 0;
+            }
+        };
+        new AutoTransferThread().start();
+    }
+
+    private void setOnClickListenerMainButton() {
         bt_membership.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -138,10 +156,9 @@ public class Main extends AppCompatActivity {
 
             }
         });
+    }
 
-        LayoutInflater inflater = getLayoutInflater();
-        listHeaderView = inflater.inflate(R.layout.nav_header_main, null, false);
-        ImageView header = (ImageView) listHeaderView.findViewById(R.id.nav_header);
+    private void setNavigationBar() {
         header.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
         mExpandableListView.addHeaderView(listHeaderView);
         setToolbar();
@@ -154,6 +171,19 @@ public class Main extends AppCompatActivity {
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
+    }
+
+    private void initView() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mExpandableListView = (ExpandableListView) findViewById(R.id.navList);
+        headerLogo = (ImageView) findViewById(R.id.imageViewplaces);
+        headerLang = (ImageView) findViewById(R.id.imageViewplaceslang);
+        bt_membership = (LinearLayout) findViewById(R.id.ib_main_membership);
+        bt_business = (LinearLayout) findViewById(R.id.ib_main_business);
+        bt_event = (LinearLayout) findViewById(R.id.ib_main_event);
+        bt_exhibition = (LinearLayout) findViewById(R.id.ib_main_exhabition);
 
         viewPager = (ViewPager) findViewById(R.id.vp_mainViewPager);
         viewPagerNews = (ViewPager) findViewById(R.id.vp_mainViewPager_news);
@@ -161,132 +191,14 @@ public class Main extends AppCompatActivity {
         svPartner = (HorizontalScrollView) findViewById(R.id.sv_main_partners);
         llRootView = (LinearLayout) findViewById(R.id.ll_main_rootView);
 
-        CallBack callBack = new CallBack() {
-            @Override
-            public void doneViewPager(final ArrayList<MainViewPagerData> list) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapterMainPager = new MainViewPagerAdapter(getApplicationContext(), list);
-                        viewPager.setAdapter(adapterMainPager);
-                        viewPager.getAdapter().notifyDataSetChanged();
-                    }
-                });
-            }
+        inflater = getLayoutInflater();
+        listHeaderView = inflater.inflate(R.layout.nav_header_main, null, false);
+        header = (ImageView) listHeaderView.findViewById(R.id.nav_header);
 
-            @Override
-            public void doneNews(final ArrayList<MainViewPagerData> list) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapterNewsPager = new MainViewPagerNewsAdapter(getApplicationContext(), list);
-                        viewPagerNews.setAdapter(adapterNewsPager);
-                        viewPagerNews.setOffscreenPageLimit(3);
-                        viewPagerNews.getAdapter().notifyDataSetChanged();
-                    }
-                });
-            }
+        setSupportActionBar(toolbar);
 
-            @Override
-            public void doneBannerBottom(final String imgUrl, String linkUrl) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        nvBannerBottom.setImageUrl(imgUrl, AppController.getInstance().getImageLoader());
-
-                    }
-                });
-            }
-
-            @Override
-            public void doneSchedule(final ArrayList<MainViewListData> list) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        LinearLayout layout = (LinearLayout) findViewById(R.id.ll_main_schedule);
-
-                        for (int i = 0; i < list.size(); i++) {
-                            LayoutInflater inflater = (LayoutInflater) getApplication().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                            View v = inflater.inflate(R.layout.item_main_schedule, null, false);
-
-                            TextView tvDay = (TextView) v.findViewById(R.id.tv_item_schedule_day);
-                            TextView tvMonth = (TextView) v.findViewById(R.id.tv_item_schedule_month);
-                            TextView tvContent = (TextView) v.findViewById(R.id.tv_item_schedule_content);
-                            TextView tvTime = (TextView) v.findViewById(R.id.tv_item_schedule_time);
-                            TextView tvAddress = (TextView) v.findViewById(R.id.tv_item_schedule_address);
-
-                            tvDay.setText(list.get(i).getDay());
-                            tvMonth.setText(list.get(i).getMonth());
-                            tvContent.setText(list.get(i).getContent());
-                            tvTime.setText(list.get(i).getTime());
-                            tvAddress.setText(list.get(i).getAddress());
-
-
-                            layout.addView(v);
-                        }
-                    }
-                });
-
-            }
-
-            @Override
-            public void donePartner(final ArrayList<MainViewPagerData> dataListPartners) {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        LinearLayout rootView = (LinearLayout) findViewById(R.id.ll_main_partners);
-                        for (int i = 0; i < dataListPartners.size(); i++) {
-                            NetworkImageView v = new NetworkImageView(getApplicationContext());
-                            v.setImageUrl(dataListPartners.get(i).getImgUrl(), AppController.getInstance().getImageLoader());
-                            rootView.addView(v);
-                        }
-                        svPartner.post(new Runnable() {
-                            @Override
-                            public void run() {
-
-                            }
-                        });
-                    }
-                });
-            }
-
-            @Override
-            public void doneFooter() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        llRootView.addView(new FooterView(getApplicationContext()));
-                    }
-                });
-            }
-        };
-
-        MainPageParser image = new MainPageParser(callBack);
-
-
-        handler = new Handler() {
-            public void handleMessage(android.os.Message msg) {
-                viewPager.setCurrentItem(p);
-                p++;
-                try {
-                    if (p > viewPager.getAdapter().getCount())
-                        p = 0;
-                } catch (NullPointerException e) {
-                    p = 0;
-                }
-                svPartner.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        ObjectAnimator.ofInt(svPartner, "scrollX", s).setDuration(1000).start();
-                    }
-                });
-                s += 500;
-                if (s > svPartner.getBottom() + 2000)
-                    s = 0;
-            }
-        };
-        new AutoTransferThread().start();
+        headerLogo.setImageDrawable(getResources().getDrawable(headerResources[0][AppConfig.languageNum]));
+        headerLang.setImageDrawable(getResources().getDrawable(headerResources[1][AppConfig.languageNum]));
     }
 
     @Override
@@ -319,7 +231,6 @@ public class Main extends AppCompatActivity {
                     handler.sendEmptyMessage(0);
                     Thread.sleep(5000);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }
@@ -333,7 +244,7 @@ public class Main extends AppCompatActivity {
 
 //        if (id == R.id.action_search) {
 //            return true;
-//        }
+//        } // todo Search View
 
         return super.onOptionsItemSelected(item);
     }
@@ -430,5 +341,106 @@ public class Main extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
+    CallBack callBack = new CallBack() {
+        @Override
+        public void doneViewPager(final ArrayList<MainViewPagerData> list) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    adapterMainPager = new MainViewPagerAdapter(getApplicationContext(), list);
+                    viewPager.setAdapter(adapterMainPager);
+                    viewPager.getAdapter().notifyDataSetChanged();
+                }
+            });
+        }
+
+        @Override
+        public void doneNews(final ArrayList<MainViewPagerData> list) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    adapterNewsPager = new MainViewPagerNewsAdapter(getApplicationContext(), list);
+                    viewPagerNews.setAdapter(adapterNewsPager);
+                    viewPagerNews.setOffscreenPageLimit(3);
+                    viewPagerNews.getAdapter().notifyDataSetChanged();
+                }
+            });
+        }
+
+        @Override
+        public void doneBannerBottom(final String imgUrl, String linkUrl) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    nvBannerBottom.setImageUrl(imgUrl, AppController.getInstance().getImageLoader());
+
+                }
+            });
+        }
+
+        @Override
+        public void doneSchedule(final ArrayList<MainViewListData> list) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                    LinearLayout layout = (LinearLayout) findViewById(R.id.ll_main_schedule);
+
+                    for (int i = 0; i < list.size(); i++) {
+                        LayoutInflater inflater = (LayoutInflater) getApplication().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        View v = inflater.inflate(R.layout.item_main_schedule, null, false);
+
+                        TextView tvDay = (TextView) v.findViewById(R.id.tv_item_schedule_day);
+                        TextView tvMonth = (TextView) v.findViewById(R.id.tv_item_schedule_month);
+                        TextView tvContent = (TextView) v.findViewById(R.id.tv_item_schedule_content);
+                        TextView tvTime = (TextView) v.findViewById(R.id.tv_item_schedule_time);
+                        TextView tvAddress = (TextView) v.findViewById(R.id.tv_item_schedule_address);
+
+                        tvDay.setText(list.get(i).getDay());
+                        tvMonth.setText(list.get(i).getMonth());
+                        tvContent.setText(list.get(i).getContent());
+                        tvTime.setText(list.get(i).getTime());
+                        tvAddress.setText(list.get(i).getAddress());
+
+
+                        layout.addView(v);
+                    }
+                }
+            });
+
+        }
+
+        @Override
+        public void donePartner(final ArrayList<MainViewPagerData> dataListPartners) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    LinearLayout rootView = (LinearLayout) findViewById(R.id.ll_main_partners);
+                    for (int i = 0; i < dataListPartners.size(); i++) {
+                        NetworkImageView v = new NetworkImageView(getApplicationContext());
+                        v.setImageUrl(dataListPartners.get(i).getImgUrl(), AppController.getInstance().getImageLoader());
+                        rootView.addView(v);
+                    }
+                    svPartner.post(new Runnable() {
+                        @Override
+                        public void run() {
+
+                        }
+                    });
+                }
+            });
+        }
+
+        @Override
+        public void doneFooter() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    llRootView.addView(new FooterView(getApplicationContext()));
+                }
+            });
+        }
+    };
 
 }
