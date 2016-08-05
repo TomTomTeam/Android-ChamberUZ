@@ -2,6 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_marginBottom="20dp"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <LinearLayout
@@ -44,42 +47,53 @@
                 android:layout_height="wrap_content"
                 android:text="Content"
                 android:id="@+id/tv_item_schedule_content"
-                android:textColor="#033388" />
+                android:textColor="@color/blue"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_menu_send"/>
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/time"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="time"
                     android:id="@+id/tv_item_schedule_time"
-                    android:textColor="#033388" />
+                    android:textColor="@color/gray"
+                    android:layout_marginLeft="5dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:gravity="center_vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_menu_send"/>
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/place"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Address"
                     android:id="@+id/tv_item_schedule_address"
-                    android:textColor="#033388" />
+                    android:textColor="@color/gray"
+                    android:layout_marginLeft="5dp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

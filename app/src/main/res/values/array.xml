@@ -42,24 +42,61 @@
             android:id="@+id/nav_sign"
             android:icon="@mipmap/sign"
             android:title="SIGN UP" >SIGN UP</item>
+        <item
+            android:id="@+id/nav_setting"
+            android:icon="@mipmap/sign"
+            android:title="SETTING" >SETTING</item>
 
+    </string-array>
+
+    <string-array name="nav_setting">
+        <item>SETTING</item>
     </string-array>
 
     <string-array name="nav_home">
+        <item>@string/nav_home</item>
+    </string-array>
 
+    <string-array name="nav_home_url">
+        <item>/en/news</item>
     </string-array>
 
     <string-array name="nav_news">
+        <item>@string/nav_news</item>
+    </string-array>
 
+    <string-array name="nav_news_url">
+        <item>/en/news</item>
     </string-array>
 
     <string-array name="nav_about">
-        <item>@string/aboutCCI_overview</item>
-        <item>@string/aboutCCI_ccicyctem</item>
+        <item>@string/aboutCCI_overview1</item>
+        <item>@string/aboutCCI_overview2</item>
+        <item>@string/aboutCCI_overview3</item>
+        <item>@string/aboutCCI_overview4</item>
+        <item>@string/aboutCCI_ccicyctem1</item>
+        <item>@string/aboutCCI_ccicyctem2</item>
+        <item>@string/aboutCCI_ccicyctem3</item>
+        <item>@string/aboutCCI_ccicyctem4</item>
         <item>@string/aboutCCI_management</item>
         <item>@string/aboutCCI_structure</item>
         <item>@string/aboutCCI_documents</item>
         <item>@string/aboutCCI_cooperation</item>
+    </string-array>
+
+    <string-array name="nav_about_url">
+        <item>/en/page/3435</item>
+        <item>/en/page/3439</item>
+        <item>/en/page/3431</item>
+        <item>/en/page/2068</item>
+        <item>/en/page/3443</item>
+        <item>/en/page/4046</item>
+        <item>/en/page/4051</item>
+        <item>/en/page/4048</item>
+        <item>/en/page/3694</item>
+        <item>/en/page/909</item>
+        <item>/en/page/4721</item>
+        <item>/en/page/914</item>
     </string-array>
 
     <string-array name="nav_services">
@@ -67,23 +104,68 @@
         <item>@string/service_interactive</item>
     </string-array>
 
+    <string-array name="nav_services_url">
+        <item>/en/page/4517</item>
+        <item>/en/page/4854</item>
+    </string-array>
+
     <string-array name="nav_investors">
-        <item>@string/investors_zones</item>
-        <item>@string/investors_facilities</item>
-        <item>@string/investors_JSC</item>
+        <item>@string/investors_zones1</item>
+        <item>@string/investors_zones2</item>
+        <item>@string/investors_zones3</item>
+        <item>@string/investors_facilities1</item>
+        <item>@string/investors_facilities2</item>
+        <item>@string/investors_facilities3</item>
+        <item>@string/investors_facilities4</item>
+        <item>@string/investors_JSC1</item>
+        <item>@string/investors_JSC2</item>
+        <item>@string/investors_JSC3</item>
+        <item>@string/investors_JSC4</item>
         <item>@string/investors_offers</item>
         <item>@string/investors_projects</item>
         <item>@string/investors_legal</item>
     </string-array>
 
+    <string-array name="nav_investors_url">
+        <item>/en/page/2416</item>
+        <item>/en/page/2417</item>
+        <item>/en/page/2418</item>
+        <item>/en/page/2433</item>
+        <item>/en/page/4724</item>
+        <item>/en/page/4764</item>
+        <item>/en/page/2286</item>
+        <item>/en/page/4833</item>
+        <item>/en/page/4832</item>
+        <item>/en/page/4835</item>
+        <item>/en/page/4834</item>
+        <item>/en/page/4837</item>
+        <item>/en/page/2286</item>
+        <item>/en/page/4749</item>
+    </string-array>
+
     <string-array name="nav_issues">
-        <item>@string/issues_consultation</item>
+        <item>@string/issues_consultation1</item>
+        <item>@string/issues_consultation2</item>
+        <item>@string/issues_consultation3</item>
         <item>@string/issues_courts</item>
         <item>@string/issues_arbitrationcourt</item>
         <item>@string/issues_legislation</item>
         <item>@string/issues_entrepreneurs</item>
         <item>@string/issues_market</item>
     </string-array>
+
+
+    <string-array name="nav_issues_url">
+        <item>/en/page/3881</item>
+        <item>/en/page/3883</item>
+        <item>/en/page/4368</item>
+        <item>/en/page/4857</item>
+        <item>/en/page/4838</item>
+        <item>/en/law</item>
+        <item>/en/page/4839</item>
+        <item>/en/page/4727</item>
+    </string-array>
+
 
     <string-array name="nav_purchases">
         <item>@string/purchases_abroad</item>
@@ -104,6 +186,20 @@
     <string-array name="nav_sign">
 
     </string-array>
+
+
+    <string-array name="nav_purchases_url">
+        <item>/en/tenders/foreign</item>
+        <item>/en/tenders/uzbekistan</item>
+        <item>/en/lots</item>
+    </string-array>
+    <string-array name="nav_membership_url">
+        <item>/en/membership</item>
+        <item>/en/page/3390</item>
+        <item>/en/page/4851</item>
+    </string-array>
+
+
 
 
 </resources>

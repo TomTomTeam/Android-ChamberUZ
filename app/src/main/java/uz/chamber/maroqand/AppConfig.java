@@ -19,7 +19,7 @@ public class AppConfig {
                 absHref = absHref.replace("/" + t + "/", "");
                 Log.e("for url", absHref);
             }
-            if (absHref.charAt(0) == '/')                                               // other url
+            if (absHref.charAt(0) == '/' || absHref.charAt(0) == '\\')                                               // other url
                 return "http://chamber.uz" + absHref;
             else
                 return "http://chamber.uz/" + language[languageNum] + "/" + absHref;

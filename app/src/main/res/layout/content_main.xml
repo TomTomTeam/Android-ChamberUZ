@@ -19,12 +19,12 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="180dp">
+            android:layout_height="250dp">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/vp_mainViewPager"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+                android:layout_height="250dp"></android.support.v4.view.ViewPager>
 
         </FrameLayout>
 
@@ -141,7 +141,7 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_mainViewPager_news"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="250dp"
             android:layout_gravity="center"
             android:clipToPadding="false"
             android:paddingLeft="100dp"
@@ -157,7 +157,7 @@
         <com.android.volley.toolbox.NetworkImageView
             android:id="@+id/nv_main_banner_bottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:scaleType="fitXY"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp" />

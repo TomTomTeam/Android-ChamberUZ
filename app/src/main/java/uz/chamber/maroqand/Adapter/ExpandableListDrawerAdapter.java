@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,12 +24,13 @@ public class ExpandableListDrawerAdapter extends BaseExpandableListAdapter{
     public List<String> mExpandableListTitle;
     public Map<String, List<String>> mExpandableListDetail = new HashMap<>();
     private LayoutInflater mLayoutInflater;
+    int imgArray[] = {R.mipmap.home_noactive, R.mipmap.news_noactive, R.mipmap.about_noactive, R.mipmap.services_noactive, R.mipmap.prospective_noactive, R.mipmap.noactive_assistance, R.mipmap.noactive_tenders, R.mipmap.noactive_membership, R.mipmap.login, R.mipmap.sign, R.mipmap.sign};
 
     public ExpandableListDrawerAdapter(Context context) {
         mContext = context;
         mExpandableListTitle = Arrays.asList(context.getResources().getStringArray(R.array.nav_drawer_items));
 
-        int[] stringArray = {R.array.nav_home, R.array.nav_news, R.array.nav_about, R.array.nav_services,  R.array.nav_investors, R.array.nav_issues, R.array.nav_purchases, R.array.nav_membership, R.array.nav_login, R.array.nav_sign};
+        int[] stringArray = {R.array.nav_home, R.array.nav_news, R.array.nav_about, R.array.nav_services,  R.array.nav_investors, R.array.nav_issues, R.array.nav_purchases, R.array.nav_membership, R.array.nav_login, R.array.nav_sign, R.array.nav_setting};
         for(int i=0; i<stringArray.length; i++) {
             mExpandableListDetail.put(mExpandableListTitle.get(i), Arrays.asList(context.getResources().getStringArray(stringArray[i])));
         }
@@ -51,11 +53,11 @@ public class ExpandableListDrawerAdapter extends BaseExpandableListAdapter{
     public View getChildView(int listPosition, final int expandedListPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
         final String expandedListText = (String) getChild(listPosition, expandedListPosition);
-        if (convertView == null) {
+        if (convertView == null)
             convertView = mLayoutInflater.inflate(R.layout.nav_drawer_row, null);
-        }
-        TextView expandedListTextView = (TextView) convertView
-                .findViewById(R.id.tv_childitem);
+
+        TextView expandedListTextView = (TextView) convertView.findViewById(R.id.tv_childitem);
+
         expandedListTextView.setText(expandedListText);
         return convertView;
     }
@@ -92,6 +94,9 @@ public class ExpandableListDrawerAdapter extends BaseExpandableListAdapter{
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);
 
+        ImageView expandedListImageView = (ImageView) convertView.findViewById(R.id.iv_drawer_listview_icon);
+        expandedListImageView.setImageDrawable(mContext.getResources().getDrawable(imgArray[listPosition]));
+
         Log.v("Main"," Key title  "+listTitle);
         return convertView;
     }
@@ -103,6 +108,7 @@ public class ExpandableListDrawerAdapter extends BaseExpandableListAdapter{
 
     @Override
     public boolean isChildSelectable(int listPosition, int expandedListPosition) {
+        Log.d("ExpandableListAdapter", listPosition + " / expandedListPosition" + expandedListPosition);
         return true;
     }
 }
