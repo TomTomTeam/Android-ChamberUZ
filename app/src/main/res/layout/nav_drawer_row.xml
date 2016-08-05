@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="wrap_content">
 
-    >
     <RelativeLayout
         android:id="@+id/parent_lay"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp">
 
         <TextView
             android:id="@+id/tv_childitem"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:textColor="@color/gray"
-            android:paddingBottom="5dp"
             android:focusable="false"
-            android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
-        <!--android:listSelector="@drawable/list_selector"-->
-
-
+            android:paddingBottom="5dp"
+            android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+            android:paddingTop="5dp"
+            android:textColor="@color/gray" />
     </RelativeLayout>
-
-
 </RelativeLayout>

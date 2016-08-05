@@ -2,50 +2,17 @@
 <resources xmlns:android="http://schemas.android.com/tools">
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@mipmap/home_noactive"
-            android:title="@string/nav_home" >@string/nav_home</item>
-        <item
-            android:id="@+id/nav_news"
-            android:icon="@mipmap/news_noactive"
-            android:title="@string/nav_news" >@string/nav_news</item>
-        <item
-            android:id="@+id/nav_about"
-            android:icon="@mipmap/about_noactive"
-            android:title="@string/nav_aboutCCI">@string/nav_aboutCCI</item>
-        <item
-            android:id="@+id/nav_services"
-            android:icon="@mipmap/services_noactive"
-            android:title="@string/nav_services" >@string/nav_services</item>
-        <item
-            android:id="@+id/nav_investors"
-            android:icon="@mipmap/prospective_noactive"
-            android:title="@string/nav_investors" >@string/nav_investors</item>
-        <item
-            android:id="@+id/nav_issues"
-            android:icon="@mipmap/noactive_assistance"
-            android:title="@string/nav_issues" >@string/nav_issues</item>
-        <item
-            android:id="@+id/nav_purchases"
-            android:icon="@mipmap/noactive_tenders"
-            android:title="@string/nav_purchases" >@string/nav_purchases</item>
-        <item
-            android:id="@+id/nav_membership"
-            android:icon="@mipmap/noactive_membership"
-            android:title="@string/nav_membership" >@string/nav_membership</item>
-        <item
-            android:id="@+id/nav_login"
-            android:icon="@mipmap/login"
-            android:title="LOGIN" >LOGIN</item>
-        <item
-            android:id="@+id/nav_sign"
-            android:icon="@mipmap/sign"
-            android:title="SIGN UP" >SIGN UP</item>
-        <item
-            android:id="@+id/nav_setting"
-            android:icon="@mipmap/sign"
-            android:title="SETTING" >SETTING</item>
+        <item android:icon="@mipmap/home_noactive" android:id="@+id/nav_home" android:title="@string/nav_home">@string/nav_home</item>
+        <item android:icon="@mipmap/news_noactive" android:id="@+id/nav_news" android:title="@string/nav_news">@string/nav_news</item>
+        <item android:icon="@mipmap/about_noactive" android:id="@+id/nav_about" android:title="@string/nav_aboutCCI">@string/nav_aboutCCI</item>
+        <item android:icon="@mipmap/services_noactive" android:id="@+id/nav_services" android:title="@string/nav_services">@string/nav_services</item>
+        <item android:icon="@mipmap/prospective_noactive" android:id="@+id/nav_investors" android:title="@string/nav_investors">@string/nav_investors</item>
+        <item android:icon="@mipmap/noactive_assistance" android:id="@+id/nav_issues" android:title="@string/nav_issues">@string/nav_issues</item>
+        <item android:icon="@mipmap/noactive_tenders" android:id="@+id/nav_purchases" android:title="@string/nav_purchases">@string/nav_purchases</item>
+        <item android:icon="@mipmap/noactive_membership" android:id="@+id/nav_membership" android:title="@string/nav_membership">@string/nav_membership</item>
+        <item android:icon="@mipmap/login" android:id="@+id/nav_login" android:title="LOGIN">LOGIN</item>
+        <item android:icon="@mipmap/sign" android:id="@+id/nav_sign" android:title="SIGN UP">SIGN UP</item>
+        <item android:icon="@mipmap/sign" android:id="@+id/nav_setting" android:title="SETTING">SETTING</item>
 
     </string-array>
 
@@ -154,7 +121,6 @@
         <item>@string/issues_market</item>
     </string-array>
 
-
     <string-array name="nav_issues_url">
         <item>/en/page/3881</item>
         <item>/en/page/3883</item>
@@ -166,14 +132,11 @@
         <item>/en/page/4727</item>
     </string-array>
 
-
     <string-array name="nav_purchases">
         <item>@string/purchases_abroad</item>
         <item>@string/purchases_tenders</item>
         <item>@string/purchases_uzex</item>
     </string-array>
-
-
 
     <string-array name="nav_membership">
         <item>@string/membership_cci</item>
@@ -187,7 +150,6 @@
 
     </string-array>
 
-
     <string-array name="nav_purchases_url">
         <item>/en/tenders/foreign</item>
         <item>/en/tenders/uzbekistan</item>
@@ -198,8 +160,4 @@
         <item>/en/page/3390</item>
         <item>/en/page/4851</item>
     </string-array>
-
-
-
-
 </resources>

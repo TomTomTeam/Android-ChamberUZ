@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
+    android:background="#F3F4F9"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#F3F4F9">
+    android:padding="10dp">
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_drawer_listview_icon"
@@ -16,30 +16,18 @@
             android:layout_height="20dp"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:contentDescription="@null"
             android:layout_marginLeft="10dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:contentDescription="@null"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/tv_groupitem"
-            android:layout_toRightOf="@+id/iv_drawer_listview_icon"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:textSize="12sp"
+            android:layout_toRightOf="@+id/iv_drawer_listview_icon"
             android:paddingLeft="10dp"
-            android:textColor="#777882" />
-
-        <!--TextView
-            android:id="@+id/plus_txt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:paddingRight="5dp"
-            android:textColor="#000"
-            android:textSize="20sp"
-            android:textStyle="bold" /-->
+            android:textColor="#777882"
+            android:textSize="12sp" />
     </RelativeLayout>
-
 </LinearLayout>
